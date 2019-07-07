@@ -2,6 +2,10 @@
 # yarn lockfile v1
 
 
+"@agm/core@^1.0.0-beta.6":
+  version "1.0.0-beta.6"
+  resolved "https://registry.yarnpkg.com/@agm/core/-/core-1.0.0-beta.6.tgz#89a812b4b4ceb4d9cf2195400423c4b833103c5e"
+
 "@angular-devkit/architect@0.13.9":
   version "0.13.9"
   resolved "https://registry.yarnpkg.com/@angular-devkit/architect/-/architect-0.13.9.tgz#8bbca4b968fccbf88fc2f86542cbee09e1256e1f"
@@ -94,15 +98,15 @@
     "@angular-devkit/core" "7.3.9"
     rxjs "6.3.3"
 
-"@angular/animations@^8.1.0":
-  version "8.1.0"
-  resolved "https://registry.yarnpkg.com/@angular/animations/-/animations-8.1.0.tgz#acc6716df47599e48c715c7ec24dfc1e340256e2"
+"@angular/animations@~7.2.0":
+  version "7.2.15"
+  resolved "https://registry.yarnpkg.com/@angular/animations/-/animations-7.2.15.tgz#980c1f523a79d4b7cb44508f57fba06f2e0872fa"
   dependencies:
     tslib "^1.9.0"
 
-"@angular/cdk@^8.0.2":
-  version "8.0.2"
-  resolved "https://registry.yarnpkg.com/@angular/cdk/-/cdk-8.0.2.tgz#599b7fd06caed8cbea41f8f7874ddcea5dfc99ce"
+"@angular/cdk@~7.3.7":
+  version "7.3.7"
+  resolved "https://registry.yarnpkg.com/@angular/cdk/-/cdk-7.3.7.tgz#ce1ad53ba04beb9c8e950acc5691ea0143753764"
   dependencies:
     tslib "^1.7.1"
   optionalDependencies:
@@ -170,9 +174,9 @@
   version "7.2.15"
   resolved "https://registry.yarnpkg.com/@angular/language-service/-/language-service-7.2.15.tgz#b2ba33e472dc5e530047c408ff7a35deba4427b8"
 
-"@angular/material@^8.0.2":
-  version "8.0.2"
-  resolved "https://registry.yarnpkg.com/@angular/material/-/material-8.0.2.tgz#c648e0f52d94b37e3dddfd879223202aa0d11587"
+"@angular/material@^7.3.7":
+  version "7.3.7"
+  resolved "https://registry.yarnpkg.com/@angular/material/-/material-7.3.7.tgz#dcd95e6618ba6254c5880efee1aad349cf5b9140"
   dependencies:
     tslib "^1.7.1"
 
@@ -945,6 +949,10 @@ bonjour@^3.5.0:
     dns-txt "^2.0.2"
     multicast-dns "^6.0.1"
     multicast-dns-service-types "^1.1.0"
+
+bootstrap@4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.1.1.tgz#3aec85000fa619085da8d2e4983dfd67cf2114cb"
 
 brace-expansion@^1.1.7:
   version "1.1.11"
@@ -3860,6 +3868,10 @@ negotiator@0.6.2:
 neo-async@^2.5.0, neo-async@^2.6.0:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.1.tgz#ac27ada66167fa8849a6addd837f6b189ad2081c"
+
+ngx-bootstrap@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/ngx-bootstrap/-/ngx-bootstrap-5.1.0.tgz#4a3d1b9ab099a4f8c01e8760c947873cb8505569"
 
 nice-try@^1.0.4:
   version "1.0.5"

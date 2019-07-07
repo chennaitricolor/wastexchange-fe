@@ -1,77 +1,62 @@
+$app-primary: #A1EBEB;
+
 .home-container {
   height: 100vh;
   width: 100vw;
 
   .header {
     width: 100vw;
-    padding: 0 64px;
-    height: 216px;
+    height: 64px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05), 0 1px 4px rgba(0, 0, 0, 0.15);
 
-    .title {
-      max-width: 40vw;
-      display: flex;
-      justify-content: flex-start;
-      align-items: flex-start;
-
-      .content h1 {
-        font-weight: bold;
-        letter-spacing: 2px
-      }
-
-      .logo {
-        margin-right: 16px;
-      }
-    }
-
-    .actions {
-      .btn {
-        margin: 0 10px;
-      }
+    .app-title {
+      color: #707070;
     }
   }
 
   .body {
-    height: calc(100vh - 216px - 80px);
-    max-height: calc(100vh - 216px - 80px);
+    height: calc(100vh - 64px);
+    max-height: calc(100vh - 64px);
     overflow: auto;
-    padding: 8px 64px;
     display: flex;
     justify-content: center;
     align-items: flex-start;
 
-    .images {
-      width: 100%;
-      margin-top: 64px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    .map-container {
+      flex-basis: 73%;
+      height: 100%;
+    }
 
-      h3 {
-        margin-top: 24px;
+    .info-container {
+      flex-basis: 27%;
+      height: 100%;
+      max-height: 100%;
+      overflow: auto;
+      background-color: $app-primary;
+      padding: 64px 48px;
+
+      .actions .action {
+        margin: 16px 0;
       }
-    }
-  }
 
-  .footer {
-    height: 80px;
-    padding: 16px 64px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+      hr {
+        background: black;
+        border-top-width: 2px;
+        width: 34%;
+      }
 
-    .government-logo,
-    .tech-for-cities-logo {
-      display: flex;
-      width: 304px;
-      align-items: center;
-      justify-content: space-evenly;
-    }
+      .title-1 {
+        font-size: 28px;
+        margin: 24px 0;
+      }
 
-    .tech-for-cities-logo {
-      width: 200px;
+      .title-2 {
+        font-size: 20px;
+        margin: 24px 0;
+      }
     }
   }
 }

@@ -1,5 +1,109 @@
 /* You can add global styles to this file, and also import other style files */
-$app-primary: #000088;
+$app-primary-background: #A1EBEB;
+$app-primary: #383838;
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import "~@angular/material/theming";
+
+$dark-primary-text: rgba(black, 0.87);
+$light-primary-text: white;
+$wm-client-primary: (
+  50 : #e7e7e7,
+  100 : #c3c3c3,
+  200 : #9c9c9c,
+  300 : #747474,
+  400 : #565656,
+  500 : #383838,
+  600 : #323232,
+  700 : #2b2b2b,
+  800 : #242424,
+  900 : #171717,
+  A100 : #ef7171,
+  A200 : #ea4343,
+  A400 : #fa0000,
+  A700 : #e00000,
+  contrast: (
+      50 : #000000,
+      100 : #000000,
+      200 : #000000,
+      300 : #ffffff,
+      400 : #ffffff,
+      500 : #ffffff,
+      600 : #ffffff,
+      700 : #ffffff,
+      800 : #ffffff,
+      900 : #ffffff,
+      A100 : #000000,
+      A200 : #ffffff,
+      A400 : #ffffff,
+      A700 : #ffffff,
+  )
+);
+
+$wm-client-accent: (
+  50: #fcfcfc,
+  100: #f8f8f8,
+  200: #f4f4f4,
+  300: #efefef,
+  400: #ebebeb,
+  500: #e8e8e8,
+  600: #e5e5e5,
+  700: #e2e2e2,
+  800: #dedede,
+  900: #d8d8d8,
+  A100: #ffffff,
+  A200: #ffffff,
+  A400: #ffffff,
+  A700: #ffffff,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #000000,
+    600: #000000,
+    700: #000000,
+    800: #000000,
+    900: #000000,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000
+  )
+);
+
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$wm-client-primary: mat-palette($wm-client-primary);
+$wm-client-accent: mat-palette($wm-client-accent);
+
+// The warn palette is optional (defaults to red).
+$wm-client-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$wm-client-theme: mat-light-theme(
+  $wm-client-primary,
+  $wm-client-accent,
+  $wm-client-warn
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($wm-client-theme);
+@import "~bootstrap/dist/css/bootstrap.css";
+
+
 
 * {
   box-sizing: border-box;
@@ -9,28 +113,6 @@ $app-primary: #000088;
 
   &:focus {
     outline: none !important;
-  }
-}
-
-.btn {
-  font-weight: bold;
-  letter-spacing: 1.25px;
-  
-  &-primary {
-    background-color: $app-primary;
-    border-color: $app-primary;
-    border-radius: 24px;
-    min-width: 112px;
-
-    &:hover, &:active {
-      background-color: $app-primary !important;
-      border-color: $app-primary !important;
-    }
-
-    &:focus {
-      outline: none !important;
-      box-shadow: none !important;
-    }
   }
 }
 
@@ -61,7 +143,15 @@ p {
   }
 
   &--normal {
-    font-size: 14px;
+    font-size: 16px;
+  }
+
+  &--large {
+    font-size: 20px;
+  }
+
+  &--xlarge {
+    font-size: 28px;
   }
 
   &--center {

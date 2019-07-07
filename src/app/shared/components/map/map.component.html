@@ -1,0 +1,12 @@
+<agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+  <agm-marker
+    *ngFor="let seller of sellerData"
+    [latitude]="seller.lat"
+    [longitude]="seller.lng"
+    [label]="'M'"
+  >
+    <agm-info-window [disableAutoPan]="true">
+      Hi, this is the content of the <strong>info window</strong>
+    </agm-info-window>
+  </agm-marker>
+</agm-map>
