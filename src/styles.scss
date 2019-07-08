@@ -150,6 +150,10 @@ p {
     font-size: 20px;
   }
 
+  &--largesecondary {
+    font-size: 24px;
+  }
+
   &--xlarge {
     font-size: 28px;
   }
@@ -157,4 +161,30 @@ p {
   &--center {
     text-align: center;
   }
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.align-start {
+  align-items: flex-start;
+}
+
+.space-between {
+  justify-content: space-between
+}
+
+.direction-column {
+  flex-direction: column;
+}
+
+.rounded-button {
+  border-radius: 24px !important;
 }

@@ -8,15 +8,15 @@ import { LandingComponent } from "./pages/common/landing/landing.component";
 
 const routes: Routes = [
   { path: "", component: LandingComponent },
-  { path: "**", component: LandingComponent },
   { path: "buyer/:id/browse", component: BuyerBrowseComponent },
   { path: "buyer/:id/bid", component: BuyerBidComponent },
   { path: "buyer/:id/bid-list", component: BuyerBidListComponent },
-  { path: "seller/:id/bid-list", component: SellerBidListComponent }
+  { path: "seller/:id/bid-list", component: SellerBidListComponent },
+  { path: "**", component: LandingComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
