@@ -2,6 +2,7 @@
   height: 100%;
   max-height: 100%;
   overflow: auto;
+  background-color: #a1ebeb;
 
   .edit-profile-details,
   .user-details {
@@ -35,7 +36,6 @@
   }
 
   .dynamic-action-container {
-    background-color: #a1ebeb;
     max-height: calc(100% - 80px - 180px);
     height: calc(100% - 80px - 180px);
     overflow: auto;
