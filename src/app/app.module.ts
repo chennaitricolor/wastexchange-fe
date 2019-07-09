@@ -15,6 +15,7 @@ import { BuyerBidListComponent } from "./pages/buyer/buyer-bid-list/buyer-bid-li
 import { SellerBidListComponent } from "./pages/seller/seller-bid-list/seller-bid-list.component";
 import { BuyerBrowseComponent } from "./pages/buyer/buyer-browse/buyer-browse.component";
 import { PageActionsComponent } from "./shared/components/page-actions/page-actions.component";
+import { BidListTableComponent } from './pages/common/bid-list-table/bid-list-table.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { PageActionsComponent } from "./shared/components/page-actions/page-acti
     BuyerBidListComponent,
     BuyerBrowseComponent,
     SellerBidListComponent,
-    PageActionsComponent
+    PageActionsComponent,
+    BidListTableComponent
   ],
   imports: [
     BrowserModule,

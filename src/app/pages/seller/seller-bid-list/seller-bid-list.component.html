@@ -1,3 +1,15 @@
-<p>
-  seller-bid-list works!
-</p>
+<div class="bid-list-container">
+    <p class="text--largesecondary text--green">
+      Current Bids
+    </p>
+    <p class="text--normal text--gray">
+      Bids not accepted before18hrs of pick-up time will be automatically
+      cancelled.
+    </p>
+    <div class="bid-list-table-container mt-4">
+      <wm-bid-list-table></wm-bid-list-table>
+    </div>
+  </div>
+  
+  <wm-page-actions [user]="this.buyer"> </wm-page-actions>
+  
