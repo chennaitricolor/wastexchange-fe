@@ -1,6 +1,6 @@
 <ng-template #pageActions>
   <div class="info-container">
-    <div class="edit-profile-details flex justify-end">
+    <div class="edit-profile-details flex justify-end" *ngIf="user">
       <div class="actions">
         <button mat-stroked-button color="primary" class="rounded-button">
           Logout
@@ -8,7 +8,7 @@
       </div>
     </div>
 
-    <div class="user-details">
+    <div class="user-details" *ngIf="user">
       <div class="display-picture">
         <img
           src="./../../../../assets/images/buyer-dummy-dp.png"
