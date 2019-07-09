@@ -1,0 +1,30 @@
+.create-bid-container {
+  .seller-info {
+    background-color: #eb5821e0;
+    color: #ffffff;
+    height: 56px;
+    border-radius: 4px;
+    position: relative;
+
+    .display-picture {
+      position: absolute;
+      top: 20px;
+      left: 30px;
+    }
+  }
+  .seller-info,
+  .seller-basic-info,
+  .bid-form-container {
+    padding-left: 128px;
+  }
+
+  .bid-form-container {
+    margin-top: 48px;
+    color: #eb5821e0;
+  }
+}
+
+.browse-by-container {
+  background-color: #a1ebeb;
+  padding: 64px 32px;
+}

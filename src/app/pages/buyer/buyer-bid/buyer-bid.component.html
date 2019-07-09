@@ -1,3 +1,37 @@
-<p>
-  buyer-bid works!
-</p>
+<div class="create-bid-container">
+  <div class="seller-info flex justify-start">
+    <p class="text--large">{{ this.seller.name }}</p>
+    <div class="display-picture">
+      <img
+        src="./../../../../assets/images/seller-dummy-dp.png"
+        alt="Display picture"
+        height="88"
+      />
+    </div>
+  </div>
+
+  <div class="seller-basic-info">
+    <p class="text--medium">Data last updated by seller - 12/06/19 - 17:05</p>
+  </div>
+
+  <div class="bid-form-container">
+    <p class="text--largesecondary text--orange">Bidding Form</p>
+    <mat-form-field appearance="outline">
+      <mat-label>Contact name</mat-label>
+      <input matInput placeholder="Contact name" />
+    </mat-form-field>
+
+    <div class="flex justify-start ">
+      <mat-form-field appearance="outline">
+        <mat-label>Pickup date</mat-label>
+        <input matInput placeholder="Pickup date" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="ml-4">
+        <mat-label>Pickup time</mat-label>
+        <input matInput placeholder="Pickup time" />
+      </mat-form-field>
+    </div>
+  </div>
+</div>
+
+<wm-page-actions [user]="this.buyer"> </wm-page-actions>

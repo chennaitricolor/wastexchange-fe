@@ -9,11 +9,12 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ButtonsModule } from "ngx-bootstrap/buttons";
 import { AgmCoreModule } from "@agm/core";
 import { MapComponent } from "./shared/components/map/map.component";
-import { MatButtonModule, MatRadioModule } from "@angular/material";
+import { MatButtonModule, MatRadioModule, MatInputModule } from "@angular/material";
 import { BuyerBidComponent } from "./pages/buyer/buyer-bid/buyer-bid.component";
 import { BuyerBidListComponent } from "./pages/buyer/buyer-bid-list/buyer-bid-list.component";
 import { SellerBidListComponent } from "./pages/seller/seller-bid-list/seller-bid-list.component";
 import { BuyerBrowseComponent } from "./pages/buyer/buyer-browse/buyer-browse.component";
+import { PageActionsComponent } from "./shared/components/page-actions/page-actions.component";
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { BuyerBrowseComponent } from "./pages/buyer/buyer-browse/buyer-browse.co
     BuyerBidComponent,
     BuyerBidListComponent,
     BuyerBrowseComponent,
-    SellerBidListComponent
+    SellerBidListComponent,
+    PageActionsComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +35,7 @@ import { BuyerBrowseComponent } from "./pages/buyer/buyer-browse/buyer-browse.co
     ButtonsModule.forRoot(),
     MatButtonModule,
     MatRadioModule,
+    MatInputModule,
     AgmCoreModule.forRoot({
       apiKey: "AIzaSyB8NCphJh5-XfQFXb2EcrKO922PgoLt-Aw"
     })

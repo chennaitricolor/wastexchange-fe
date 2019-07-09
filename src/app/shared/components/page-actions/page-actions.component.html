@@ -1,0 +1,39 @@
+<ng-template #pageActions>
+  <div class="info-container">
+    <div class="edit-profile-details flex justify-end">
+      <div class="actions">
+        <button mat-stroked-button color="primary" class="rounded-button">
+          Logout
+        </button>
+      </div>
+    </div>
+
+    <div class="user-details">
+      <div class="display-picture">
+        <img
+          src="./../../../../assets/images/buyer-dummy-dp.png"
+          alt="Display picture"
+          height="88"
+        />
+      </div>
+      <div class="user-basic-info flex space-between align-start">
+        <div class="address">
+          <p class="text--largesecondary">{{ this.user.name }}</p>
+          <p class="text--normal mt-2">
+            41, Driver Street, Pudupet, Egmore, Chennai.
+          </p>
+        </div>
+        <div class="user-logout">
+          <button mat-flat-button color="accent" class="rounded-button">
+            Edit
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="dynamic-action-container">
+      <ng-content></ng-content>
+    </div>
+
+  </div>
+</ng-template>

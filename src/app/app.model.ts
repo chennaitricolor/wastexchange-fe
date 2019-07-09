@@ -42,7 +42,7 @@ export interface Seller {
 export const SELLER_DATA: Seller[] = [
   {
     id: 1,
-    name: "Seller 1",
+    name: "Resource Recovery Centre 002",
     lat: 12.9652163,
     lng: 80.1902814
   },
