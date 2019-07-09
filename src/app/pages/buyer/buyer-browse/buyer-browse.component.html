@@ -11,6 +11,7 @@
       <mat-radio-button
         color="primary"
         [disabled]="true"
+        [routerLink]="['/buyer/1/bid-list']"
         [value]="'byMaterial'"
         class="mt-4"
       >
@@ -19,5 +20,15 @@
         <p>We’ll show your best path.</p>
       </mat-radio-button>
     </mat-radio-group>
+  </div>
+  <div class="actions flex mt-4">
+    <button
+      mat-flat-button
+      color="primary"
+      class="rounded-button"
+      [routerLink]="['/buyer/1/bid-list']"
+    >
+      View Pending Bids
+    </button>
   </div>
 </wm-page-actions>

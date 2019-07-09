@@ -11,4 +11,15 @@
   </div>
 </div>
 
-<wm-page-actions [user]="this.buyer"> </wm-page-actions>
+<wm-page-actions [user]="this.buyer">
+  <div class="actions flex mt-4">
+    <button
+      mat-flat-button
+      color="primary"
+      class="rounded-button"
+      [routerLink]="['/buyer/1/browse']"
+    >
+      Browse and Bid
+    </button>
+  </div>
+</wm-page-actions>

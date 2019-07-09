@@ -1,15 +1,46 @@
 <div class="bid-list-container">
-    <p class="text--largesecondary text--green">
-      Current Bids
-    </p>
-    <p class="text--normal text--gray">
-      Bids not accepted before18hrs of pick-up time will be automatically
-      cancelled.
-    </p>
-    <div class="bid-list-table-container mt-4">
-      <wm-bid-list-table></wm-bid-list-table>
-    </div>
+  <p class="text--largesecondary text--green">
+    Current Bids
+  </p>
+  <p class="text--normal text--gray">
+    Bids not accepted before18hrs of pick-up time will be automatically
+    cancelled.
+  </p>
+  <div class="bid-list-table-container mt-4">
+    <wm-bid-list-table></wm-bid-list-table>
   </div>
-  
-  <wm-page-actions [user]="this.buyer"> </wm-page-actions>
-  
+</div>
+
+<wm-page-actions [user]="this.buyer">
+  <div class="seller-details-template">
+    <ng-container *ngTemplateOutlet="sellerDetailsTemplate"></ng-container>
+  </div>
+</wm-page-actions>
+
+<ng-template #sellerDetailsTemplate>
+  <table class="table mt-2">
+    <tbody>
+      <tr>
+        <td>Plastic Waste</td>
+        <td>120kg (₹1.00 / kg)</td>
+      </tr>
+      <tr>
+        <td>PET</td>
+        <td>45kg (₹12.00 / kg)</td>
+      </tr>
+      <tr>
+        <td>HDPE</td>
+        <td>64kg (₹10.00 / kg)</td>
+      </tr>
+      <tr>
+        <td>Rubber</td>
+        <td>12kg (₹0.10 / kg)</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="actions flex justify-end">
+    <button mat-flat-button color="primary" class="rounded-button">
+      Update data
+    </button>
+  </div>
+</ng-template>

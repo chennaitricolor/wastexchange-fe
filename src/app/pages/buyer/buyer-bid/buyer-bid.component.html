@@ -81,14 +81,25 @@
       </tbody>
     </table>
     <div class="actions flex justify-end">
-      <button mat-stroked-button color="primary" class="rounded-button mr-2">
+      <button mat-stroked-button color="primary" class="rounded-button mr-2" [routerLink]="['/buyer/1/browse']">
         Cancel
       </button>
-      <button mat-flat-button color="primary" class="rounded-button">
+      <button mat-flat-button color="primary" class="rounded-button" [routerLink]="['/buyer/1/bid-list']">
         Confirm
       </button>
     </div>
   </div>
 </div>
 
-<wm-page-actions [user]="this.buyer"> </wm-page-actions>
+<wm-page-actions [user]="this.buyer">
+  <div class="actions flex mt-4">
+    <button
+      mat-flat-button
+      color="primary"
+      class="rounded-button"
+      [routerLink]="['/buyer/1/bid-list']"
+    >
+      View Pending Bids
+    </button>
+  </div>
+</wm-page-actions>
