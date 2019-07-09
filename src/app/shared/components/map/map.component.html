@@ -6,7 +6,41 @@
     [label]="'M'"
   >
     <agm-info-window [disableAutoPan]="true">
-      Hi, this is the content of the <strong>info window</strong>
+      <ng-container
+        *ngTemplateOutlet="
+          sellerDetailsTemplate;
+          context: { sellerDetails: seller }
+        "
+      ></ng-container>
     </agm-info-window>
   </agm-marker>
 </agm-map>
+
+<ng-template #sellerDetailsTemplate let-seller="sellerDetails">
+  <p class="text--orange text--normal">RRC Enterprises</p>
+  <table class="table mt-2">
+    <tbody>
+      <tr>
+        <td>Plastic Waste</td>
+        <td>120kg (₹1.00 / kg)</td>
+      </tr>
+      <tr>
+        <td>PET</td>
+        <td>45kg (₹12.00 / kg)</td>
+      </tr>
+      <tr>
+        <td>HDPE</td>
+        <td>64kg (₹10.00 / kg)</td>
+      </tr>
+      <tr>
+        <td>Rubber</td>
+        <td>12kg (₹0.10 / kg)</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="actions flex">
+    <button mat-flat-button color="primary" class="rounded-button">
+      Bid to buy
+    </button>
+  </div>
+</ng-template>
