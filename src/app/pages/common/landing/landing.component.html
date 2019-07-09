@@ -20,11 +20,11 @@
     <div class="actions">
       <div class="action">
         <p class="text--normal mb-2">New user?</p>
-        <button mat-raised-button color="primary">Sign up</button>
+        <button mat-raised-button (click)="openSignupDialog()" color="primary">Sign up</button>
       </div>
       <div class="action">
         <p class="text--normal mb-2">Existing user?</p>
-        <button mat-raised-button color="primary">Account login</button>
+        <button mat-raised-button (click)="openLoginDialog()" color="primary">Account login</button>
       </div>
     </div>
   </div>

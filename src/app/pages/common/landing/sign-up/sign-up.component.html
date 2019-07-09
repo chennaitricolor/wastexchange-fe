@@ -1,0 +1,50 @@
+<div class="signup-container">
+  <div class="signup-form">
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Address line 1</mat-label>
+      <input matInput />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Address line 2</mat-label>
+      <input matInput />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Pincode</mat-label>
+      <input matInput />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Phone-no</mat-label>
+      <input matInput />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Alternative Phone no</mat-label>
+      <input matInput />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input matInput type="password" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Confirm Password</mat-label>
+      <input matInput type="password" />
+    </mat-form-field>
+  </div>
+
+  <div class="actions flex justify-end">
+    <button
+      mat-stroked-button
+      color="primary"
+      class="rounded-button mr-2"
+      (click)="onCancel()"
+    >
+      Cancel
+    </button>
+    <button mat-flat-button color="primary" class="rounded-button">
+      Sign up
+    </button>
+  </div>
+</div>
