@@ -19,16 +19,74 @@
     <div class="flex justify-start mt-2">
       <mat-form-field appearance="outline">
         <mat-label>Contact name</mat-label>
-        <input matInput placeholder="Contact name" />
+        <input matInput />
       </mat-form-field>
       <mat-form-field appearance="outline" class="ml-4">
         <mat-label>Pickup date</mat-label>
-        <input matInput placeholder="Pickup date" />
+        <input matInput />
       </mat-form-field>
       <mat-form-field appearance="outline" class="ml-4">
         <mat-label>Pickup time</mat-label>
-        <input matInput placeholder="Pickup time" />
+        <input matInput />
       </mat-form-field>
+    </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Material</th>
+          <th scope="col">Available Qty. (in kg)</th>
+          <th scope="col">Bidding Qty. (in kg)</th>
+          <th scope="col">Minimum Price (in ₹/kg)</th>
+          <th scope="col">Bidding Price (in ₹/kg)</th>
+          <th scope="col">Total Bid Price (in ₹)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Plastic Waste</td>
+          <td>120</td>
+          <td><input type="number" class="form-control" /></td>
+          <td>1.00</td>
+          <td><input type="number" class="form-control" /></td>
+          <td><input type="number" class="form-control" /></td>
+        </tr>
+        <tr>
+          <td>PET</td>
+          <td>45</td>
+          <td><input type="number" class="form-control" /></td>
+          <td>12.00</td>
+          <td><input type="number" class="form-control" /></td>
+          <td><input type="number" class="form-control" /></td>
+        </tr>
+        <tr>
+          <td>HDPE</td>
+          <td>64</td>
+          <td><input type="number" class="form-control" /></td>
+          <td>10.00</td>
+          <td><input type="number" class="form-control" /></td>
+          <td><input type="number" class="form-control" /></td>
+        </tr>
+        <tr>
+          <td>Rubber</td>
+          <td>12</td>
+          <td><input type="number" class="form-control" /></td>
+          <td>0.10</td>
+          <td><input type="number" class="form-control" /></td>
+          <td><input type="number" class="form-control" /></td>
+        </tr>
+        <tr>
+          <td colspan="5" class="text--right">Total Bidding Price</td>
+          <td><input type="number" class="form-control" /></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="actions flex justify-end">
+      <button mat-stroked-button color="primary" class="rounded-button mr-2">
+        Cancel
+      </button>
+      <button mat-flat-button color="primary" class="rounded-button">
+        Confirm
+      </button>
     </div>
   </div>
 </div>
