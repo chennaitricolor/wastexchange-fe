@@ -9,7 +9,7 @@ export class BidListTableComponent implements OnInit {
 
   @Input() bids:any[];
 
-  public materials2 = MATERIALS;
+  public materials = MATERIALS;
 
   constructor() { }
 

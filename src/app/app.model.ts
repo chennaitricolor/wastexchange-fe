@@ -11,6 +11,14 @@ export interface Bid {
   updatedAt: string;
 }
 
+export interface SellerItem {
+  id: number;
+  sellerId: number;
+  details: object;
+  createdAt: string;
+  updatedAt: string;
+}
+
 export interface Buyer {
   id: number;
   name: string;

@@ -7,7 +7,7 @@
     cancelled.
   </p>
   <div class="bid-list-table-container mt-4">
-    <wm-bid-list-table></wm-bid-list-table>
+    <wm-bid-list-table [bids]="this.bids"></wm-bid-list-table>
   </div>
 </div>
 
@@ -18,23 +18,27 @@
 </wm-page-actions>
 
 <ng-template #sellerDetailsTemplate>
-  <table class="table mt-2">
+  <table *ngIf="sellerItem" class="table mt-2">
     <tbody>
-      <tr>
-        <td>Plastic Waste</td>
-        <td>120kg (₹1.00 / kg)</td>
-      </tr>
-      <tr>
-        <td>PET</td>
-        <td>45kg (₹12.00 / kg)</td>
-      </tr>
-      <tr>
-        <td>HDPE</td>
-        <td>64kg (₹10.00 / kg)</td>
-      </tr>
-      <tr>
-        <td>Rubber</td>
-        <td>12kg (₹0.10 / kg)</td>
+      <tr *ngFor="let material of this.materials | keyvalue">
+        <td>{{ material.value }}</td>
+        <td>
+          <span
+            >{{
+              sellerItem.details[material.key]
+                ? sellerItem.details[material.key]?.quantity
+                : "0"
+            }}
+            kg</span
+          >
+          <span
+            >(₹{{
+              sellerItem.details[material.key]
+                ? sellerItem.details[material.key]?.cost
+                : "0"
+            }}.00 / kg)</span
+          >
+        </td>
       </tr>
     </tbody>
   </table>

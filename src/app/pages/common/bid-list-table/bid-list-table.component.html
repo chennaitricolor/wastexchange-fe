@@ -3,7 +3,7 @@
     <tr>
       <th scope="col"></th>
       <th scope="col"></th>
-      <ng-container *ngFor="let material of this.materials2 | keyvalue">
+      <ng-container *ngFor="let material of this.materials | keyvalue">
         <th scope="col">{{ material.value }} Quantity (in kg)</th>
         <th scope="col">Bid Price (in ₹/kg)</th>
       </ng-container>
@@ -18,7 +18,7 @@
       <td>
         <p class="text--green">1. Green Enterprises</p>
       </td>
-      <ng-container *ngFor="let material of this.materials2 | keyvalue">
+      <ng-container *ngFor="let material of this.materials | keyvalue">
         <td>{{ bid.details[material.key] ?  bid.details[material.key]?.quantity : '--' }}</td>
         <td>{{ bid.details[material.key] ? bid.details[material.key]?.bid : '--'}}</td>
       </ng-container>
