@@ -19,9 +19,10 @@ export class AppService {
   }
 
   public updateSellerItem(sellerItem: SellerItem) {
-    return this.httpClient.put<any>(
-      `/api/items/${sellerItem.id}`,
-      sellerItem
-    );
+    return this.httpClient.put<any>(`/api/items/${sellerItem.id}`, sellerItem);
+  }
+
+  public createBid(bid: Bid) {
+    return this.httpClient.post<any>(`/api/buyer/${bid.buyerId}/bids`, bid);
   }
 }

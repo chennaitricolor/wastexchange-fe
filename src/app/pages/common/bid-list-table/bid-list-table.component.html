@@ -19,8 +19,8 @@
         <p class="text--green">1. Green Enterprises</p>
       </td>
       <ng-container *ngFor="let material of this.materials | keyvalue">
-        <td>{{ bid.details[material.key] ?  bid.details[material.key]?.quantity : '--' }}</td>
-        <td>{{ bid.details[material.key] ? bid.details[material.key]?.bid : '--'}}</td>
+        <td>{{ bid.details[material.key] ?  bid.details[material.key]?.bidQuantity : '--' }}</td>
+        <td>{{ bid.details[material.key] ? bid.details[material.key]?.bidCost : '--'}}</td>
       </ng-container>
       <td>
         <div class="actions flex justify-end">

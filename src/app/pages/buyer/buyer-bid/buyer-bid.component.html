@@ -30,7 +30,7 @@
         <input matInput />
       </mat-form-field>
     </div>
-    <table class="table">
+    <table *ngIf="this.canRaiseBid" class="table">
       <thead>
         <tr>
           <th scope="col">Material</th>
@@ -42,37 +42,42 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Plastic Waste</td>
-          <td>120</td>
-          <td><input type="number" class="form-control" /></td>
-          <td>1.00</td>
-          <td><input type="number" class="form-control" /></td>
-          <td><input type="number" class="form-control" /></td>
-        </tr>
-        <tr>
-          <td>PET</td>
-          <td>45</td>
-          <td><input type="number" class="form-control" /></td>
-          <td>12.00</td>
-          <td><input type="number" class="form-control" /></td>
-          <td><input type="number" class="form-control" /></td>
-        </tr>
-        <tr>
-          <td>HDPE</td>
-          <td>64</td>
-          <td><input type="number" class="form-control" /></td>
-          <td>10.00</td>
-          <td><input type="number" class="form-control" /></td>
-          <td><input type="number" class="form-control" /></td>
-        </tr>
-        <tr>
-          <td>Rubber</td>
-          <td>12</td>
-          <td><input type="number" class="form-control" /></td>
-          <td>0.10</td>
-          <td><input type="number" class="form-control" /></td>
-          <td><input type="number" class="form-control" /></td>
+        <tr *ngFor="let material of this.materials | keyvalue">
+          <td>{{ material.value }}</td>
+          <td>
+            {{
+              this.bid.details[material.key]
+                ? this.bid.details[material.key]?.quantity
+                : "--"
+            }}
+          </td>
+          <td>
+            <input
+              type="number"
+              class="form-control"
+              [(ngModel)]="this.bid.details[material.key].bidQuantity"
+            />
+          </td>
+          <td>
+            {{
+              this.bid.details[material.key]
+                ? this.bid.details[material.key]?.cost
+                : "--"
+            }}
+          </td>
+          <td>
+            <input
+              type="number"
+              class="form-control"
+              [(ngModel)]="this.bid.details[material.key].bidCost"
+            />
+          </td>
+          <td>
+            {{
+              this.bid.details[material.key].bidQuantity *
+                this.bid.details[material.key].bidCost
+            }}
+          </td>
         </tr>
         <tr>
           <td colspan="5" class="text--right">Total Bidding Price</td>
@@ -81,17 +86,28 @@
       </tbody>
     </table>
     <div class="actions flex justify-end">
-      <button mat-stroked-button color="primary" class="rounded-button mr-2" [routerLink]="['/buyer/1/browse']">
+      <button
+        mat-stroked-button
+        color="primary"
+        class="rounded-button mr-2"
+        [routerLink]="['/buyer/1/browse']"
+      >
         Cancel
       </button>
-      <button mat-flat-button color="primary" class="rounded-button" [routerLink]="['/buyer/1/bid-list']">
+      <button
+        mat-flat-button
+        color="primary"
+        class="rounded-button"
+        (click)= "this.createBid()"
+      >
+
         Confirm
       </button>
     </div>
   </div>
 </div>
 
-<wm-page-actions [user]="this.buyer">
+<wm-page-actions [user]="this.bid">
   <div class="actions flex mt-4">
     <button
       mat-flat-button

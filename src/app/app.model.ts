@@ -1,14 +1,15 @@
 export interface Bid {
+  id?: number;
   buyerId: number;
-  createdAt: string;
-  details: object;
-  id: number;
-  pDate: string;
-  pTime: string;
   sellerId: number;
+  details: object;
   status: string;
   totalBid: number;
-  updatedAt: string;
+  contactName?: string;
+  pDate?: string;
+  pTime?: string;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export interface SellerItem {
@@ -55,6 +56,7 @@ export const BUYER_DATA: Buyer[] = [
 
 export interface Seller {
   id: number;
+  userId?: number;
   name: string;
   lat: number;
   lng: number;
