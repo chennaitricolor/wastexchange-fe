@@ -18,8 +18,10 @@ export class AppService {
     return this.httpClient.get<SellerItem>(`/api/seller/${sellerId}/items`);
   }
 
-  // public postGuestData(guestData: any) {
-  //     return this.httpClient.post<any>(hostName + "guests", guestData,
-  //         { headers: this.sharedServ.getRequestHeaders() });
-  // }
+  public updateSellerItem(sellerItem: SellerItem) {
+    return this.httpClient.put<any>(
+      `/api/items/${sellerItem.id}`,
+      sellerItem
+    );
+  }
 }

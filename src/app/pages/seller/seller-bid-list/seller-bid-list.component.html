@@ -23,28 +23,86 @@
       <tr *ngFor="let material of this.materials | keyvalue">
         <td>{{ material.value }}</td>
         <td>
-          <span
-            >{{
-              sellerItem.details[material.key]
-                ? sellerItem.details[material.key]?.quantity
-                : "0"
-            }}
-            kg</span
-          >
-          <span
-            >(₹{{
-              sellerItem.details[material.key]
-                ? sellerItem.details[material.key]?.cost
-                : "0"
-            }}.00 / kg)</span
-          >
+          <span>
+            <ng-container
+              [ngTemplateOutlet]="
+                isSellerDataEditable ? editableItemQty : showableItemQty
+              "
+              [ngTemplateOutletContext]="{
+                sellerItem: sellerItem,
+                material: material
+              }"
+            ></ng-container>
+            kg
+          </span>
+          <span>
+            (₹<ng-container
+              [ngTemplateOutlet]="
+                isSellerDataEditable ? editableItemCost : showableItemCost
+              "
+              [ngTemplateOutletContext]="{
+                sellerItem: sellerItem,
+                material: material
+              }"
+            ></ng-container
+            >.00 / kg)
+          </span>
         </td>
       </tr>
     </tbody>
   </table>
   <div class="actions flex justify-end">
-    <button mat-flat-button color="primary" class="rounded-button">
-      Update data
+    <button
+      mat-flat-button
+      color="primary"
+      class="rounded-button"
+      (click)="
+        this.isSellerDataEditable
+          ? this.updateSellerItem()
+          : (this.isSellerDataEditable = true)
+      "
+    >
+      {{ isSellerDataEditable ? "Update data" : "Edit" }}
     </button>
   </div>
+</ng-template>
+
+<ng-template
+  #showableItemQty
+  let-sellerItem="sellerItem"
+  let-material="material"
+>
+  {{ sellerItem.details[material.key].quantity }}
+</ng-template>
+
+<ng-template
+  #editableItemQty
+  let-sellerItem="sellerItem"
+  let-material="material"
+>
+  <input
+    type="number"
+    class="form-control"
+    [(ngModel)]="sellerItem.details[material.key].quantity"
+  />
+</ng-template>
+
+<ng-template
+  #showableItemCost
+  let-sellerItem="sellerItem"
+  let-material="material"
+>
+  {{ sellerItem.details[material.key].cost }}
+</ng-template>
+
+<ng-template
+  #editableItemCost
+  let-sellerItem="sellerItem"
+  let-material="material"
+>
+  <input
+    type="number"
+    class="form-control"
+    [(ngModel)]="sellerItem.details[material.key].cost"
+  />
 </ng-template>

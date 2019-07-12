@@ -14,6 +14,7 @@ export class SellerBidListComponent implements OnInit {
   public bids: Bid[] = [];
   public materials = MATERIALS;
   public sellerItem: SellerItem;
+  public isSellerDataEditable: boolean = false;
 
   constructor(private appServ: AppService) {}
 
@@ -24,6 +25,21 @@ export class SellerBidListComponent implements OnInit {
 
     this.appServ.getSellerItems(6).subscribe(data => {
       this.sellerItem = data;
+      this.setDefaultMaterialData(this.sellerItem);
     });
+  }
+
+  private setDefaultMaterialData(sellerItem) {
+    Object.keys(this.materials).forEach(material => {
+      !sellerItem.details[material] &&
+        (sellerItem.details[material] = { quantity: 0, cost: 0, bid: 0 });
+    });
+  }
+
+  public updateSellerItem() {
+    this.appServ.updateSellerItem(this.sellerItem).subscribe((response) => {
+      this.sellerItem.details = response.data.details;
+      this.isSellerDataEditable = false;
+    })
   }
 }
