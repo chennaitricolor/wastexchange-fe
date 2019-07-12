@@ -1,0 +1,10 @@
+{
+  "/api": {
+    "target": "http://ec2-3-15-46-72.us-east-2.compute.amazonaws.com",
+    "secure": false,
+    "pathRewrite": {
+      "^/api": ""
+    },
+    "logLevel": "debug"
+  }
+}

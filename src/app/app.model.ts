@@ -1,3 +1,16 @@
+export interface Bid {
+  buyerId: number;
+  createdAt: string;
+  details: object;
+  id: number;
+  pDate: string;
+  pTime: string;
+  sellerId: number;
+  status: string;
+  totalBid: number;
+  updatedAt: string;
+}
+
 export interface Buyer {
   id: number;
   name: string;
@@ -83,3 +96,10 @@ export const SELLER_DATA: Seller[] = [
     lng: 80.253921
   }
 ];
+
+export const MATERIALS = {
+  plastic_waste: "Plastic Waste",
+  hdep: "HDEP",
+  pet: "PET Waste",
+  rubber: "Rubber"
+};

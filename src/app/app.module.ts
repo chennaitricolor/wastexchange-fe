@@ -1,6 +1,7 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -21,8 +22,10 @@ import { SellerBidListComponent } from "./pages/seller/seller-bid-list/seller-bi
 import { BuyerBrowseComponent } from "./pages/buyer/buyer-browse/buyer-browse.component";
 import { PageActionsComponent } from "./shared/components/page-actions/page-actions.component";
 import { BidListTableComponent } from "./pages/common/bid-list-table/bid-list-table.component";
-import { LoginComponent } from './pages/common/landing/login/login.component';
-import { SignUpComponent } from './pages/common/landing/sign-up/sign-up.component';
+import { LoginComponent } from "./pages/common/landing/login/login.component";
+import { SignUpComponent } from "./pages/common/landing/sign-up/sign-up.component";
+
+import { AppService } from "./app.service";
 
 @NgModule({
   declarations: [
@@ -41,6 +44,7 @@ import { SignUpComponent } from './pages/common/landing/sign-up/sign-up.componen
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     ButtonsModule.forRoot(),
@@ -53,7 +57,7 @@ import { SignUpComponent } from './pages/common/landing/sign-up/sign-up.componen
     })
   ],
   entryComponents: [LoginComponent, SignUpComponent],
-  providers: [],
+  providers: [AppService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
