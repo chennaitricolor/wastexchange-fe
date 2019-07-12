@@ -1,11 +1,12 @@
-<agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+<agm-map [latitude]="lat" [longitude]="long" [zoom]="zoom">
   <agm-marker
-    *ngFor="let seller of sellerData"
+    *ngFor="let seller of this.sellers; let index = index;"
     [latitude]="seller.lat"
-    [longitude]="seller.lng"
-    [label]="'M'"
+    [longitude]="seller.long"
+    [label]="'S'"
+    (mouseOver)="this.onMarkerClick(index)"
   >
-    <agm-info-window [disableAutoPan]="true">
+    <agm-info-window *ngIf="seller.details" [disableAutoPan]="true">
       <ng-container
         *ngTemplateOutlet="
           sellerDetailsTemplate;
@@ -17,29 +18,25 @@
 </agm-map>
 
 <ng-template #sellerDetailsTemplate let-seller="sellerDetails">
-  <p class="text--orange text--normal">RRC Enterprises</p>
+  <p class="text--orange text--normal">{{ seller.name }}</p>
   <table class="table mt-2">
     <tbody>
-      <tr>
-        <td>Plastic Waste</td>
-        <td>120kg (₹1.00 / kg)</td>
-      </tr>
-      <tr>
-        <td>PET</td>
-        <td>45kg (₹12.00 / kg)</td>
-      </tr>
-      <tr>
-        <td>HDPE</td>
-        <td>64kg (₹10.00 / kg)</td>
-      </tr>
-      <tr>
-        <td>Rubber</td>
-        <td>12kg (₹0.10 / kg)</td>
+      <tr *ngFor="let material of this.materials | keyvalue">
+        <td>{{ material.value }}</td>
+        <td>
+          <span> {{ seller.details[material.key].quantity }} kg </span>
+          (₹<span> {{ seller.details[material.key].cost }} </span> / kg)
+        </td>
       </tr>
     </tbody>
   </table>
   <div class="actions flex">
-    <button mat-flat-button color="primary" class="rounded-button" [routerLink]="['/buyer/1/bid']">
+    <button
+      mat-flat-button
+      color="primary"
+      class="rounded-button"
+      [routerLink]="['/buyer/1/bid']"
+    >
       Bid to buy
     </button>
   </div>

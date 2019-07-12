@@ -54,13 +54,12 @@ export class BuyerBidComponent implements OnInit {
           cost: sellerItem.details[material].cost || 0,
           bidCost: 0
         });
-      console.log(this.bid);
     });
   }
 
   public createBid() {
     this.appServ.createBid(this.bid).subscribe((response) => {
-      console.log(response);
+      // console.log(response);
     })
   }
 }

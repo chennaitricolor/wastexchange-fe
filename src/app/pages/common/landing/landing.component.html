@@ -1,6 +1,6 @@
 <div class="landing-container">
   <div class="map-container">
-    <wm-map></wm-map>
+    <wm-map [sellers]="this.appServ.allSellers"></wm-map>
   </div>
 </div>
 
@@ -20,11 +20,15 @@
     <div class="actions">
       <div class="action">
         <p class="text--normal mb-2">New user?</p>
-        <button mat-raised-button (click)="openSignupDialog()" color="primary">Sign up</button>
+        <button mat-raised-button (click)="openSignupDialog()" color="primary">
+          Sign up
+        </button>
       </div>
       <div class="action">
         <p class="text--normal mb-2">Existing user?</p>
-        <button mat-raised-button (click)="openLoginDialog()" color="primary">Account login</button>
+        <button mat-raised-button (click)="openLoginDialog()" color="primary">
+          Account login
+        </button>
       </div>
     </div>
   </div>

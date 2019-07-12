@@ -11,6 +11,8 @@ export class AppService {
   public isUserLoggedIn: boolean = false;
   public userSessionData: Object;
   public loggedInUserDetails: Object;
+  public allSellers: any[] = [];
+  public allBuyers: any[] = [];
 
   constructor(private httpClient: HttpClient, private rtr: Router) {}
 
@@ -30,19 +32,24 @@ export class AppService {
     return this.httpClient.post<any>(`/api/buyer/${bid.buyerId}/bids`, bid);
   }
 
+  public getAllUsers(): Observable<any[]> {
+    return this.httpClient.get<any[]>("/api/userdetails");
+  }
+
   public loginUser(loginPayload: any): Observable<any> {
     return this.httpClient.post<any>("/api/users/login", loginPayload);
   }
 
   public getMe(): Observable<any> {
     let headers = { "x-access-token": this.getSessionValue("token") };
-    return this.httpClient.get<any>("/api//users/me", { headers });
+    return this.httpClient.get<any>("/api/users/me", { headers });
   }
 
   public authorizeUser() {
     this.userSessionData = this.getUserSessionDataFromSession();
-    this.isUserLoggedIn =
-      !!(Object.keys(this.userSessionData).length && this.userSessionData["auth"]);
+    this.isUserLoggedIn = !!(
+      Object.keys(this.userSessionData).length && this.userSessionData["auth"]
+    );
   }
 
   public getUserSessionDataFromSession() {
@@ -64,11 +71,6 @@ export class AppService {
     this.clearSessionData();
     this.isUserLoggedIn = false;
     this.rtr.navigate([""]);
-    // this.openSnackBar(
-    //   "Your login is expired. Kindy login again.",
-    //   "DISMISS",
-    //   5000
-    // );
   }
 
   public setSessionData(userSessionData: Object) {
@@ -111,7 +113,6 @@ export class UserSessionDataResolver implements Resolve<any> {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Promise<boolean> {
-    console.log('here')
     return new Promise((resolve, reject) => {
       this.appServ.authorizeUser();
       if (this.appServ.isUserLoggedIn && !this.appServ.loggedInUserDetails) {

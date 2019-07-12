@@ -59,7 +59,7 @@ export interface Seller {
   userId?: number;
   name: string;
   lat: number;
-  lng: number;
+  long: number;
 }
 
 export const SELLER_DATA: Seller[] = [
@@ -67,43 +67,43 @@ export const SELLER_DATA: Seller[] = [
     id: 1,
     name: "Resource Recovery Centre 002",
     lat: 12.9652163,
-    lng: 80.1902814
+    long: 80.1902814
   },
   {
     id: 2,
     name: "Seller 2",
     lat: 12.952377,
-    lng: 80.186376
+    long: 80.186376
   },
   {
     id: 3,
     name: "Seller 3",
     lat: 12.963962,
-    lng: 80.204229
+    long: 80.204229
   },
   {
     id: 4,
     name: "Seller 4",
     lat: 12.961652,
-    lng: 80.239031
+    long: 80.239031
   },
   {
     id: 5,
     name: "Seller 5",
     lat: 12.940156,
-    lng: 80.237498
+    long: 80.237498
   },
   {
     id: 6,
     name: "Seller 6",
     lat: 12.990103,
-    lng: 80.218733
+    long: 80.218733
   },
   {
     id: 7,
     name: "Seller 7",
     lat: 12.993266,
-    lng: 80.253921
+    long: 80.253921
   }
 ];
 
