@@ -1,20 +1,30 @@
 <div class="login-container">
   <div class="login-form">
     <mat-form-field>
-      <mat-label>Email/mobile</mat-label>
-      <input matInput />
+      <mat-label>Email</mat-label>
+      <input matInput [(ngModel)]="this.userEmail" />
     </mat-form-field>
     <mat-form-field>
       <mat-label>Password</mat-label>
-      <input matInput type="password" />
+      <input matInput type="password" [(ngModel)]="this.userPassword" />
     </mat-form-field>
   </div>
 
   <div class="actions flex justify-end">
-    <button mat-stroked-button color="primary" class="rounded-button mr-2" (click)="onCancel()">
+    <button
+      mat-stroked-button
+      color="primary"
+      class="rounded-button mr-2"
+      (click)="this.onCancel()"
+    >
       Cancel
     </button>
-    <button mat-flat-button color="primary" class="rounded-button" [routerLink]="['/buyer/1/browse']" (click)="onCancel()">
+    <button
+      mat-flat-button
+      color="primary"
+      class="rounded-button"
+      (click)="this.loginUser()"
+    >
       Login
     </button>
   </div>

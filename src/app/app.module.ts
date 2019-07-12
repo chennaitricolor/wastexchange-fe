@@ -1,7 +1,7 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from "@angular/common/http";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -25,7 +25,7 @@ import { BidListTableComponent } from "./pages/common/bid-list-table/bid-list-ta
 import { LoginComponent } from "./pages/common/landing/login/login.component";
 import { SignUpComponent } from "./pages/common/landing/sign-up/sign-up.component";
 
-import { AppService } from "./app.service";
+import { AppService, UserSessionDataResolver, AuthGuard } from "./app.service";
 
 @NgModule({
   declarations: [
@@ -57,7 +57,7 @@ import { AppService } from "./app.service";
     })
   ],
   entryComponents: [LoginComponent, SignUpComponent],
-  providers: [AppService],
+  providers: [AppService, UserSessionDataResolver, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
