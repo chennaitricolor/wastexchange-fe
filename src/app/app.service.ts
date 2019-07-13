@@ -17,40 +17,40 @@ export class AppService {
   constructor(private httpClient: HttpClient, private rtr: Router) {}
 
   public getBids(): Observable<Bid[]> {
-    return this.httpClient.get<Bid[]>("/api/bids");
+    return this.httpClient.get<Bid[]>(environment.hostName + "/bids");
   }
 
   public getSellerItems(sellerId): Observable<SellerItem> {
-    return this.httpClient.get<SellerItem>(`/api/seller/${sellerId}/items`);
+    return this.httpClient.get<SellerItem>(environment.hostName + `/seller/${sellerId}/items`);
   }
 
   public updateSellerItem(sellerItem: SellerItem) {
-    return this.httpClient.put<any>(`/api/items/${sellerItem.id}`, sellerItem);
+    return this.httpClient.put<any>(environment.hostName + `/items/${sellerItem.id}`, sellerItem);
   }
 
   public createBid(bid: Bid) {
-    return this.httpClient.post<any>(`/api/buyer/${bid.buyerId}/bids`, bid);
+    return this.httpClient.post<any>(environment.hostName + `/buyer/${bid.buyerId}/bids`, bid);
   }
 
   public updateBid(bid: Bid): Observable<any> {
-    return this.httpClient.put<any>(`/api/bids/${bid.id}`, bid);
+    return this.httpClient.put<any>(environment.hostName + `/bids/${bid.id}`, bid);
   }
 
   public getBid(bidId: number): Observable<any> {
-    return this.httpClient.get<any>(`/api/bids/${bidId}`);
+    return this.httpClient.get<any>(environment.hostName + `/bids/${bidId}`);
   }
 
   public getAllUsers(): Observable<any[]> {
-    return this.httpClient.get<any[]>("/api/userdetails");
+    return this.httpClient.get<any[]>(environment.hostName + "/userdetails");
   }
 
   public loginUser(loginPayload: any): Observable<any> {
-    return this.httpClient.post<any>("/api/users/login", loginPayload);
+    return this.httpClient.post<any>(environment.hostName + "/users/login", loginPayload);
   }
 
   public getMe(): Observable<any> {
     let headers = { "x-access-token": this.getSessionValue("token") };
-    return this.httpClient.get<any>("/api/users/me", { headers });
+    return this.httpClient.get<any>(environment.hostName + "/users/me", { headers });
   }
 
   public authorizeUser() {
