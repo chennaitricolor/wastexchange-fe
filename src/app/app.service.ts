@@ -36,6 +36,10 @@ export class AppService {
     return this.httpClient.put<any>(`/api/bids/${bid.id}`, bid);
   }
 
+  public getBid(bidId: number): Observable<any> {
+    return this.httpClient.get<any>(`/api/bids/${bidId}`);
+  }
+
   public getAllUsers(): Observable<any[]> {
     return this.httpClient.get<any[]>("/api/userdetails");
   }

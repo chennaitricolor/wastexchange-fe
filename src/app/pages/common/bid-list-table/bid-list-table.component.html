@@ -90,6 +90,8 @@
               this.appServ.isUserLoggedIn &&
               this.appServ.loggedInUserInfo?.persona == 'buyer'
             "
+            [routerLink]="['/buyer/1/bid']"
+            [queryParams]="{ bidId: bid.id }"
           >
             Edit
           </button>
