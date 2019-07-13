@@ -53,7 +53,7 @@ import { AppService, UserSessionDataResolver, AuthGuard } from "./app.service";
     MatInputModule,
     MatDialogModule,
     AgmCoreModule.forRoot({
-      apiKey: "AIzaSyB8NCphJh5-XfQFXb2EcrKO922PgoLt-Aw"
+      apiKey: "AIzaSyDSPR8JtXAR1_vnYJHpVZPSLYr5Y6_fgDs"
     })
   ],
   entryComponents: [LoginComponent, SignUpComponent],
