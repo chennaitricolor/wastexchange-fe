@@ -32,7 +32,30 @@ export class LoginComponent implements OnInit {
         .loginUser({ email: this.userEmail, password: this.userPassword })
         .subscribe(response => {
           this.appServ.setSessionData(response);
-          this.closeLoginDialog();
+          this.appServ.authorizeUser();
+          this.appServ.getMe().subscribe(data => {
+            this.appServ.loggedInUserInfo = data;
+            this.appServ.getAllUsers().subscribe(response => {
+              response.forEach(userDetail => {
+                if (userDetail.userId == this.appServ.loggedInUserInfo["id"]) {
+                  this.appServ.loggedInUserInfo["userDetails"] = userDetail;
+                }
+                switch (userDetail.persona) {
+                  case "seller":
+                    this.appServ.allSellers.push(userDetail);
+                    break;
+
+                  case "buyer":
+                    this.appServ.allBuyers.push(userDetail);
+                    break;
+
+                  default:
+                    break;
+                }
+              });
+              this.closeLoginDialog();
+            });
+          });
         });
     }
   }

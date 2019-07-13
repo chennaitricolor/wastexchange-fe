@@ -1,8 +1,20 @@
 <table class="table table-responsive">
   <thead>
     <tr>
-      <th scope="col"></th>
-      <th scope="col"></th>
+      <th
+        scope="col"
+        *ngIf="
+          this.appServ.isUserLoggedIn &&
+          this.appServ.loggedInUserInfo?.persona == 'seller'
+        "
+      ></th>
+      <th
+        scope="col"
+        *ngIf="
+          this.appServ.isUserLoggedIn &&
+          this.appServ.loggedInUserInfo?.persona == 'buyer'
+        "
+      ></th>
       <ng-container *ngFor="let material of this.materials | keyvalue">
         <th scope="col">{{ material.value }} Quantity (in kg)</th>
         <th scope="col">Bid Price (in ₹/kg)</th>
@@ -12,31 +24,92 @@
   </thead>
   <tbody>
     <tr *ngFor="let bid of this.bids">
-      <td>
-        <p class="text--green">1. Green Enterprises</p>
+      <td
+        *ngIf="
+          this.appServ.isUserLoggedIn &&
+          this.appServ.loggedInUserInfo?.persona == 'seller'
+        "
+      >
+        <p class="text--green">Subbu-Buyer</p>
       </td>
-      <td>
-        <p class="text--green">1. Green Enterprises</p>
+      <td
+        *ngIf="
+          this.appServ.isUserLoggedIn &&
+          this.appServ.loggedInUserInfo?.persona == 'buyer'
+        "
+      >
+        <p class="text--green">Subbu-Seller</p>
       </td>
       <ng-container *ngFor="let material of this.materials | keyvalue">
-        <td>{{ bid.details[material.key] ?  bid.details[material.key]?.bidQuantity : '--' }}</td>
-        <td>{{ bid.details[material.key] ? bid.details[material.key]?.bidCost : '--'}}</td>
+        <td>
+          {{
+            bid.details[material.key]
+              ? bid.details[material.key]?.bidQuantity
+              : "--"
+          }}
+        </td>
+        <td>
+          {{
+            bid.details[material.key]
+              ? bid.details[material.key]?.bidCost
+              : "--"
+          }}
+        </td>
       </ng-container>
       <td>
-        <div class="actions flex justify-end">
+        <div class="actions flex justify-end" *ngIf="bid.status == 'pending'">
           <button
             mat-stroked-button
             color="primary"
             class="rounded-button mr-2"
+            *ngIf="
+              this.appServ.isUserLoggedIn &&
+              this.appServ.loggedInUserInfo?.persona == 'seller'
+            "
+            (click)="this.updateStatusOfBid(bid, 'denied')"
+          >
+            Deny
+          </button>
+          <button
+            mat-flat-button
+            color="primary"
+            class="rounded-button mr-2"
+            *ngIf="
+              this.appServ.isUserLoggedIn &&
+              this.appServ.loggedInUserInfo?.persona == 'seller'
+            "
+            (click)="this.updateStatusOfBid(bid, 'accepted')"
+          >
+            Accept
+          </button>
+          <button
+            mat-flat-button
+            color="primary"
+            class="rounded-button mr-2"
+            *ngIf="
+              this.appServ.isUserLoggedIn &&
+              this.appServ.loggedInUserInfo?.persona == 'buyer'
+            "
+          >
+            Edit
+          </button>
+          <button
+            mat-stroked-button
+            color="primary"
+            class="rounded-button mr-2"
+            *ngIf="
+              this.appServ.isUserLoggedIn &&
+              this.appServ.loggedInUserInfo?.persona == 'buyer'
+            "
+            (click)="this.updateStatusOfBid(bid, 'cancelled')"
           >
             Cancel
           </button>
-          <button mat-flat-button color="primary" class="rounded-button mr-2">
-            Confirm
-          </button>
-          <button mat-stroked-button color="primary" class="rounded-button">
-            Edit
-          </button>
+        </div>
+        <div class="actions flex" *ngIf="bid.status != 'pending'">
+          <span class="tag actions flex" [ngClass]="'tag--' + bid.status">
+            {{ bid.status }}
+          </span>
         </div>
       </td>
     </tr>

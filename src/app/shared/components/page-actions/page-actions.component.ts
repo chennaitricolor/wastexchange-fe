@@ -12,6 +12,7 @@ import {
 } from "@angular/core";
 import { DomPortalHost, PortalHost, CdkPortal } from "@angular/cdk/portal";
 import { TemplatePortal } from "@angular/cdk/portal";
+import { AppService } from 'src/app/app.service';
 
 @Component({
   selector: "wm-page-actions",
@@ -28,7 +29,8 @@ export class PageActionsComponent implements OnInit, AfterViewInit, OnDestroy {
     private componentFactoryResolver: ComponentFactoryResolver,
     private injector: Injector,
     private appRef: ApplicationRef,
-    private viewContainerRef: ViewContainerRef
+    private viewContainerRef: ViewContainerRef,
+    public appServ: AppService
   ) {}
 
   ngOnInit() {}

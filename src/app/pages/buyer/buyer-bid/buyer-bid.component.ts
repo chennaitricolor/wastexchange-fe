@@ -29,7 +29,7 @@ export class BuyerBidComponent implements OnInit {
 
   private setDefaultMaterialData(sellerItem) {
     this.bid = {
-      buyerId: this.buyer.userId,
+      buyerId: this.buyer.id,
       sellerId: 6,
       details: {},
       status: "pending",

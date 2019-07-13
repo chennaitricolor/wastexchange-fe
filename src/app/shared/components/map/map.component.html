@@ -4,7 +4,7 @@
     [latitude]="seller.lat"
     [longitude]="seller.long"
     [label]="'S'"
-    (mouseOver)="this.onMarkerClick(index)"
+    (mouseOver)="this.onMarkerHover(index)"
   >
     <agm-info-window *ngIf="seller.details" [disableAutoPan]="true">
       <ng-container

@@ -10,7 +10,7 @@ import { Bid, SellerItem, Seller } from "./app.model";
 export class AppService {
   public isUserLoggedIn: boolean = false;
   public userSessionData: Object;
-  public loggedInUserDetails: Object;
+  public loggedInUserInfo: Object;
   public allSellers: any[] = [];
   public allBuyers: any[] = [];
 
@@ -30,6 +30,10 @@ export class AppService {
 
   public createBid(bid: Bid) {
     return this.httpClient.post<any>(`/api/buyer/${bid.buyerId}/bids`, bid);
+  }
+
+  public updateBid(bid: Bid): Observable<any> {
+    return this.httpClient.put<any>(`/api/bids/${bid.id}`, bid);
   }
 
   public getAllUsers(): Observable<any[]> {
@@ -69,6 +73,7 @@ export class AppService {
 
   public forceLogoutUser() {
     this.clearSessionData();
+    this.loggedInUserInfo = null;
     this.isUserLoggedIn = false;
     this.rtr.navigate([""]);
   }
@@ -115,10 +120,29 @@ export class UserSessionDataResolver implements Resolve<any> {
   ): Promise<boolean> {
     return new Promise((resolve, reject) => {
       this.appServ.authorizeUser();
-      if (this.appServ.isUserLoggedIn && !this.appServ.loggedInUserDetails) {
+      if (this.appServ.isUserLoggedIn && !this.appServ.loggedInUserInfo) {
         this.appServ.getMe().subscribe(data => {
-          this.appServ.loggedInUserDetails = data;
-          resolve(true);
+          this.appServ.loggedInUserInfo = data;
+          this.appServ.getAllUsers().subscribe(response => {
+            response.forEach(userDetail => {
+              if (userDetail.userId == this.appServ.loggedInUserInfo["id"]) {
+                this.appServ.loggedInUserInfo["userDetails"] = userDetail;
+              }
+              switch (userDetail.persona) {
+                case "seller":
+                  this.appServ.allSellers.push(userDetail);
+                  break;
+
+                case "buyer":
+                  this.appServ.allBuyers.push(userDetail);
+                  break;
+
+                default:
+                  break;
+              }
+            });
+            resolve(true);
+          });
         });
       } else {
         resolve(true);

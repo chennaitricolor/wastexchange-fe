@@ -33,7 +33,7 @@ const routes: Routes = [
     resolve: [UserSessionDataResolver],
     canActivate: [AuthGuard]
   },
-  { path: "**", component: LandingComponent }
+  { path: "**", component: LandingComponent, resolve: [UserSessionDataResolver] }
 ];
 
 @NgModule({
