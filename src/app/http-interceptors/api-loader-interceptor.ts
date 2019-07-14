@@ -15,7 +15,7 @@ import { tap, catchError } from "rxjs/operators";
 export class ApiLoaderInterceptor implements HttpInterceptor {
   private totalRequests = 0;
 
-  constructor(private appServ: AppService) {}
+  constructor(public appServ: AppService) {}
 
   intercept(
     request: HttpRequest<any>,

@@ -11,7 +11,7 @@ import { Bid } from "./../../../app.model";
 export class BuyerBidListComponent implements OnInit {
   public bids: Bid[] = [];
 
-  constructor(private appServ: AppService) {}
+  constructor(public appServ: AppService) {}
 
   ngOnInit() {
     this.appServ.getBidsForBuyer(this.appServ.loggedInUserInfo['id']).subscribe(data => {

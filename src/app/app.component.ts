@@ -9,7 +9,7 @@ import { AppService } from "./app.service";
 export class AppComponent implements OnInit {
   title = "wastexchange-fe";
 
-  constructor(private appServ: AppService) {}
+  constructor(public appServ: AppService) {}
 
   ngOnInit() {
     

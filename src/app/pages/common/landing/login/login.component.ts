@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<LoginComponent>,
-    private appServ: AppService,
+    public appServ: AppService,
     private router: Router
   ) {}
 

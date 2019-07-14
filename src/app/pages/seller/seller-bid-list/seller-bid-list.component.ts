@@ -16,7 +16,7 @@ export class SellerBidListComponent implements OnInit {
   public sellerItem: SellerItem;
   public isSellerDataEditable: boolean = false;
 
-  constructor(private appServ: AppService) {}
+  constructor(public appServ: AppService) {}
 
   ngOnInit() {
     this.appServ.getBids().subscribe(data => {

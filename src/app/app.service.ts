@@ -10,7 +10,7 @@ import { Bid, SellerItem, Seller, MATERIALS } from "./app.model";
 export class AppService {
   public isUserLoggedIn: boolean = false;
   public userSessionData: Object;
-  public loggedInUserInfo: Object;
+  public loggedInUserInfo: any;
   public allSellers: any[] = [];
   public allBuyers: any[] = [];
   public allUsers: any[] = [];
@@ -159,7 +159,7 @@ export class AppService {
 import { CanActivate } from "@angular/router";
 @Injectable()
 export class AuthGuard implements CanActivate {
-  constructor(private appServ: AppService) {}
+  constructor(public appServ: AppService) {}
   canActivate(): boolean {
     return this.appServ.authorizeUser();
   }
@@ -167,7 +167,7 @@ export class AuthGuard implements CanActivate {
 
 @Injectable()
 export class UserSessionDataResolver implements Resolve<any> {
-  constructor(private appServ: AppService, private rtr: Router) {}
+  constructor(public appServ: AppService, private rtr: Router) {}
 
   resolve(
     route: ActivatedRouteSnapshot,
@@ -196,7 +196,7 @@ import {
 
 @Injectable()
 export class UserDataResolver implements Resolve<any> {
-  constructor(private appServ: AppService, private rtr: Router) {}
+  constructor(public appServ: AppService, private rtr: Router) {}
 
   resolve(
     route: ActivatedRouteSnapshot,

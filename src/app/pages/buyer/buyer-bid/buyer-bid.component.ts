@@ -19,7 +19,7 @@ export class BuyerBidComponent implements OnInit {
   public canRaiseBid: boolean = false;
 
   constructor(
-    private appServ: AppService,
+    public appServ: AppService,
     private router: Router,
     private activatedRoute: ActivatedRoute
   ) {
