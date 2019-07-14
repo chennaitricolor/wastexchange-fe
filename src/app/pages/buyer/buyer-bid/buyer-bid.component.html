@@ -1,6 +1,6 @@
 <div class="create-bid-container">
   <div class="seller-info flex justify-start">
-    <p class="text--large">{{ this.seller.name }}</p>
+    <p class="text--large">{{ this.sellerName }}</p>
     <div class="display-picture">
       <img
         [attr.src]="'./../../../../assets/images/seller-dummy-dp.png'"
@@ -11,41 +11,58 @@
   </div>
 
   <div class="seller-basic-info">
-    <p class="text--medium">Data last updated by seller - 12/06/19 - 17:05</p>
+    <p class="text--medium">
+      Data last updated by seller at
+      <span class="text--bold">{{
+        this.sellerItem?.updatedAt | date: "medium"
+      }}</span>
+    </p>
   </div>
 
-  <div class="bid-form-container">
-    <p class="text--largesecondary text--orange">Bidding Form</p>
-    <div class="flex justify-start mt-2">
-      <mat-form-field appearance="outline">
-        <mat-label>Contact name</mat-label>
-        <input matInput />
-      </mat-form-field>
-      <mat-form-field appearance="outline" class="ml-4">
-        <mat-label>Pickup date</mat-label>
-        <input matInput />
-      </mat-form-field>
-      <mat-form-field appearance="outline" class="ml-4">
-        <mat-label>Pickup time</mat-label>
-        <input matInput />
-      </mat-form-field>
+  <div *ngIf="this.canRaiseBid" class="bid-form-container">
+    <p class="text--largesecondary text--blue">Bidding Form</p>
+    <div class="flex mt-2">
+      <div class="contact-name">
+        <input
+          matInput
+          class="form-control"
+          [(ngModel)]="this.bid.contactName"
+          placeholder="Contact name"
+        />
+      </div>
+      <div class="datapicker-field ml-4">
+        <input
+          type="text"
+          placeholder="Datepicker"
+          class="form-control"
+          bsDatepicker
+          [(ngModel)]="this.bid.pDateTime"
+          placeholder="Pickup Date"
+        />
+      </div>
+      <div>
+        <span class="text--normal mr-2 ml-4 text--bold">at</span>
+      </div>
+      <div class="timepicker-field ml-2">
+        <timepicker [(ngModel)]="this.bid.pDateTime"></timepicker>
+      </div>
     </div>
-    <table *ngIf="this.canRaiseBid" class="table">
+    <table class="table mt-2">
       <thead>
         <tr>
-          <th scope="col">Material</th>
+          <th scope="col" class="background--blue">Material</th>
           <th scope="col">Available Qty. (in kg)</th>
-          <th scope="col">Bidding Qty. (in kg)</th>
-          <th scope="col">Minimum Price (in ₹/kg)</th>
-          <th scope="col">Bidding Price (in ₹/kg)</th>
-          <th scope="col">Total Bid Price (in ₹)</th>
+          <th scope="col">Bid Qty. (in kg)</th>
+          <th scope="col">Min. Price (in ₹/kg)</th>
+          <th scope="col">Bid Price (in ₹/kg)</th>
+          <th scope="col">Total Price (in ₹)</th>
         </tr>
       </thead>
       <tbody>
         <ng-container *ngFor="let material of this.materials | keyvalue">
-          <tr *ngIf="this.bid.details[material.key]?.quantity">
-            <td>{{ material.value }}</td>
-            <td>{{ this.bid.details[material.key]?.quantity }}</td>
+          <tr *ngIf="this.sellerItem.details[material.key]?.quantity">
+            <td class="background--blue">{{ material.value }}</td>
+            <td>{{ this.sellerItem.details[material.key]?.quantity }}</td>
             <td>
               <input
                 type="number"
@@ -54,7 +71,7 @@
                 [attr.max]="this.bid.details[material.key]?.quantity"
               />
             </td>
-            <td>{{ this.bid.details[material.key]?.cost }}</td>
+            <td>{{ this.sellerItem.details[material.key]?.cost }}</td>
             <td>
               <input
                 type="number"
@@ -71,7 +88,9 @@
           </tr>
         </ng-container>
         <tr>
-          <td colspan="5" class="text--right text--bold">Total Bidding Price (in ₹)</td>
+          <td colspan="5" class="text--right text--bold">
+            Total Bid Price (in ₹)
+          </td>
           <td><input type="number" class="form-control" /></td>
         </tr>
       </tbody>

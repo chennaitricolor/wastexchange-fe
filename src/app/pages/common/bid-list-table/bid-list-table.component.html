@@ -2,17 +2,8 @@
   <table class="table">
     <thead>
       <tr>
-        <th
-          scope="col"
-          *ngIf="this.appServ.loggedInUserInfo?.persona == 'seller'"
-        >
-          Buyer
-        </th>
-        <th
-          scope="col"
-          *ngIf="this.appServ.loggedInUserInfo?.persona == 'buyer'"
-        >
-          Seller
+        <th scope="col" class="background--blue">
+          {{this.appServ.loggedInUserInfo?.persona == 'buyer' ? 'Seller' : 'Buyer'}}
         </th>
         <th></th>
         <th>Total Cost</th>
@@ -21,25 +12,45 @@
     </thead>
     <tbody>
       <tr *ngFor="let bid of this.bids">
-        <td *ngIf="this.appServ.loggedInUserInfo?.persona == 'seller'">
-          <p class="text--green">Subbu-Buyer</p>
-        </td>
-        <td *ngIf="this.appServ.loggedInUserInfo?.persona == 'buyer'">
-          <p class="text--green">Subbu-Seller</p>
+        <td class="text--left background--blue ">
+          <ng-container
+            *ngIf="this.appServ.loggedInUserInfo?.persona == 'seller'"
+            class="text--left"
+          >
+            <p class="text--blue text--normal">{{ bid.buyer?.name }}</p>
+            <p class="text--medium">{{ bid.buyer?.address }}</p>
+            <p class="text--medium">{{ bid.buyer?.mobNo }}</p>
+          </ng-container>
+          <ng-container
+            *ngIf="this.appServ.loggedInUserInfo?.persona == 'buyer'"
+            class="text--left"
+          >
+            <p class="text--blue text--normal">{{ bid.seller?.name }}</p>
+            <p class="text--medium">{{ bid.seller?.address }}</p>
+            <p class="text--medium">{{ bid.seller?.mobNo }}</p>
+          </ng-container>
+          <p class="text--medium text--blue">Pickup:</p>
+          <p class="text--medium">
+            By <span class="text--bold">{{ bid.contactName }}</span>
+          </p>
+          <p class="text--medium">
+            At
+            <span class="text--bold">{{ bid.pDateTime | date: "medium" }}</span>
+          </p>
         </td>
         <td>
           <table class="bid-detail-table table table-sm table-borderless">
             <thead>
               <th scope="col">Material</th>
-              <th scope="col">Bidding Qty. (in kg)</th>
-              <th scope="col">Bidding Price (in ₹/kg)</th>
+              <th scope="col">Bid Qty. (in kg)</th>
+              <th scope="col">Bid Price (in ₹/kg)</th>
             </thead>
             <tbody>
               <ng-container *ngFor="let material of this.materials | keyvalue">
                 <tr *ngIf="bid.details[material.key]?.bidQuantity">
                   <td>{{ material.value }}</td>
                   <td>{{ bid.details[material.key]?.bidQuantity }}</td>
-                  <td>{{ bid.details[material.key]?.cost }}</td>
+                  <td>{{ bid.details[material.key]?.bidCost }}</td>
                 </tr>
               </ng-container>
             </tbody>

@@ -4,34 +4,40 @@
     [latitude]="seller.lat"
     [longitude]="seller.long"
     [label]="'S'"
-    (mouseOver)="this.onMarkerHover(index)"
+    (markerClick)="this.onMarkerClick(index)"
   >
-    <agm-info-window *ngIf="seller.details" [disableAutoPan]="true">
-      <ng-container
-        *ngTemplateOutlet="
-          sellerDetailsTemplate;
-          context: { sellerDetails: seller }
-        "
-      ></ng-container>
+    <agm-info-window [disableAutoPan]="true">
+      <ng-container *ngIf="seller.details" >
+        <ng-container
+          *ngTemplateOutlet="
+            sellerDetailsTemplate;
+            context: { sellerDetails: seller }
+          "
+        ></ng-container>
+      </ng-container>
     </agm-info-window>
   </agm-marker>
 </agm-map>
 
 <ng-template #sellerDetailsTemplate let-seller="sellerDetails">
-  <p class="text--orange text--normal">{{ seller.name }}</p>
-  <table class="table mt-2">
+  <p class="text--blue text--normal text--bold text--center mb-1">
+    {{ seller.name }}
+  </p>
+  <table class="table mt-2 table-sm">
     <tbody>
-      <tr *ngFor="let material of this.materials | keyvalue">
-        <td>{{ material.value }}</td>
-        <td>
-          <span> {{ seller.details[material.key].quantity }} kg </span>
-          (₹<span> {{ seller.details[material.key].cost }} </span> / kg)
-        </td>
-      </tr>
+      <ng-container *ngFor="let material of this.materials | keyvalue">
+        <tr *ngIf="seller.details[material.key].quantity">
+          <td>{{ material.value }}</td>
+          <td>
+            <span> {{ seller.details[material.key].quantity }} kg </span>
+            (₹<span> {{ seller.details[material.key].cost }} </span> / kg)
+          </td>
+        </tr>
+      </ng-container>
     </tbody>
   </table>
   <div class="actions flex">
-    <button
+    <button *ngIf="this.appServ.isUserLoggedIn"
       mat-flat-button
       color="primary"
       class="rounded-button"
@@ -40,5 +46,8 @@
     >
       Bid to buy
     </button>
+    <!-- <p *ngIf="!this.appServ.isUserLoggedIn" class="text--blue text--normal">
+      Login to bid
+    </p> -->
   </div>
 </ng-template>

@@ -160,12 +160,20 @@ p {
     text-align: center;
   }
 
+  &--left {
+    text-align: left !important;
+  }
+
   &--orange {
     color: #eb5821e0;
   }
 
   &--green {
     color: #08b5ae;
+  }
+
+  &--blue {
+    color: #000088;
   }
 
   &--right {
@@ -175,6 +183,15 @@ p {
   &--bold {
     font-weight: bold;
   }
+}
+
+.background--blue {
+  background-color: #f5fcfe;
+}
+
+.table th {
+  color: #000088;
+  font-weight: normal;
 }
 
 .flex {

@@ -19,7 +19,7 @@ export class MapComponent implements OnInit {
 
   ngOnInit() {}
 
-  public onMarkerHover(index) {
+  public onMarkerClick(index) {
     !this.sellers[index].details &&
       this.appServ
         .getSellerItems(this.sellers[index].id)

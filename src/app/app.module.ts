@@ -9,7 +9,12 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { LandingComponent } from "./pages/common/landing/landing.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { ButtonsModule } from "ngx-bootstrap/buttons";
+
+import {
+  ButtonsModule,
+  TimepickerModule,
+  BsDatepickerModule
+} from "ngx-bootstrap";
 import { AgmCoreModule } from "@agm/core";
 import { MapComponent } from "./shared/components/map/map.component";
 import {
@@ -19,6 +24,7 @@ import {
   MatDialogModule,
   MatProgressBarModule
 } from "@angular/material";
+
 import { BuyerBidComponent } from "./pages/buyer/buyer-bid/buyer-bid.component";
 import { BuyerBidListComponent } from "./pages/buyer/buyer-bid-list/buyer-bid-list.component";
 import { SellerBidListComponent } from "./pages/seller/seller-bid-list/seller-bid-list.component";
@@ -57,6 +63,8 @@ import {
     AppRoutingModule,
     BrowserAnimationsModule,
     ButtonsModule.forRoot(),
+    TimepickerModule.forRoot(),
+    BsDatepickerModule.forRoot(),
     MatButtonModule,
     MatRadioModule,
     MatInputModule,

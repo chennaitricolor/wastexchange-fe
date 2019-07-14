@@ -14,11 +14,13 @@ export class BidListTableComponent implements OnInit {
   constructor(public appServ: AppService) {}
 
   ngOnInit() {
+    
   }
 
   updateStatusOfBid(bid, status) {
+    delete bid.seller;
+    delete bid.buyer;
     bid.status = status;
-    this.appServ.updateBid(bid).subscribe((data) => {
-    })
+    this.appServ.updateBid(bid).subscribe(data => {});
   }
 }

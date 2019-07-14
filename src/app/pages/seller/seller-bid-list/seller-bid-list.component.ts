@@ -21,18 +21,25 @@ export class SellerBidListComponent implements OnInit {
   ngOnInit() {
     this.appServ.getBids().subscribe(data => {
       this.bids = data;
+      this.bids.forEach(bid => {
+        bid.buyer = this.appServ.allBuyers.filter(
+          buyer => (buyer.id == bid.buyerId)
+        )[0];
+      });
     });
 
-    this.appServ.getSellerItems(this.appServ.loggedInUserInfo['id']).subscribe(data => {
-      this.sellerItem = data;
-      this.appServ.setDefaultMaterialData(this.sellerItem || { details: {} });
-    });
+    this.appServ
+      .getSellerItems(this.appServ.loggedInUserInfo["id"])
+      .subscribe(data => {
+        this.sellerItem = data;
+        this.appServ.setDefaultMaterialData(this.sellerItem || { details: {} });
+      });
   }
 
   public updateSellerItem() {
-    this.appServ.updateSellerItem(this.sellerItem).subscribe((response) => {
+    this.appServ.updateSellerItem(this.sellerItem).subscribe(response => {
       this.sellerItem.details = response.data.details;
       this.isSellerDataEditable = false;
-    })
+    });
   }
 }

@@ -27,3 +27,13 @@
   background-color: #a1ebeb;
   padding: 64px 32px;
 }
+
+.table td input {
+  width: 100px;
+}
+
+.table th,
+.table td {
+  vertical-align: middle;
+  text-align: center;
+}

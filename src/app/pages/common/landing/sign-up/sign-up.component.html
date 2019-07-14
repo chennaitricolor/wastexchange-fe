@@ -1,5 +1,5 @@
 <div class="signup-container">
-  <p class="text--large text--center text--bold text--green">
+  <p class="text--large text--center text--bold text--blue">
     Buyer Registration
   </p>
   <form [formGroup]="newUserFormGroup" (ngSubmit)="onNewUserFormSubmit()">
@@ -49,7 +49,7 @@
   </form>
 
   <div class="otp-container" *ngIf="this.otpSent">
-    <p class="text--green text--medium mb-1 text--center">
+    <p class="text--blue text--medium mb-1 text--center">
       We have sent an OTP to the entered email and mobile. Type in the OTP to
       complete the registration
     </p>
@@ -60,7 +60,7 @@
   </div>
 
   <div class="lat-long-alert" *ngIf="this.geoLocationUnavailable">
-    <p class="text--orange text--center text--medium mb-3">
+    <p class="text--blue text--center text--medium mb-3">
       Enable location access to continue further.
     </p>
   </div>

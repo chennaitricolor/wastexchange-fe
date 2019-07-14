@@ -6,10 +6,11 @@ export interface Bid {
   status: string;
   totalBid: number;
   contactName?: string;
-  pDate?: string;
-  pTime?: string;
+  pDateTime?: string;
   createdAt?: string;
   updatedAt?: string;
+  seller?: Object;
+  buyer?: Object;
 }
 
 export interface SellerItem {

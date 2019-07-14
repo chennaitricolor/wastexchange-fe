@@ -4,20 +4,18 @@ import { AppService } from "./../../../app.service";
 import { Bid, MATERIALS, SellerItem } from "./../../../app.model";
 import { ActivatedRoute, Router, ParamMap } from "@angular/router";
 
-
 @Component({
   selector: "wm-buyer-bid",
   templateUrl: "./buyer-bid.component.html",
   styleUrls: ["./buyer-bid.component.scss"]
 })
 export class BuyerBidComponent implements OnInit {
-  public buyer: Buyer = BUYER_DATA[0];
-  public seller: Seller = SELLER_DATA[0];
   public materials = MATERIALS;
   public sellerItem: SellerItem;
   public bid: Bid;
   public bidId: number;
   public sellerId: number;
+  public sellerName: string;
   public canRaiseBid: boolean = false;
 
   constructor(
@@ -32,36 +30,36 @@ export class BuyerBidComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.sellerName = this.appServ.allSellers.filter(
+      user => user.id == this.sellerId
+    )[0].name;
+    let onBid = data => {
+      this.sellerItem = data;
+      this.setDefaultMaterialData();
+      this.canRaiseBid = true;
+    };
     this.appServ.getSellerItems(this.sellerId).subscribe(data => {
-      if (this.bidId) {
-        this.appServ.getBid(this.bidId).subscribe(response => {
-          this.bid = response;
-          this.sellerItem = data;
-          this.setDefaultMaterialData(this.sellerItem || { details: {} });
-          this.canRaiseBid = true;
-        });
-      } else {
-        this.sellerItem = data;
-        this.setDefaultMaterialData(this.sellerItem || { details: {} });
-        this.canRaiseBid = true;
-      }
+      this.bidId
+        ? this.appServ.getBid(this.bidId).subscribe(response => {
+            this.bid = response;
+            onBid(data);
+          })
+        : onBid(data);
     });
   }
 
-  private setDefaultMaterialData(sellerItem) {
+  private setDefaultMaterialData() {
     !this.bid &&
       (this.bid = {
-        buyerId: this.appServ.loggedInUserInfo['id'],
+        buyerId: this.appServ.loggedInUserInfo["id"],
         sellerId: this.sellerId,
         details: {},
         status: "pending",
         totalBid: 0,
-        contactName: "",
-        pDate: "12/07/2019",
-        pTime: "13:46:50.304"
+        contactName: ""
       });
 
-    this.appServ.setDefaultMaterialData(sellerItem);
+    this.sellerItem = this.appServ.setDefaultMaterialData(this.sellerItem);
 
     Object.keys(this.materials).forEach(material => {
       !this.bid.details[material] &&
