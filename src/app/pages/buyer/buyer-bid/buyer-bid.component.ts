@@ -51,8 +51,8 @@ export class BuyerBidComponent implements OnInit {
   private setDefaultMaterialData(sellerItem) {
     !this.bid &&
       (this.bid = {
-        buyerId: this.buyer.id,
-        sellerId: 6,
+        buyerId: this.appServ.loggedInUserInfo['id'],
+        sellerId: this.sellerId,
         details: {},
         status: "pending",
         totalBid: 0,
@@ -66,9 +66,7 @@ export class BuyerBidComponent implements OnInit {
     Object.keys(this.materials).forEach(material => {
       !this.bid.details[material] &&
         (this.bid.details[material] = {
-          quantity: sellerItem.details[material].quantity || 0,
           bidQuantity: 0,
-          cost: sellerItem.details[material].cost || 0,
           bidCost: 0
         });
     });
