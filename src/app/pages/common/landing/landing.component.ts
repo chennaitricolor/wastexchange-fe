@@ -23,7 +23,6 @@ export class LandingComponent implements OnInit {
 
   ngOnInit() {
     this.redirectUser();
-    this.openSignupDialog();
   }
 
   redirectUser() {
@@ -56,7 +55,7 @@ export class LandingComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.openLoginDialog();
+      // this.openLoginDialog();
     });
   }
 }
