@@ -23,6 +23,7 @@ export class LandingComponent implements OnInit {
 
   ngOnInit() {
     this.redirectUser();
+    this.openSignupDialog();
   }
 
   redirectUser() {
@@ -54,6 +55,8 @@ export class LandingComponent implements OnInit {
       width: "400px"
     });
 
-    dialogRef.afterClosed().subscribe(result => {});
+    dialogRef.afterClosed().subscribe(result => {
+      this.openLoginDialog();
+    });
   }
 }

@@ -29,14 +29,14 @@ export class AppService {
     );
   }
 
-  public updateSellerItem(sellerItem: SellerItem) {
+  public updateSellerItem(sellerItem: SellerItem): Observable<any> {
     return this.httpClient.put<any>(
       environment.hostName + `/items/${sellerItem.id}`,
       sellerItem
     );
   }
 
-  public createBid(bid: Bid) {
+  public createBid(bid: Bid): Observable<any> {
     return this.httpClient.post<any>(
       environment.hostName + `/buyer/${bid.buyerId}/bids`,
       bid
@@ -56,6 +56,20 @@ export class AppService {
 
   public getAllUsers(): Observable<any[]> {
     return this.httpClient.get<any[]>(environment.hostName + "/users");
+  }
+
+  public sendOtp(payload: any): Observable<any> {
+    return this.httpClient.post<any>(
+      environment.hostName + "/users/sendOtp",
+      payload
+    );
+  }
+
+  public registerUser(userDetails: any): Observable<any> {
+    return this.httpClient.post<any>(
+      environment.hostName + "/users/register",
+      userDetails
+    );
   }
 
   public loginUser(loginPayload: any): Promise<boolean> {

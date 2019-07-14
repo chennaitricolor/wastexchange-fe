@@ -1,37 +1,68 @@
 <div class="signup-container">
-  <div class="signup-form">
+  <p class="text--large text--center text--bold text--green">
+    Buyer Registration
+  </p>
+  <form [formGroup]="newUserFormGroup" (ngSubmit)="onNewUserFormSubmit()">
     <mat-form-field>
       <mat-label>Name</mat-label>
-      <input matInput />
+      <input matInput [formControlName]="'name'" />
     </mat-form-field>
     <mat-form-field>
-      <mat-label>Address line 1</mat-label>
-      <input matInput />
+      <mat-label>Address</mat-label>
+      <input matInput [formControlName]="'address'" />
     </mat-form-field>
+    <div class="flex form-group">
+      <mat-form-field>
+        <mat-label>City</mat-label>
+        <input matInput [formControlName]="'city'" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Pincode</mat-label>
+        <input matInput type="number" [formControlName]="'pinCode'" />
+      </mat-form-field>
+    </div>
+    <div class="flex form-group">
+      <mat-form-field>
+        <mat-label>Phone</mat-label>
+        <input matInput type="number" [formControlName]="'mobNo'" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Alternative Phone no</mat-label>
+        <input matInput type="number" [formControlName]="'altMobNo'" />
+      </mat-form-field>
+    </div>
+    <hr />
     <mat-form-field>
-      <mat-label>Address line 2</mat-label>
-      <input matInput />
+      <mat-label>Email Id</mat-label>
+      <input matInput type="email" [formControlName]="'emailId'" />
     </mat-form-field>
+    <div class="flex form-group">
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input matInput type="password" [formControlName]="'password'" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Confirm Password</mat-label>
+        <input matInput type="password" [formControlName]="'confirmPassword'" />
+      </mat-form-field>
+    </div>
+  </form>
+
+  <div class="otp-container" *ngIf="this.otpSent">
+    <p class="text--green text--medium mb-1 text--center">
+      We have sent an OTP to the entered email and mobile. Type in the OTP to
+      complete the registration
+    </p>
     <mat-form-field>
-      <mat-label>Pincode</mat-label>
-      <input matInput />
+      <mat-label>Enter your otp</mat-label>
+      <input matInput type="number" [(ngModel)]="this.otpValue" />
     </mat-form-field>
-    <mat-form-field>
-      <mat-label>Phone-no</mat-label>
-      <input matInput />
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Alternative Phone no</mat-label>
-      <input matInput />
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Password</mat-label>
-      <input matInput type="password" />
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Confirm Password</mat-label>
-      <input matInput type="password" />
-    </mat-form-field>
+  </div>
+
+  <div class="lat-long-alert" *ngIf="this.geoLocationUnavailable">
+    <p class="text--orange text--center text--medium mb-3">
+      Enable location access to continue further.
+    </p>
   </div>
 
   <div class="actions flex justify-end">
@@ -43,8 +74,27 @@
     >
       Cancel
     </button>
-    <button mat-flat-button color="primary" class="rounded-button">
-      Sign up
+    <button
+      *ngIf="!this.otpSent"
+      type="submit"
+      [disabled]="!this.newUserFormGroup.valid || this.geoLocationUnavailable"
+      mat-flat-button
+      color="primary"
+      (click)="this.onNewUserFormVerify()"
+      class="rounded-button"
+    >
+      Verify
+    </button>
+    <button
+      *ngIf="this.otpSent"
+      type="submit"
+      [disabled]="!this.otpValue"
+      mat-flat-button
+      color="primary"
+      (click)="this.onNewUserFormSubmit()"
+      class="rounded-button"
+    >
+      Register
     </button>
   </div>
 </div>
