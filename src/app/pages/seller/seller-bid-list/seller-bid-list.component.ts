@@ -23,7 +23,7 @@ export class SellerBidListComponent implements OnInit {
       this.bids = data;
     });
 
-    this.appServ.getSellerItems(6).subscribe(data => {
+    this.appServ.getSellerItems(this.appServ.loggedInUserInfo['id']).subscribe(data => {
       this.sellerItem = data;
       this.setDefaultMaterialData(this.sellerItem || { details: {} });
     });

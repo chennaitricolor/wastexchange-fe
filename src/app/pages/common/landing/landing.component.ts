@@ -32,9 +32,9 @@ export class LandingComponent implements OnInit {
         this.appServ.loggedInUserInfo["id"]
       ];
       if (persona == "seller") {
-        this.router.navigate([`seller/${userId}/bid-list`]);
+        this.router.navigate(["seller", userId, "bid-list"]);
       } else if (persona == "buyer") {
-        this.router.navigate([`buyer/${userId}/browse`]);
+        this.router.navigate(["buyer", userId, "browse"]);
       }
     }
   }

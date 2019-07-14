@@ -90,7 +90,7 @@
         mat-stroked-button
         color="primary"
         class="rounded-button mr-2"
-        [routerLink]="['/buyer/1/browse']"
+        [routerLink]="['/buyer', this.appServ.loggedInUserInfo.id, 'browse']"
       >
         Cancel
       </button>
@@ -98,9 +98,8 @@
         mat-flat-button
         color="primary"
         class="rounded-button"
-        (click)= "this.createOrUpdateBid()"
+        (click)="this.createOrUpdateBid()"
       >
-
         Confirm
       </button>
     </div>
@@ -113,7 +112,7 @@
       mat-flat-button
       color="primary"
       class="rounded-button"
-      [routerLink]="['/buyer/1/bid-list']"
+      [routerLink]="['/buyer', this.appServ.loggedInUserInfo.id, 'bid-list']"
     >
       View Pending Bids
     </button>

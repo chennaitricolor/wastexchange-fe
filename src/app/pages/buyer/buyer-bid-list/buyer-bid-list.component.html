@@ -17,7 +17,7 @@
       mat-flat-button
       color="primary"
       class="rounded-button"
-      [routerLink]="['/buyer/1/browse']"
+      [routerLink]="['/buyer', this.appServ.loggedInUserInfo.id, 'browse']"
     >
       Browse and Bid
     </button>

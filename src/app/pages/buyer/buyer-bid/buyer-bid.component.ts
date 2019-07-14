@@ -17,6 +17,7 @@ export class BuyerBidComponent implements OnInit {
   public sellerItem: SellerItem;
   public bid: Bid;
   public bidId: number;
+  public sellerId: number;
   public canRaiseBid: boolean = false;
 
   constructor(
@@ -26,11 +27,12 @@ export class BuyerBidComponent implements OnInit {
   ) {
     this.activatedRoute.queryParams.subscribe((params: ParamMap) => {
       this.bidId = +params["bidId"];
+      this.sellerId = +params["sellerId"];
     });
   }
 
   ngOnInit() {
-    this.appServ.getSellerItems(6).subscribe(data => {
+    this.appServ.getSellerItems(this.sellerId).subscribe(data => {
       if (this.bidId) {
         this.appServ.getBid(this.bidId).subscribe(response => {
           this.bid = response;
@@ -82,7 +84,11 @@ export class BuyerBidComponent implements OnInit {
       ? this.appServ.updateBid(this.bid)
       : this.appServ.createBid(this.bid);
     observable.subscribe(response => {
-      this.router.navigate(["buyer/1/bid-list"]);
+      this.router.navigate([
+        "buyer",
+        this.appServ.loggedInUserInfo["id"],
+        "bid-list"
+      ]);
     });
   }
 }

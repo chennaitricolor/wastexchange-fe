@@ -90,7 +90,7 @@
               this.appServ.isUserLoggedIn &&
               this.appServ.userSessionData?.persona == 'buyer'
             "
-            [routerLink]="['/buyer/1/bid']"
+            [routerLink]="['/buyer', this.appServ.loggedInUserInfo.id, 'bid']"
             [queryParams]="{ bidId: bid.id }"
           >
             Edit

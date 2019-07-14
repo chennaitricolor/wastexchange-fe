@@ -1,6 +1,6 @@
 <agm-map [latitude]="lat" [longitude]="long" [zoom]="zoom">
   <agm-marker
-    *ngFor="let seller of this.sellers; let index = index;"
+    *ngFor="let seller of this.sellers; let index = index"
     [latitude]="seller.lat"
     [longitude]="seller.long"
     [label]="'S'"
@@ -35,7 +35,8 @@
       mat-flat-button
       color="primary"
       class="rounded-button"
-      [routerLink]="['/buyer/1/bid']"
+      [routerLink]="['/buyer', this.appServ.loggedInUserInfo.id, 'bid']"
+      [queryParams]="{ sellerId: seller.id }"
     >
       Bid to buy
     </button>

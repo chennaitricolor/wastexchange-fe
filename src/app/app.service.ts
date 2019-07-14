@@ -88,16 +88,16 @@ export class AppService {
 
   public getUserSessionDataFromSession() {
     let _userSessionData = new Object();
-    for (let _counter = 0; _counter < localStorage.length; _counter++) {
-      _userSessionData[localStorage.key(_counter)] = localStorage.getItem(
-        localStorage.key(_counter)
+    for (let _counter = 0; _counter < sessionStorage.length; _counter++) {
+      _userSessionData[sessionStorage.key(_counter)] = sessionStorage.getItem(
+        sessionStorage.key(_counter)
       );
     }
     return _userSessionData;
   }
 
   public clearSessionData() {
-    localStorage.clear();
+    sessionStorage.clear();
     this.userSessionData = new Object();
     this.isUserLoggedIn = false;
   }
@@ -109,15 +109,15 @@ export class AppService {
 
   public setSessionData(userSessionData: Object) {
     Object.keys(userSessionData).forEach(key => {
-      localStorage.setItem(key, userSessionData[key]);
-      localStorage.setItem("sessionCreatedTime", Date.now().toString());
+      sessionStorage.setItem(key, userSessionData[key]);
+      sessionStorage.setItem("sessionCreatedTime", Date.now().toString());
     });
     this.userSessionData = userSessionData;
     this.isUserLoggedIn = true;
   }
 
   public getSessionValue(key: string) {
-    return localStorage.getItem(key) || "";
+    return sessionStorage.getItem(key) || "";
   }
 
   public setLoading(value) {
