@@ -14,7 +14,7 @@ export class BuyerBidListComponent implements OnInit {
   constructor(private appServ: AppService) {}
 
   ngOnInit() {
-    this.appServ.getBids().subscribe(data => {
+    this.appServ.getBidsForBuyer(this.appServ.loggedInUserInfo['id']).subscribe(data => {
       this.bids = data;
       this.bids.forEach(bid => {
         bid.seller = this.appServ.allSellers.filter(

@@ -20,7 +20,7 @@ export class SellerBidListComponent implements OnInit {
 
   ngOnInit() {
     this.appServ.getBids().subscribe(data => {
-      this.bids = data;
+      this.bids = data.filter((bid) => bid.sellerId == this.appServ.loggedInUserInfo['id']);
       this.bids.forEach(bid => {
         bid.buyer = this.appServ.allBuyers.filter(
           buyer => (buyer.id == bid.buyerId)

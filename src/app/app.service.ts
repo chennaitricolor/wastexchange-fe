@@ -23,6 +23,10 @@ export class AppService {
     return this.httpClient.get<Bid[]>(environment.hostName + "/bids");
   }
 
+  public getBidsForBuyer(buyerId): Observable<Bid[]> {
+    return this.httpClient.get<Bid[]>(environment.hostName + `/buyer/${buyerId}/bids`);
+  }
+
   public getSellerItems(sellerId): Observable<SellerItem> {
     return this.httpClient.get<SellerItem>(
       environment.hostName + `/seller/${sellerId}/items`

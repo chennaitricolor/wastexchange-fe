@@ -110,7 +110,7 @@ export const SELLER_DATA: Seller[] = [
 
 export const MATERIALS = {
   plastic_waste: "Plastic Waste",
-  hdep: "HDEP",
+  hdpe: "HDPE",
   pet: "PET Waste",
   rubber: "Rubber"
 };
