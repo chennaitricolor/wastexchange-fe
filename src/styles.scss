@@ -164,6 +164,10 @@ p {
     text-align: left !important;
   }
 
+  &--right {
+    text-align: right !important;
+  }
+
   &--orange {
     color: #eb5821e0;
   }
@@ -234,6 +238,14 @@ p {
 
 mat-form-field {
   width: 100%;
+}
+
+.bs-datepicker-head {
+  background-color: #000088 !important;
+}
+
+.bs-datepicker-body table td.week span {
+  color: #000088 !important;
 }
 
 // .mat-progress-bar.mat-accent .mat-progress-bar-fill::after {
