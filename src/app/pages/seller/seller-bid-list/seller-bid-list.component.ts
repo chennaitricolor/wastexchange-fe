@@ -25,14 +25,7 @@ export class SellerBidListComponent implements OnInit {
 
     this.appServ.getSellerItems(this.appServ.loggedInUserInfo['id']).subscribe(data => {
       this.sellerItem = data;
-      this.setDefaultMaterialData(this.sellerItem || { details: {} });
-    });
-  }
-
-  private setDefaultMaterialData(sellerItem) {
-    Object.keys(this.materials).forEach(material => {
-      !sellerItem.details[material] &&
-        (sellerItem.details[material] = { quantity: 0, cost: 0, bid: 0 });
+      this.appServ.setDefaultMaterialData(this.sellerItem || { details: {} });
     });
   }
 

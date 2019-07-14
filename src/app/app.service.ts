@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { environment } from "./../environments/environment";
 import { HttpClient } from "@angular/common/http";
-import { Bid, SellerItem, Seller } from "./app.model";
+import { Bid, SellerItem, Seller, MATERIALS } from "./app.model";
 
 @Injectable({
   providedIn: "root"
@@ -15,6 +15,7 @@ export class AppService {
   public allBuyers: any[] = [];
   public allUsers: any[] = [];
   public isLoading: boolean = false;
+  public materials = MATERIALS;
 
   constructor(private httpClient: HttpClient, private rtr: Router) {}
 
@@ -124,6 +125,16 @@ export class AppService {
     setTimeout(() => {
       this.isLoading = value;
     }, 0);
+  }
+
+  //utils
+
+  public setDefaultMaterialData(sellerItem) {
+    Object.keys(this.materials).forEach(material => {
+      !sellerItem.details[material] &&
+        (sellerItem.details[material] = { quantity: 0, cost: 0, bid: 0 });
+    });
+    return sellerItem;
   }
 }
 

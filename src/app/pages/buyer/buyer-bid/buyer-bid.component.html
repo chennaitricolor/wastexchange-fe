@@ -42,45 +42,36 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let material of this.materials | keyvalue">
-          <td>{{ material.value }}</td>
-          <td>
-            {{
-              this.bid.details[material.key]
-                ? this.bid.details[material.key]?.quantity
-                : "--"
-            }}
-          </td>
-          <td>
-            <input
-              type="number"
-              class="form-control"
-              [(ngModel)]="this.bid.details[material.key].bidQuantity"
-            />
-          </td>
-          <td>
-            {{
-              this.bid.details[material.key]
-                ? this.bid.details[material.key]?.cost
-                : "--"
-            }}
-          </td>
-          <td>
-            <input
-              type="number"
-              class="form-control"
-              [(ngModel)]="this.bid.details[material.key].bidCost"
-            />
-          </td>
-          <td>
-            {{
-              this.bid.details[material.key].bidQuantity *
-                this.bid.details[material.key].bidCost
-            }}
-          </td>
-        </tr>
+        <ng-container *ngFor="let material of this.materials | keyvalue">
+          <tr *ngIf="this.bid.details[material.key]?.quantity">
+            <td>{{ material.value }}</td>
+            <td>{{ this.bid.details[material.key]?.quantity }}</td>
+            <td>
+              <input
+                type="number"
+                class="form-control"
+                [(ngModel)]="this.bid.details[material.key].bidQuantity"
+                [attr.max]="this.bid.details[material.key]?.quantity"
+              />
+            </td>
+            <td>{{ this.bid.details[material.key]?.cost }}</td>
+            <td>
+              <input
+                type="number"
+                class="form-control"
+                [(ngModel)]="this.bid.details[material.key].bidCost"
+              />
+            </td>
+            <td>
+              {{
+                this.bid.details[material.key].bidQuantity *
+                  this.bid.details[material.key].bidCost
+              }}
+            </td>
+          </tr>
+        </ng-container>
         <tr>
-          <td colspan="5" class="text--right">Total Bidding Price</td>
+          <td colspan="5" class="text--right text--bold">Total Bidding Price (in ₹)</td>
           <td><input type="number" class="form-control" /></td>
         </tr>
       </tbody>

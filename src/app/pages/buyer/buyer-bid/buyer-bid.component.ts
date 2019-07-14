@@ -2,8 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { Buyer, BUYER_DATA, Seller, SELLER_DATA } from "./../../../app.model";
 import { AppService } from "./../../../app.service";
 import { Bid, MATERIALS, SellerItem } from "./../../../app.model";
-import { BidListTableComponent } from "../../common/bid-list-table/bid-list-table.component";
 import { ActivatedRoute, Router, ParamMap } from "@angular/router";
+
 
 @Component({
   selector: "wm-buyer-bid",
@@ -56,19 +56,14 @@ export class BuyerBidComponent implements OnInit {
         details: {},
         status: "pending",
         totalBid: 0,
+        contactName: "",
         pDate: "12/07/2019",
         pTime: "13:46:50.304"
       });
 
-    Object.keys(this.materials).forEach(material => {
-      !sellerItem.details[material] &&
-        (sellerItem.details[material] = {
-          quantity: 0,
-          bidQuantity: 0,
-          cost: 0,
-          bidCost: 0
-        });
+    this.appServ.setDefaultMaterialData(sellerItem);
 
+    Object.keys(this.materials).forEach(material => {
       !this.bid.details[material] &&
         (this.bid.details[material] = {
           quantity: sellerItem.details[material].quantity || 0,

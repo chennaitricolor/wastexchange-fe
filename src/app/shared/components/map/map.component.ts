@@ -24,17 +24,9 @@ export class MapComponent implements OnInit {
       this.appServ
         .getSellerItems(this.sellers[index].id)
         .subscribe(response => {
-          this.sellers[index].details = this.setDefaultMaterialData(
+          this.sellers[index].details = this.appServ.setDefaultMaterialData(
             response || { details: {} }
-          );
+          ).details;
         });
-  }
-
-  private setDefaultMaterialData(sellerItem) {
-    Object.keys(this.materials).forEach(material => {
-      !sellerItem.details[material] &&
-        (sellerItem.details[material] = { quantity: 0, cost: 0, bid: 0 });
-    });
-    return sellerItem.details;
   }
 }
