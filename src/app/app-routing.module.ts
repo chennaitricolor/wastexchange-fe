@@ -5,35 +5,47 @@ import { BuyerBidListComponent } from "./pages/buyer/buyer-bid-list/buyer-bid-li
 import { SellerBidListComponent } from "./pages/seller/seller-bid-list/seller-bid-list.component";
 import { BuyerBrowseComponent } from "./pages/buyer/buyer-browse/buyer-browse.component";
 import { LandingComponent } from "./pages/common/landing/landing.component";
-import { AuthGuard, UserSessionDataResolver } from "./app.service";
+import {
+  AuthGuard,
+  UserSessionDataResolver,
+  UserDataResolver
+} from "./app.service";
 
 const routes: Routes = [
-  { path: "", component: LandingComponent, resolve: [UserSessionDataResolver] },
+  {
+    path: "",
+    component: LandingComponent,
+    resolve: [UserSessionDataResolver, UserDataResolver]
+  },
   {
     path: "buyer/:id/browse",
     component: BuyerBrowseComponent,
-    resolve: [UserSessionDataResolver],
+    resolve: [UserSessionDataResolver, UserDataResolver],
     canActivate: [AuthGuard]
   },
   {
     path: "buyer/:id/bid",
     component: BuyerBidComponent,
-    resolve: [UserSessionDataResolver],
+    resolve: [UserSessionDataResolver, UserDataResolver],
     canActivate: [AuthGuard]
   },
   {
     path: "buyer/:id/bid-list",
     component: BuyerBidListComponent,
-    resolve: [UserSessionDataResolver],
+    resolve: [UserSessionDataResolver, UserDataResolver],
     canActivate: [AuthGuard]
   },
   {
     path: "seller/:id/bid-list",
     component: SellerBidListComponent,
-    resolve: [UserSessionDataResolver],
+    resolve: [UserSessionDataResolver, UserDataResolver],
     canActivate: [AuthGuard]
   },
-  { path: "**", component: LandingComponent, resolve: [UserSessionDataResolver] }
+  {
+    path: "**",
+    component: LandingComponent,
+    resolve: [UserSessionDataResolver, UserDataResolver]
+  }
 ];
 
 @NgModule({

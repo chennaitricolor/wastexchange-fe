@@ -29,7 +29,7 @@ export class LandingComponent implements OnInit {
     if (this.appServ.isUserLoggedIn) {
       let [persona, userId] = [
         this.appServ.loggedInUserInfo["persona"],
-        this.appServ.loggedInUserInfo["userDetails"]["userId"]
+        this.appServ.loggedInUserInfo["id"]
       ];
       if (persona == "seller") {
         this.router.navigate([`seller/${userId}/bid-list`]);

@@ -35,12 +35,12 @@ export class BuyerBidComponent implements OnInit {
         this.appServ.getBid(this.bidId).subscribe(response => {
           this.bid = response;
           this.sellerItem = data;
-          this.setDefaultMaterialData(this.sellerItem);
+          this.setDefaultMaterialData(this.sellerItem || { details: {} });
           this.canRaiseBid = true;
         });
       } else {
         this.sellerItem = data;
-        this.setDefaultMaterialData(this.sellerItem);
+        this.setDefaultMaterialData(this.sellerItem || { details: {} });
         this.canRaiseBid = true;
       }
     });

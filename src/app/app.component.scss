@@ -1,23 +1,51 @@
+.loading-overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: calc(100vh - 68px);
+  position: absolute;
+  top: 68px;
+  left: 0;
+  z-index: 999;
+  // background-color: black;
+  // opacity: 0.8;
+}
+
 .app-container {
   height: 100vh;
   width: 100vw;
 
-  .header {
+  .header-container {
     width: 100vw;
-    height: 64px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    height: 68px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05), 0 1px 4px rgba(0, 0, 0, 0.15);
 
-    .app-title {
-      color: #707070;
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 64px;
+
+      .app-title {
+        color: #707070;
+      }
     }
   }
-  
+
+  .progress-bar-container {
+    height: 4px;
+  }
+
+  .app__loading {
+    background-color: white;
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
   .body {
-    height: calc(100vh - 64px);
-    max-height: calc(100vh - 64px);
+    height: calc(100vh - 68px);
+    max-height: calc(100vh - 68px);
     overflow: auto;
     display: flex;
 
@@ -26,7 +54,7 @@
       max-width: 73%;
       height: 100%;
     }
-  
+
     .page-actions-container {
       flex-basis: 27%;
       max-width: 27%;

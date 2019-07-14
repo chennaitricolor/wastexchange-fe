@@ -13,6 +13,8 @@ export class AppService {
   public loggedInUserInfo: Object;
   public allSellers: any[] = [];
   public allBuyers: any[] = [];
+  public allUsers: any[] = [];
+  public isLoading: boolean = false;
 
   constructor(private httpClient: HttpClient, private rtr: Router) {}
 
@@ -21,19 +23,30 @@ export class AppService {
   }
 
   public getSellerItems(sellerId): Observable<SellerItem> {
-    return this.httpClient.get<SellerItem>(environment.hostName + `/seller/${sellerId}/items`);
+    return this.httpClient.get<SellerItem>(
+      environment.hostName + `/seller/${sellerId}/items`
+    );
   }
 
   public updateSellerItem(sellerItem: SellerItem) {
-    return this.httpClient.put<any>(environment.hostName + `/items/${sellerItem.id}`, sellerItem);
+    return this.httpClient.put<any>(
+      environment.hostName + `/items/${sellerItem.id}`,
+      sellerItem
+    );
   }
 
   public createBid(bid: Bid) {
-    return this.httpClient.post<any>(environment.hostName + `/buyer/${bid.buyerId}/bids`, bid);
+    return this.httpClient.post<any>(
+      environment.hostName + `/buyer/${bid.buyerId}/bids`,
+      bid
+    );
   }
 
   public updateBid(bid: Bid): Observable<any> {
-    return this.httpClient.put<any>(environment.hostName + `/bids/${bid.id}`, bid);
+    return this.httpClient.put<any>(
+      environment.hostName + `/bids/${bid.id}`,
+      bid
+    );
   }
 
   public getBid(bidId: number): Observable<any> {
@@ -41,57 +54,76 @@ export class AppService {
   }
 
   public getAllUsers(): Observable<any[]> {
-    return this.httpClient.get<any[]>(environment.hostName + "/userdetails");
+    return this.httpClient.get<any[]>(environment.hostName + "/users");
   }
 
-  public loginUser(loginPayload: any): Observable<any> {
-    return this.httpClient.post<any>(environment.hostName + "/users/login", loginPayload);
+  public loginUser(loginPayload: any): Promise<boolean> {
+    return new Promise((resolve, reject) => {
+      this.httpClient
+        .post<any>(environment.hostName + "/users/login", loginPayload)
+        .subscribe(response => {
+          this.setSessionData(response);
+          this.getMe().subscribe(response => {
+            this.loggedInUserInfo = response;
+            resolve(true);
+          });
+        });
+    });
   }
 
   public getMe(): Observable<any> {
     let headers = { "x-access-token": this.getSessionValue("token") };
-    return this.httpClient.get<any>(environment.hostName + "/users/me", { headers });
+    return this.httpClient.get<any>(environment.hostName + "/users/me", {
+      headers
+    });
   }
 
-  public authorizeUser() {
+  public authorizeUser(): boolean {
     this.userSessionData = this.getUserSessionDataFromSession();
     this.isUserLoggedIn = !!(
       Object.keys(this.userSessionData).length && this.userSessionData["auth"]
     );
+    return this.isUserLoggedIn;
   }
 
   public getUserSessionDataFromSession() {
     let _userSessionData = new Object();
-    for (let _counter = 0; _counter < sessionStorage.length; _counter++) {
-      _userSessionData[sessionStorage.key(_counter)] = sessionStorage.getItem(
-        sessionStorage.key(_counter)
+    for (let _counter = 0; _counter < localStorage.length; _counter++) {
+      _userSessionData[localStorage.key(_counter)] = localStorage.getItem(
+        localStorage.key(_counter)
       );
     }
     return _userSessionData;
   }
 
   public clearSessionData() {
-    sessionStorage.clear();
+    localStorage.clear();
     this.userSessionData = new Object();
+    this.isUserLoggedIn = false;
   }
 
   public forceLogoutUser() {
     this.clearSessionData();
-    this.loggedInUserInfo = null;
-    this.isUserLoggedIn = false;
     this.rtr.navigate([""]);
   }
 
   public setSessionData(userSessionData: Object) {
     Object.keys(userSessionData).forEach(key => {
-      sessionStorage.setItem(key, userSessionData[key]);
-      sessionStorage.setItem("sessionCreatedTime", Date.now().toString());
+      localStorage.setItem(key, userSessionData[key]);
+      localStorage.setItem("sessionCreatedTime", Date.now().toString());
     });
     this.userSessionData = userSessionData;
+    this.isUserLoggedIn = true;
   }
 
   public getSessionValue(key: string) {
-    return sessionStorage.getItem(key) || "";
+    return localStorage.getItem(key) || "";
+  }
+
+  public setLoading(value) {
+    setTimeout(() => {
+      this.isLoading = value;
+    }, 0);
   }
 }
 
@@ -100,19 +132,9 @@ import { CanActivate } from "@angular/router";
 export class AuthGuard implements CanActivate {
   constructor(private appServ: AppService) {}
   canActivate(): boolean {
-    this.appServ.authorizeUser();
-    !this.appServ.isUserLoggedIn && this.appServ.forceLogoutUser();
-    return this.appServ.isUserLoggedIn;
+    return this.appServ.authorizeUser();
   }
 }
-
-import {
-  Router,
-  Resolve,
-  RouterStateSnapshot,
-  ActivatedRouteSnapshot
-} from "@angular/router";
-import { HttpHeaders } from "@angular/common/http";
 
 @Injectable()
 export class UserSessionDataResolver implements Resolve<any> {
@@ -122,35 +144,50 @@ export class UserSessionDataResolver implements Resolve<any> {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Promise<boolean> {
+    this.appServ.authorizeUser();
+    this.appServ.userSessionData = this.appServ.getUserSessionDataFromSession();
+
     return new Promise((resolve, reject) => {
-      this.appServ.authorizeUser();
-      if (this.appServ.isUserLoggedIn && !this.appServ.loggedInUserInfo) {
-        this.appServ.getMe().subscribe(data => {
-          this.appServ.loggedInUserInfo = data;
-          this.appServ.getAllUsers().subscribe(response => {
-            response.forEach(userDetail => {
-              if (userDetail.userId == this.appServ.loggedInUserInfo["id"]) {
-                this.appServ.loggedInUserInfo["userDetails"] = userDetail;
-              }
-              switch (userDetail.persona) {
-                case "seller":
-                  this.appServ.allSellers.push(userDetail);
-                  break;
+      this.appServ.isUserLoggedIn && !this.appServ.loggedInUserInfo
+        ? this.appServ.getMe().subscribe(response => {
+            this.appServ.loggedInUserInfo = response;
+            resolve(true);
+          })
+        : resolve(true);
+    });
+  }
+}
 
-                case "buyer":
-                  this.appServ.allBuyers.push(userDetail);
-                  break;
+import {
+  Router,
+  Resolve,
+  RouterStateSnapshot,
+  ActivatedRouteSnapshot
+} from "@angular/router";
 
-                default:
-                  break;
-              }
-            });
+@Injectable()
+export class UserDataResolver implements Resolve<any> {
+  constructor(private appServ: AppService, private rtr: Router) {}
+
+  resolve(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): Promise<boolean> {
+    this.appServ.userSessionData = this.appServ.getUserSessionDataFromSession();
+
+    return new Promise((resolve, reject) => {
+      this.appServ.allUsers.length
+        ? resolve(true)
+        : this.appServ.getAllUsers().subscribe(response => {
+            this.appServ.allUsers = response;
+            this.appServ.allBuyers = response.filter(
+              user => user.persona == "buyer"
+            );
+            this.appServ.allSellers = response.filter(
+              user => user.persona == "seller"
+            );
             resolve(true);
           });
-        });
-      } else {
-        resolve(true);
-      }
     });
   }
 }

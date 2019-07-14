@@ -25,7 +25,7 @@ export class SellerBidListComponent implements OnInit {
 
     this.appServ.getSellerItems(6).subscribe(data => {
       this.sellerItem = data;
-      this.setDefaultMaterialData(this.sellerItem);
+      this.setDefaultMaterialData(this.sellerItem || { details: {} });
     });
   }
 

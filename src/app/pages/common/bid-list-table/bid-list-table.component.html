@@ -5,14 +5,14 @@
         scope="col"
         *ngIf="
           this.appServ.isUserLoggedIn &&
-          this.appServ.loggedInUserInfo?.persona == 'seller'
+          this.appServ.userSessionData?.persona == 'seller'
         "
       ></th>
       <th
         scope="col"
         *ngIf="
           this.appServ.isUserLoggedIn &&
-          this.appServ.loggedInUserInfo?.persona == 'buyer'
+          this.appServ.userSessionData?.persona == 'buyer'
         "
       ></th>
       <ng-container *ngFor="let material of this.materials | keyvalue">
@@ -27,7 +27,7 @@
       <td
         *ngIf="
           this.appServ.isUserLoggedIn &&
-          this.appServ.loggedInUserInfo?.persona == 'seller'
+          this.appServ.userSessionData?.persona == 'seller'
         "
       >
         <p class="text--green">Subbu-Buyer</p>
@@ -35,7 +35,7 @@
       <td
         *ngIf="
           this.appServ.isUserLoggedIn &&
-          this.appServ.loggedInUserInfo?.persona == 'buyer'
+          this.appServ.userSessionData?.persona == 'buyer'
         "
       >
         <p class="text--green">Subbu-Seller</p>
@@ -64,7 +64,7 @@
             class="rounded-button mr-2"
             *ngIf="
               this.appServ.isUserLoggedIn &&
-              this.appServ.loggedInUserInfo?.persona == 'seller'
+              this.appServ.userSessionData?.persona == 'seller'
             "
             (click)="this.updateStatusOfBid(bid, 'denied')"
           >
@@ -76,7 +76,7 @@
             class="rounded-button mr-2"
             *ngIf="
               this.appServ.isUserLoggedIn &&
-              this.appServ.loggedInUserInfo?.persona == 'seller'
+              this.appServ.userSessionData?.persona == 'seller'
             "
             (click)="this.updateStatusOfBid(bid, 'accepted')"
           >
@@ -88,7 +88,7 @@
             class="rounded-button mr-2"
             *ngIf="
               this.appServ.isUserLoggedIn &&
-              this.appServ.loggedInUserInfo?.persona == 'buyer'
+              this.appServ.userSessionData?.persona == 'buyer'
             "
             [routerLink]="['/buyer/1/bid']"
             [queryParams]="{ bidId: bid.id }"
@@ -101,7 +101,7 @@
             class="rounded-button mr-2"
             *ngIf="
               this.appServ.isUserLoggedIn &&
-              this.appServ.loggedInUserInfo?.persona == 'buyer'
+              this.appServ.userSessionData?.persona == 'buyer'
             "
             (click)="this.updateStatusOfBid(bid, 'cancelled')"
           >

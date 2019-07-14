@@ -1,17 +1,22 @@
+<div class="loading-overlay" *ngIf="this.appServ.isLoading"></div>
 <div class="app-container">
-  <div class="header">
-    <div class="government-logo">
-      <img src="./../../assets/logos/ministry-logo.png" height="64" />
+  <div class="header-container">
+    <div class="header">
+      <div class="government-logo">
+        <img src="./../../assets/logos/ministry-logo.png" height="64" />
+      </div>
+      <div class="app-title">
+        <p class="text--xlarge">India Waste Exchange</p>
+      </div>
+      <div class="ng0-logo">
+        <img src="./../../assets/logos/smart-city-logo.png" height="64" />
+      </div>
     </div>
-    <div class="app-title">
-      <p class="text--xlarge">India Waste Exchange</p>
-    </div>
-    <div class="ng0-logo">
-      <img src="./../../assets/logos/smart-city-logo.png" height="64" />
+    <div class="progress-bar-container">
+      <mat-progress-bar color="primary" *ngIf="this.appServ.isLoading" mode="indeterminate"></mat-progress-bar>
     </div>
   </div>
-
-  <div class="body">
+  <div class="body" [class.app__loading]="this.appServ.isLoading">
     <div class="router-outlet-container">
       <router-outlet></router-outlet>
     </div>

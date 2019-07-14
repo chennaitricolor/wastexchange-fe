@@ -1,7 +1,9 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+
+import { ApiLoaderInterceptor } from "./http-interceptors/api-loader-interceptor";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -14,7 +16,8 @@ import {
   MatButtonModule,
   MatRadioModule,
   MatInputModule,
-  MatDialogModule
+  MatDialogModule,
+  MatProgressBarModule
 } from "@angular/material";
 import { BuyerBidComponent } from "./pages/buyer/buyer-bid/buyer-bid.component";
 import { BuyerBidListComponent } from "./pages/buyer/buyer-bid-list/buyer-bid-list.component";
@@ -25,7 +28,12 @@ import { BidListTableComponent } from "./pages/common/bid-list-table/bid-list-ta
 import { LoginComponent } from "./pages/common/landing/login/login.component";
 import { SignUpComponent } from "./pages/common/landing/sign-up/sign-up.component";
 
-import { AppService, UserSessionDataResolver, AuthGuard } from "./app.service";
+import {
+  AppService,
+  AuthGuard,
+  UserSessionDataResolver,
+  UserDataResolver
+} from "./app.service";
 
 @NgModule({
   declarations: [
@@ -52,12 +60,19 @@ import { AppService, UserSessionDataResolver, AuthGuard } from "./app.service";
     MatRadioModule,
     MatInputModule,
     MatDialogModule,
+    MatProgressBarModule,
     AgmCoreModule.forRoot({
       apiKey: "AIzaSyDSPR8JtXAR1_vnYJHpVZPSLYr5Y6_fgDs"
     })
   ],
   entryComponents: [LoginComponent, SignUpComponent],
-  providers: [AppService, UserSessionDataResolver, AuthGuard],
+  providers: [
+    AppService,
+    AuthGuard,
+    UserSessionDataResolver,
+    UserDataResolver,
+    { provide: HTTP_INTERCEPTORS, useClass: ApiLoaderInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -20,9 +20,14 @@ export class MapComponent implements OnInit {
   ngOnInit() {}
 
   public onMarkerHover(index) {
-    !this.sellers[index].details && this.appServ.getSellerItems(this.sellers[index].id).subscribe((response) => {
-      this.sellers[index].details = this.setDefaultMaterialData(response);
-    })
+    !this.sellers[index].details &&
+      this.appServ
+        .getSellerItems(this.sellers[index].id)
+        .subscribe(response => {
+          this.sellers[index].details = this.setDefaultMaterialData(
+            response || { details: {} }
+          );
+        });
   }
 
   private setDefaultMaterialData(sellerItem) {

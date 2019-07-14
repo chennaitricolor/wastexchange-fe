@@ -29,33 +29,9 @@ export class LoginComponent implements OnInit {
   loginUser() {
     if (this.userEmail && this.userPassword) {
       this.appServ
-        .loginUser({ email: this.userEmail, password: this.userPassword })
-        .subscribe(response => {
-          this.appServ.setSessionData(response);
-          this.appServ.authorizeUser();
-          this.appServ.getMe().subscribe(data => {
-            this.appServ.loggedInUserInfo = data;
-            this.appServ.getAllUsers().subscribe(response => {
-              response.forEach(userDetail => {
-                if (userDetail.userId == this.appServ.loggedInUserInfo["id"]) {
-                  this.appServ.loggedInUserInfo["userDetails"] = userDetail;
-                }
-                switch (userDetail.persona) {
-                  case "seller":
-                    this.appServ.allSellers.push(userDetail);
-                    break;
-
-                  case "buyer":
-                    this.appServ.allBuyers.push(userDetail);
-                    break;
-
-                  default:
-                    break;
-                }
-              });
-              this.closeLoginDialog();
-            });
-          });
+        .loginUser({ loginId: this.userEmail, password: this.userPassword })
+        .then(() => {
+          this.closeLoginDialog();
         });
     }
   }
