@@ -33,6 +33,8 @@ import { PageActionsComponent } from "./shared/components/page-actions/page-acti
 import { BidListTableComponent } from "./pages/common/bid-list-table/bid-list-table.component";
 import { LoginComponent } from "./pages/common/landing/login/login.component";
 import { SignUpComponent } from "./pages/common/landing/sign-up/sign-up.component";
+import { WmMaxDirective } from "./directives/wm-max-validator.directive";
+import { WmMinDirective } from "./directives/wm-min-validator.directive";
 
 import {
   AppService,
@@ -53,7 +55,9 @@ import {
     PageActionsComponent,
     BidListTableComponent,
     LoginComponent,
-    SignUpComponent
+    SignUpComponent,
+    WmMaxDirective,
+    WmMinDirective
   ],
   imports: [
     BrowserModule,

@@ -61,21 +61,23 @@
         <ng-container *ngFor="let material of this.materials | keyvalue">
           <tr *ngIf="this.sellerItem.details[material.key]?.quantity">
             <td class="background--blue">{{ material.value }}</td>
-            <td>{{ this.sellerItem.details[material.key]?.quantity }}</td>
+            <td>{{ this.sellerItem.details[material.key].quantity }}</td>
             <td>
               <input
                 type="number"
                 class="form-control"
                 [(ngModel)]="this.bid.details[material.key].bidQuantity"
-                [attr.max]="this.bid.details[material.key]?.quantity"
+                [wmMax]="this.sellerItem.details[material.key].quantity"
+                (input)="this.calculateTotalBid()"
               />
             </td>
-            <td>{{ this.sellerItem.details[material.key]?.cost }}</td>
+            <td>{{ this.sellerItem.details[material.key].cost }}</td>
             <td>
               <input
                 type="number"
                 class="form-control"
                 [(ngModel)]="this.bid.details[material.key].bidCost"
+                (input)="this.calculateTotalBid()"
               />
             </td>
             <td>
@@ -90,7 +92,9 @@
           <td colspan="5" class="text--right text--blue">
             Total Bid Price (in ₹)
           </td>
-          <td><input type="number" class="form-control" [(ngModel)]="this.bid.totalBid"/></td>
+          <td>
+            {{ this.bid.totalBid }}
+          </td>
         </tr>
       </tbody>
     </table>

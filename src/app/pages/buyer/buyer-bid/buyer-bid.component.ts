@@ -70,6 +70,14 @@ export class BuyerBidComponent implements OnInit {
     });
   }
 
+  public calculateTotalBid() {
+    let sum = 0;
+    Object.keys(this.bid.details).forEach((detail) => {
+      sum += this.bid.details[detail].bidCost * this.bid.details[detail].bidQuantity;
+    })
+    this.bid.totalBid = sum;
+  }
+
   public createOrUpdateBid() {
     let observable = this.bid.id
       ? this.appServ.updateBid(this.bid)
