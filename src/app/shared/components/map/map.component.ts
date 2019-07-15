@@ -11,8 +11,8 @@ export class MapComponent implements OnInit {
   @Input() sellers: any[] = [];
   public materials = MATERIALS;
 
-  lat: number = 12.9801;
-  long: number = 80.218;
+  lat: number = 13.135108;
+  long: number = 80.255417;
   zoom: number = 12;
 
   constructor(public appServ: AppService) {}
@@ -24,6 +24,9 @@ export class MapComponent implements OnInit {
       this.appServ
         .getSellerItems(this.sellers[index].id)
         .subscribe(response => {
+          this.sellers[index].canBidBeRaisedAgainst = !!Object.keys(
+            response.details
+          ).length;
           this.sellers[index].details = this.appServ.setDefaultMaterialData(
             response || { details: {} }
           ).details;

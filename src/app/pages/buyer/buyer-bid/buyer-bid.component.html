@@ -26,7 +26,7 @@
         <input
           class="form-control"
           [(ngModel)]="this.bid.contactName"
-          placeholder="Contact name"
+          placeholder="Contact name *"
         />
       </div>
       <div class="datapicker-field ml-4">
@@ -36,7 +36,7 @@
           class="form-control"
           bsDatepicker
           [(ngModel)]="this.bid.pDateTime"
-          placeholder="Pickup Date"
+          placeholder="Pickup Date *"
         />
       </div>
       <div>
@@ -90,10 +90,10 @@
         </ng-container>
         <tr>
           <td colspan="5" class="text--right text--blue">
-            Total Bid Price (in ₹)
+            Total Bid Price
           </td>
           <td>
-            {{ this.bid.totalBid }}
+            {{ this.bid.totalBid }} (in ₹)
           </td>
         </tr>
       </tbody>

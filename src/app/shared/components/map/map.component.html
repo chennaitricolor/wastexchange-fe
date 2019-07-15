@@ -1,22 +1,26 @@
 <agm-map [latitude]="lat" [longitude]="long" [zoom]="zoom">
-  <agm-marker
-    *ngFor="let seller of this.sellers; let index = index"
-    [latitude]="seller.lat"
-    [longitude]="seller.long"
-    [label]="'S'"
-    (markerClick)="this.onMarkerClick(index)"
+  <agm-marker-cluster
+    imagePath="https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m"
   >
-    <agm-info-window [disableAutoPan]="true">
-      <ng-container *ngIf="seller.details" >
-        <ng-container
-          *ngTemplateOutlet="
-            sellerDetailsTemplate;
-            context: { sellerDetails: seller }
-          "
-        ></ng-container>
-      </ng-container>
-    </agm-info-window>
-  </agm-marker>
+    <agm-marker
+      *ngFor="let seller of this.sellers; let index = index"
+      [latitude]="seller.lat"
+      [longitude]="seller.long"
+      [label]="'S'"
+      (markerClick)="this.onMarkerClick(index)"
+    >
+      <agm-info-window [disableAutoPan]="true">
+        <ng-container *ngIf="seller.details">
+          <ng-container
+            *ngTemplateOutlet="
+              sellerDetailsTemplate;
+              context: { sellerDetails: seller }
+            "
+          ></ng-container>
+        </ng-container>
+      </agm-info-window>
+    </agm-marker>
+  </agm-marker-cluster>
 </agm-map>
 
 <ng-template #sellerDetailsTemplate let-seller="sellerDetails">
@@ -37,7 +41,8 @@
     </tbody>
   </table>
   <div class="actions flex">
-    <button *ngIf="this.appServ.isUserLoggedIn"
+    <button
+      *ngIf="this.appServ.isUserLoggedIn && seller.canBidBeRaisedAgainst"
       mat-flat-button
       color="primary"
       class="rounded-button"

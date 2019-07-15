@@ -20,20 +20,17 @@ export class SellerBidListComponent implements OnInit {
 
   ngOnInit() {
     this.appServ.getBids().subscribe(data => {
-      this.bids = data.filter((bid) => bid.sellerId == this.appServ.loggedInUserInfo['id']);
+      this.bids = data.filter(
+        bid => bid.sellerId == this.appServ.loggedInUserInfo["id"]
+      );
       this.bids.forEach(bid => {
         bid.buyer = this.appServ.allBuyers.filter(
-          buyer => (buyer.id == bid.buyerId)
+          buyer => buyer.id == bid.buyerId
         )[0];
       });
     });
 
-    this.appServ
-      .getSellerItems(this.appServ.loggedInUserInfo["id"])
-      .subscribe(data => {
-        this.sellerItem = data;
-        this.appServ.setDefaultMaterialData(this.sellerItem || { details: {} });
-      });
+    this.getSellerItems();
   }
 
   public updateSellerItem() {
@@ -41,5 +38,14 @@ export class SellerBidListComponent implements OnInit {
       this.sellerItem.details = response.data.details;
       this.isSellerDataEditable = false;
     });
+  }
+
+  public getSellerItems() {
+    this.appServ
+      .getSellerItems(this.appServ.loggedInUserInfo["id"])
+      .subscribe(data => {
+        this.sellerItem = data;
+        this.appServ.setDefaultMaterialData(this.sellerItem || { details: {} });
+      });
   }
 }

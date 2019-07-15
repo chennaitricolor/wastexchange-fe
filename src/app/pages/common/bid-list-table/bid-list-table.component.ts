@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { MATERIALS } from "./../../../app.model";
 import { AppService } from "src/app/app.service";
 @Component({
@@ -8,6 +8,7 @@ import { AppService } from "src/app/app.service";
 })
 export class BidListTableComponent implements OnInit {
   @Input() bids: any[];
+  @Output() bidApproved = new EventEmitter();
 
   public materials = MATERIALS;
 
@@ -21,6 +22,8 @@ export class BidListTableComponent implements OnInit {
     delete bid.seller;
     delete bid.buyer;
     bid.status = status;
-    this.appServ.updateBid(bid).subscribe(data => {});
+    this.appServ.updateBid(bid).subscribe(() => {
+      bid.status == 'approved' && this.bidApproved.emit(bid.sellerId);
+    });
   }
 }

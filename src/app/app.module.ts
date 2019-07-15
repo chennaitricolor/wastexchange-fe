@@ -3,6 +3,8 @@ import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 
+import { environment } from "./../environments/environment";
+
 import { ApiLoaderInterceptor } from "./http-interceptors/api-loader-interceptor";
 
 import { AppRoutingModule } from "./app-routing.module";
@@ -15,7 +17,10 @@ import {
   TimepickerModule,
   BsDatepickerModule
 } from "ngx-bootstrap";
+
 import { AgmCoreModule } from "@agm/core";
+import { AgmJsMarkerClustererModule } from "@agm/js-marker-clusterer";
+
 import { MapComponent } from "./shared/components/map/map.component";
 import {
   MatButtonModule,
@@ -75,8 +80,9 @@ import {
     MatDialogModule,
     MatProgressBarModule,
     AgmCoreModule.forRoot({
-      apiKey: "AIzaSyDSPR8JtXAR1_vnYJHpVZPSLYr5Y6_fgDs"
-    })
+      apiKey: environment.googleMapsApiKey
+    }),
+    AgmJsMarkerClustererModule
   ],
   entryComponents: [LoginComponent, SignUpComponent],
   providers: [

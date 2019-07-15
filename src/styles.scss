@@ -258,8 +258,9 @@ mat-form-field {
   font-size: 13px;
   max-width: 80px;
   text-align: center;
+  text-transform: capitalize;
 
-  &--accepted {
+  &--approved {
     background-color: #e0f5f0;
     color: #007958;
     border: 1px #b4e5d9 solid;
