@@ -63,7 +63,6 @@ export class SignUpComponent implements OnInit {
       .subscribe(response => {
         this.newUserFormGroup.disable();
         this.otpSent = true;
-        console.log(response);
       });
   }
 
@@ -72,7 +71,7 @@ export class SignUpComponent implements OnInit {
     formValues.otp = this.otpValue;
     formValues.persona = "buyer";
     this.appServ.registerUser(formValues).subscribe(response => {
-      console.log(response);
+      this.appServ.openSnackBar("Registered successfully", "DISMISS");
       this.closeSignupDialog();
     });
   }
@@ -83,7 +82,6 @@ export class SignUpComponent implements OnInit {
         lat: position.coords.latitude,
         long: position.coords.longitude
       });
-      console.log(this.newUserFormGroup.getRawValue(), position);
     };
 
     if (navigator.geolocation) {

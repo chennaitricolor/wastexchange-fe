@@ -79,10 +79,12 @@ export class BuyerBidComponent implements OnInit {
   }
 
   public createOrUpdateBid() {
+    let action = this.bid.id ? 'updated' : 'raised';
     let observable = this.bid.id
       ? this.appServ.updateBid(this.bid)
       : this.appServ.createBid(this.bid);
     observable.subscribe(response => {
+      this.appServ.openSnackBar(`Bid ${action} successfully`, "DISMISS");
       this.router.navigate([
         "buyer",
         this.appServ.loggedInUserInfo["id"],

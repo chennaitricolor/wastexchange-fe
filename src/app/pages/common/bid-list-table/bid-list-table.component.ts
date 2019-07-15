@@ -23,6 +23,7 @@ export class BidListTableComponent implements OnInit {
     delete bid.buyer;
     bid.status = status;
     this.appServ.updateBid(bid).subscribe(() => {
+      this.appServ.openSnackBar(`Bid updated successfully`, "DISMISS");
       bid.status == 'approved' && this.bidApproved.emit(bid.sellerId);
     });
   }

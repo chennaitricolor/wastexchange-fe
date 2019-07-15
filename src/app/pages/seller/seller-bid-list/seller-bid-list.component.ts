@@ -37,6 +37,7 @@ export class SellerBidListComponent implements OnInit {
     this.appServ.updateSellerItem(this.sellerItem).subscribe(response => {
       this.sellerItem.details = response.data.details;
       this.isSellerDataEditable = false;
+      this.appServ.openSnackBar(`Inventory updated successfully`, "DISMISS");
     });
   }
 

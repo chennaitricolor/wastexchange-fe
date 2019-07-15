@@ -3,6 +3,7 @@ import { Observable } from "rxjs";
 import { environment } from "./../environments/environment";
 import { HttpClient } from "@angular/common/http";
 import { Bid, SellerItem, Seller, MATERIALS } from "./app.model";
+import { MatSnackBar } from "@angular/material";
 
 @Injectable({
   providedIn: "root"
@@ -17,14 +18,20 @@ export class AppService {
   public isLoading: boolean = false;
   public materials = MATERIALS;
 
-  constructor(private httpClient: HttpClient, private rtr: Router) {}
+  constructor(
+    private httpClient: HttpClient,
+    private rtr: Router,
+    public snackBar: MatSnackBar
+  ) {}
 
   public getBids(): Observable<Bid[]> {
     return this.httpClient.get<Bid[]>(environment.hostName + "/bids");
   }
 
   public getBidsForBuyer(buyerId): Observable<Bid[]> {
-    return this.httpClient.get<Bid[]>(environment.hostName + `/buyer/${buyerId}/bids`);
+    return this.httpClient.get<Bid[]>(
+      environment.hostName + `/buyer/${buyerId}/bids`
+    );
   }
 
   public getSellerItems(sellerId): Observable<SellerItem> {
@@ -143,6 +150,14 @@ export class AppService {
     setTimeout(() => {
       this.isLoading = value;
     }, 0);
+  }
+
+  public openSnackBar(
+    message: string,
+    action: string,
+    duration: number = 100000
+  ) {
+    return this.snackBar.open(message, action, { duration: duration });
   }
 
   //utils

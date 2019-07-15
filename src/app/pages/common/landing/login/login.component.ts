@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
       this.appServ
         .loginUser({ loginId: this.userEmail, password: this.userPassword })
         .then(() => {
+          this.appServ.openSnackBar("Logged in successfully", "DISMISS");
           this.closeLoginDialog();
         });
     }

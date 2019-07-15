@@ -27,7 +27,8 @@ import {
   MatRadioModule,
   MatInputModule,
   MatDialogModule,
-  MatProgressBarModule
+  MatProgressBarModule,
+  MatSnackBarModule
 } from "@angular/material";
 
 import { BuyerBidComponent } from "./pages/buyer/buyer-bid/buyer-bid.component";
@@ -79,6 +80,7 @@ import {
     MatInputModule,
     MatDialogModule,
     MatProgressBarModule,
+    MatSnackBarModule,
     AgmCoreModule.forRoot({
       apiKey: environment.googleMapsApiKey
     }),
