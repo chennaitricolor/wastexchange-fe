@@ -3,11 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --port=4201",
-    "build": "ng build --prod",
+    "start-dev": "ng serve --port 4201 --host 0.0.0.0",
+    "build": "rm -rf dist && ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "start": "node index.js"
   },
   "private": true,
   "dependencies": {
@@ -29,7 +30,8 @@
     "ngx-bootstrap": "^5.1.0",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
-    "zone.js": "~0.8.26"
+    "zone.js": "~0.8.26",
+    "express": "^4.17.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.13.0",
