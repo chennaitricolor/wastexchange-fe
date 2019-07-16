@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start-dev": "ng serve --port 4201 --host 0.0.0.0",
-    "build": "rm -rf dist && ng build --prod",
+    "build": "rm -rf dist && ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",

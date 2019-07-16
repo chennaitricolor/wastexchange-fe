@@ -92,9 +92,7 @@
           <td colspan="5" class="text--right text--blue">
             Total Bid Price
           </td>
-          <td>
-            {{ this.bid.totalBid }} (in ₹)
-          </td>
+          <td>{{ this.bid.totalBid }} (in ₹)</td>
         </tr>
       </tbody>
     </table>
@@ -112,6 +110,9 @@
         color="primary"
         class="rounded-button"
         (click)="this.createOrUpdateBid()"
+        [disabled]="
+          !this.bid.contactName || !this.bid.pDateTime || !this.bid.totalBid
+        "
       >
         Confirm
       </button>

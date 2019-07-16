@@ -1,4 +1,15 @@
-<agm-map [latitude]="lat" [longitude]="long" [zoom]="zoom">
+<agm-map
+  [latitude]="this.appServ.loggedInUserInfo?.lat || lat"
+  [longitude]="this.appServ.loggedInUserInfo?.long || long"
+  [zoom]="zoom"
+>
+  <agm-marker
+    *ngIf="this.appServ.loggedInUserInfo?.persona == 'buyer'"
+    [latitude]="this.appServ.loggedInUserInfo?.lat"
+    [longitude]="this.appServ.loggedInUserInfo?.long"
+    [label]="'B'"
+  >
+  </agm-marker>
   <agm-marker-cluster
     imagePath="https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m"
   >
