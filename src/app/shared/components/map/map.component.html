@@ -1,4 +1,4 @@
-<agm-map *ngIf = "environment.production"
+<agm-map
   [latitude]="this.appServ.loggedInUserInfo?.lat || lat"
   [longitude]="this.appServ.loggedInUserInfo?.long || long"
   [zoom]="zoom"
