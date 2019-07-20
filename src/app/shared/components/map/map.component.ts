@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { AppService } from "src/app/app.service";
 import { MATERIALS } from "./../../../app.model";
+import { environment } from "./../../../../environments/environment";
 
 @Component({
   selector: "wm-map",
@@ -10,6 +11,7 @@ import { MATERIALS } from "./../../../app.model";
 export class MapComponent implements OnInit {
   @Input() sellers: any[] = [];
   public materials = MATERIALS;
+  public environment = environment;
 
   lat: number = 13.135108;
   long: number = 80.255417;
