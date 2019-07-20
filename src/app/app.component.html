@@ -1,27 +1,44 @@
-<div class="loading-overlay" *ngIf="this.appServ.isLoading"></div>
-<div class="app-container">
-  <div class="header-container">
-    <div class="header">
-      <div class="government-logo">
-        <img src="./../../assets/logos/ministry-logo.png" height="64" />
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav [mode]="'over'">
+    <div class="sidenav-menu-container">
+      <wm-sidenav-menu></wm-sidenav-menu>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div class="loading-overlay" *ngIf="this.appServ.isLoading"></div>
+    <div class="app-container">
+      <div class="header-container">
+        <div class="header">
+          <div class="government-logo flex">
+            <!-- <button mat-mini-fab class="mr-2" (click)="drawer.toggle()"> -->
+            <mat-icon color="primary" class="cursor-pointer ml-2" (click)="sidenav.toggle()">apps</mat-icon>
+            <!-- </button> -->
+            <img src="./../../assets/logos/ministry-logo.png" height="64" />
+          </div>
+          <div class="app-title">
+            <p class="text--xlarge">India Waste Exchange</p>
+          </div>
+          <div class="ngo-logo">
+            <img src="./../../assets/logos/smart-city-logo.png" height="64" />
+          </div>
+        </div>
+        <div class="progress-bar-container">
+          <mat-progress-bar
+            color="primary"
+            *ngIf="this.appServ.isLoading"
+            mode="indeterminate"
+          ></mat-progress-bar>
+        </div>
       </div>
-      <div class="app-title">
-        <p class="text--xlarge">India Waste Exchange</p>
+      <div class="body" [class.app__loading]="this.appServ.isLoading">
+        <div class="router-outlet-container">
+          <router-outlet></router-outlet>
+        </div>
+        <div class="page-actions-container" id="page-actions-container">
+          <!-- content will be placed dynamically via Cdk Portal -->
+        </div>
       </div>
-      <div class="ng0-logo">
-        <img src="./../../assets/logos/smart-city-logo.png" height="64" />
-      </div>
     </div>
-    <div class="progress-bar-container">
-      <mat-progress-bar color="primary" *ngIf="this.appServ.isLoading" mode="indeterminate"></mat-progress-bar>
-    </div>
-  </div>
-  <div class="body" [class.app__loading]="this.appServ.isLoading">
-    <div class="router-outlet-container">
-      <router-outlet></router-outlet>
-    </div>
-    <div class="page-actions-container" id="page-actions-container">
-      <!-- content will be placed dynamically via Cdk Portal -->
-    </div>
-  </div>
-</div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

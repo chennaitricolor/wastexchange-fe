@@ -228,6 +228,10 @@ p {
   border-radius: 24px !important;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
 // button {
 //   min-width: 80px !important;
 // }
@@ -251,6 +255,11 @@ mat-form-field {
 
 .mat-simple-snackbar-action .mat-button-wrapper {
   color: #e91e63 !important;
+}
+
+mat-icon {
+  font-family: "Material Icons" !important;
+  color: #000088;
 }
 
 // .mat-progress-bar.mat-accent .mat-progress-bar-fill::after {

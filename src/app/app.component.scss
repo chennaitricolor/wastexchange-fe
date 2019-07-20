@@ -12,6 +12,10 @@
   // opacity: 0.8;
 }
 
+.sidenav-menu-container {
+  width: 300px;
+}
+
 .app-container {
   height: 100vh;
   width: 100vw;
@@ -19,6 +23,7 @@
   .header-container {
     width: 100vw;
     height: 68px;
+    background-color: white;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05), 0 1px 4px rgba(0, 0, 0, 0.15);
 
     .header {

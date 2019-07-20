@@ -155,7 +155,7 @@ export class AppService {
   public openSnackBar(
     message: string,
     action: string,
-    duration: number = 100000
+    duration: number = 5000
   ) {
     return this.snackBar.open(message, action, { duration: duration });
   }

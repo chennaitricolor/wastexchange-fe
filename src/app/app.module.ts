@@ -28,7 +28,10 @@ import {
   MatInputModule,
   MatDialogModule,
   MatProgressBarModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatSidenavModule,
+  MatListModule,
+  MatIconModule
 } from "@angular/material";
 
 import { BuyerBidComponent } from "./pages/buyer/buyer-bid/buyer-bid.component";
@@ -48,6 +51,7 @@ import {
   UserSessionDataResolver,
   UserDataResolver
 } from "./app.service";
+import { SidenavMenuComponent } from './shared/components/sidenav-menu/sidenav-menu.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +67,8 @@ import {
     LoginComponent,
     SignUpComponent,
     WmMaxDirective,
-    WmMinDirective
+    WmMinDirective,
+    SidenavMenuComponent
   ],
   imports: [
     BrowserModule,
@@ -81,6 +86,9 @@ import {
     MatDialogModule,
     MatProgressBarModule,
     MatSnackBarModule,
+    MatSidenavModule,
+    MatListModule,
+    MatIconModule,
     AgmCoreModule.forRoot({
       apiKey: environment.googleMapsApiKey
     }),
