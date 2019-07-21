@@ -34,6 +34,8 @@ import {
   MatIconModule
 } from "@angular/material";
 
+import {LayoutModule} from '@angular/cdk/layout';
+
 import { BuyerBidComponent } from "./pages/buyer/buyer-bid/buyer-bid.component";
 import { BuyerBidListComponent } from "./pages/buyer/buyer-bid-list/buyer-bid-list.component";
 import { SellerBidListComponent } from "./pages/seller/seller-bid-list/seller-bid-list.component";
@@ -89,6 +91,7 @@ import { SidenavMenuComponent } from './shared/components/sidenav-menu/sidenav-m
     MatSidenavModule,
     MatListModule,
     MatIconModule,
+    LayoutModule,
     AgmCoreModule.forRoot({
       apiKey: environment.googleMapsApiKey
     }),
