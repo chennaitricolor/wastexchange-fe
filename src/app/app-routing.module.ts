@@ -5,6 +5,7 @@ import { BuyerBidListComponent } from "./pages/buyer/buyer-bid-list/buyer-bid-li
 import { SellerBidListComponent } from "./pages/seller/seller-bid-list/seller-bid-list.component";
 import { BuyerBrowseComponent } from "./pages/buyer/buyer-browse/buyer-browse.component";
 import { LandingComponent } from "./pages/common/landing/landing.component";
+import { InfoComponent } from "./shared/components/info/info.component";
 import {
   AuthGuard,
   UserSessionDataResolver,
@@ -40,6 +41,10 @@ const routes: Routes = [
     component: SellerBidListComponent,
     resolve: [UserSessionDataResolver, UserDataResolver],
     canActivate: [AuthGuard]
+  },
+  {
+    path: "info/:page",
+    component: InfoComponent
   },
   {
     path: "**",

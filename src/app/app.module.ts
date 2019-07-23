@@ -54,6 +54,7 @@ import {
   UserDataResolver
 } from "./app.service";
 import { SidenavMenuComponent } from './shared/components/sidenav-menu/sidenav-menu.component';
+import { InfoComponent } from './shared/components/info/info.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { SidenavMenuComponent } from './shared/components/sidenav-menu/sidenav-m
     SignUpComponent,
     WmMaxDirective,
     WmMinDirective,
-    SidenavMenuComponent
+    SidenavMenuComponent,
+    InfoComponent
   ],
   imports: [
     BrowserModule,

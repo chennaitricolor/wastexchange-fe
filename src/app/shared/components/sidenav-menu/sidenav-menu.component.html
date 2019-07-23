@@ -1,26 +1,38 @@
-<mat-list>
-  <mat-list-item>
-    <mat-icon matListIcon>home</mat-icon>
-    <p class="primary">Home</p>
-  </mat-list-item>
-  <mat-list-item>
-    <mat-icon matListIcon>info</mat-icon>
-    <p class="primary">About us</p>
-  </mat-list-item>
-  <mat-list-item>
-    <mat-icon matListIcon>help</mat-icon>
-    <p class="primary">How it works</p>
-  </mat-list-item>
-  <mat-list-item>
-    <mat-icon matListIcon>flare</mat-icon>
-    <p class="primary">Acts and rules</p>
-  </mat-list-item>
-  <mat-list-item>
-    <mat-icon matListIcon>photo_album</mat-icon>
-    <p class="primary">Media</p>
-  </mat-list-item>
-  <mat-list-item>
-    <mat-icon matListIcon>forum</mat-icon>
-    <p class="primary">Contact us</p>
-  </mat-list-item>
-</mat-list>
+<mat-nav-list>
+  <ng-container *ngFor="let menu of menuMaster">
+    <ng-container *ngTemplateOutlet="menuItemTemplate; context: { menu: menu }">
+    </ng-container>
+  </ng-container>
+</mat-nav-list>
+
+<ng-template #menuItemTemplate let-menu="menu" let-depth="depth">
+  <a mat-list-item
+    (click)="onMenuSelected(menu)"
+    [ngClass]="{
+      active: menu.link ? router.isActive(menu.link, true) : false,
+      expanded: menu.expanded
+    }"
+    class="menu-list-item"
+  >
+    <mat-icon class="routeIcon">{{ menu.icon }}</mat-icon>
+    {{ menu.name }}
+    <span *ngIf="menu.children && menu.children.length">
+      <mat-icon [@indicatorRotate]="menu.expanded ? 'expanded' : 'collapsed'">
+        expand_more
+      </mat-icon>
+    </span>
+  </a>
+  <div *ngIf="menu.expanded">
+    <ng-container *ngFor="let child of menu.children">
+      <div class="pl-3">
+        <ng-container
+          *ngTemplateOutlet="
+            menuItemTemplate;
+            context: { menu: child, depth: depth + 1 }
+          "
+        >
+        </ng-container>
+      </div>
+    </ng-container>
+  </div>
+</ng-template>

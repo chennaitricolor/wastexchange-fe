@@ -1,0 +1,27 @@
+.info-container {
+  padding: 32px;
+  height: 100%;
+
+  .special-thanks-container img {
+    height: 200px;
+    width: 200px;
+    border-radius: 24px;
+  }
+
+  .our-team-container {
+    padding: 0 180px;
+
+    .our-team-sub-container {
+      margin: 48px 0;
+
+      &.zero-waste-team-container img {
+        height: 200px;
+        min-width: 200px;
+        flex-basis: 250px;
+        border-radius: 24px;
+        margin: 16px;
+        margin-right: 48px;
+      }
+    }
+  }
+}

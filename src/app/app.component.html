@@ -20,10 +20,8 @@
 
 <ng-template #appTemplate>
   <mat-sidenav-container class="sidenav-container">
-    <mat-sidenav #sidenav [mode]="'over'">
-      <div class="sidenav-menu-container">
-        <wm-sidenav-menu></wm-sidenav-menu>
-      </div>
+    <mat-sidenav #sidenav [mode]="'over'" class="sidenav-menu-container no-select">
+        <wm-sidenav-menu (close)="sidenavClose()"></wm-sidenav-menu>
     </mat-sidenav>
 
     <mat-sidenav-content>
@@ -58,10 +56,10 @@
           </div>
         </div>
         <div class="body" [class.app__loading]="this.appServ.isLoading">
-          <div class="router-outlet-container">
+          <div class="router-outlet-container" [class.full-router-outlet-container]="this.router.url.includes('/info/')">
             <router-outlet></router-outlet>
           </div>
-          <div class="page-actions-container" id="page-actions-container">
+          <div *ngIf="!this.router.url.includes('/info/')" class="page-actions-container" id="page-actions-container">
             <!-- content will be placed dynamically via Cdk Portal -->
           </div>
         </div>

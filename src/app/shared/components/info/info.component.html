@@ -1,0 +1,192 @@
+<div class="info-container">
+  <ng-container [ngSwitch]="this.page">
+    <ng-container *ngSwitchCase="'special-thanks'">
+      <ng-container *ngTemplateOutlet="specialThanksTemplate"></ng-container>
+    </ng-container>
+    <ng-container *ngSwitchCase="'our-team'">
+      <ng-container *ngTemplateOutlet="ourTeamTemplate"></ng-container>
+    </ng-container>
+  </ng-container>
+</div>
+
+<ng-template #ourTeamTemplate>
+  <div class="our-team-container">
+    <div class="our-team-info-container">
+      <div class="our-team-sub-container text--center mt-0">
+        <h3 class="text--blue">Our team</h3>
+        <img
+          src="./../../../../assets/info/our-team/our-team-main.png"
+          width="400px"
+          alt=""
+        />
+      </div>
+      <hr />
+      <div class="our-team-sub-container text--center">
+        <h4 class="text--blue">India Smart City Fellowship</h4>
+
+        <div class="video-container m-4">
+          <iframe
+            width="100%"
+            height="600px"
+            src="https://www.youtube.com/embed/6xZsFgcb974"
+          >
+          </iframe>
+        </div>
+        <p class="m-4 text--large text--bold">
+          “Smart Cities Fellows bring passion and energy to the tough but
+          exciting work of implementing cutting edge, high-impact solutions to
+          key urban problems”
+        </p>
+
+        <p>
+          The Smart Cities Mission, launched by the Hon’ble Prime Minister of
+          India, Shri. Narendra Modi in June 2015, is an innovative approach to
+          augment cities capacity with features that all citizens aspire for. It
+          is an opportunity to drive economic growth and improve the quality of
+          life of people by harnessing technology as a means to create smart
+          solutions for citizens. As of 2019, 100 cities have been selected
+          under the Mission to act as lighthouses of development. The Mission
+          being citizen centric, intends to involve citizens at all levels.
+          Young professionals being an integral part of society and thought
+          leaders of tomorrow have been brought to the forefront through the
+          India Smart Cities Fellowship (ISCF) Program to innovate and work with
+          the Government to accelerate development and help create a better
+          India.
+        </p>
+        <a href="https://smartnet.niua.org/iscfip/">More Info</a>
+      </div>
+      <hr />
+      <div class="our-team-sub-container zero-waste-team-container">
+        <h4 class="text--blue text--center">Zero waste team</h4>
+        <div class="flex">
+          <img src="./../../../../assets/info/our-team/azhagu.png" alt="" />
+          <p>
+            Azhagu Pandia Raja M.P is an engineering graduate from K.L.N
+            College, Anna University with specialization in Information
+            Technology. Azhagu has a Master’s in International Relations from
+            UOM, Chennai. He has previously worked in geospatial and hazard
+            mapping insurance projects with RBS, United Kingdom. He also worked
+            as a life skill trainer with UNICEF. He is one of the Founder and
+            Chief Executive Officer of India Waste Exchange for Chennai Region.
+          </p>
+        </div>
+        <div class="flex">
+          <img src="./../../../../assets/info/our-team/jismi.png" alt="" />
+          <p>
+            Jismi Varghese is an Architect and an Urban Planner. She graduated
+            from Mumbai University and acquired a post graduate degree from BIT,
+            Mesra. She interned with CIDCO (NAINA), where she worked on the
+            NAINA City Development Plan, 2034. She is one of the founder of
+            India waste Exchange.
+          </p>
+        </div>
+        <div class="flex">
+          <img src="./../../../../assets/info/our-team/pinky.png" alt="" />
+          <p>
+            Pinky Taneja having a Ph.D. (Sciences) degree from AcSIR,
+            CSIR-National Environmental and Engineering Research Institute is a
+            specialist in the field of environmental science. She has research
+            experience of in diverse aspects of environmental science as
+            hyperspectral imaging through ENVI software, organic farming for
+            improving wheat growth and effective removal of nitrate from
+            groundwater. She is one of the founder of India waste Exchange.
+          </p>
+        </div>
+      </div>
+      <hr />
+      <div class="our-team-sub-container text--center">
+        <h4 class="text--blue">Smart city mission</h4>
+        <img
+          class="m-4"
+          src="./../../../../assets/info/our-team/smart-city.png"
+          alt=""
+        />
+        <p>
+          The Government of India has launched the Smart Cities Mission on 25
+          June 2015. The objective is to promote sustainable and inclusive
+          cities that provide core infrastructure and give a decent quality of
+          life to its citizens, a clean and sustainable environment and
+          application of ‘Smart’ Solutions. The focus is on sustainable and
+          inclusive development and the idea is to look at compact areas, create
+          a replicable model which will act like a lighthouse to other aspiring
+          cities. The Smart Cities Mission is meant to set examples that can be
+          replicated both within and outside the Smart City, catalyzing the
+          creation of similar Smart Cities in various regions and parts of the
+          country.
+        </p>
+      </div>
+      <hr />
+      <div class="our-team-sub-container text--center">
+        <h4 class="text--blue">MOHUA</h4>
+        <img
+          class="m-4"
+          src="./../../../../assets/info/our-team/ministry-building.png"
+          alt=""
+        />
+        <p>
+          The Ministry of Housing and Urban Affairs is the apex authority of
+          Government of India at the national level to formulate policies,
+          sponsor and support programme, coordinate the activities of various
+          Central Ministries, State Governments and other nodal authorities and
+          monitor the programmes concerning all the issues of housing and urban
+          affairs in the country. The Ministry of Housing and Urban Affairs is
+          headed by Shri Hardeep Singh Puri, Hon’ble Minister of State (I/C) for
+          Housing and Urban Affairs. At the bureaucratic level, the Ministry is
+          headed by Secretary, Shri Durga Shanker Mishra, IAS .
+        </p>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #specialThanksTemplate>
+  <div class="special-thanks-container">
+    <h3 class="text--center text--blue">Special Thanks</h3>
+    <div class="flex space-evenly mt-4">
+      <div class="member-container flex direction-column">
+        <img
+          src="./../../../../assets/info/special-thanks/commissioner.png"
+          alt=""
+        />
+        <div class="member-details-container flex direction-column mt-2">
+          <p class="text--normal text--blue">Mr G Prakash I.A.S</p>
+          <p class="text--medium">Commissioner</p>
+          <p class="text--medium">Greater Chennai Corporation</p>
+        </div>
+      </div>
+      <div class="member-container flex direction-column">
+        <img
+          src="./../../../../assets/info/special-thanks/deputy-commissioner.png"
+          alt=""
+        />
+        <div class="member-details-container flex direction-column mt-2">
+          <p class="text--normal text--blue">Mr Madhusudhan Reddy I.A.S</p>
+          <p class="text--medium">Deputy Commissioner</p>
+          <p class="text--medium">Greater Chennai Corporation</p>
+        </div>
+      </div>
+      <div class="member-container flex direction-column">
+        <img
+          src="./../../../../assets/info/special-thanks/smart-city-ceo.png"
+          alt=""
+        />
+        <div class="member-details-container flex direction-column mt-2">
+          <p class="text--normal text--blue">Mr Raj Cherupal</p>
+          <p class="text--medium">SMART CITY CEO</p>
+          <p class="text--medium">Chennai</p>
+        </div>
+      </div>
+      <div class="member-container flex direction-column">
+        <img
+          src="./../../../../assets/info/special-thanks/chief-engineer.png"
+          alt=""
+        />
+        <div class="member-details-container flex direction-column mt-2">
+          <p class="text--normal text--blue">Mr Mahesh</p>
+          <p class="text--medium">Chief Engineer</p>
+          <p class="text--medium">Greater Chennai Corporation</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
