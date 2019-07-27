@@ -3,7 +3,9 @@
     class="info-container"
     [style.background-color]="
       this.appServ.isUserLoggedIn &&
-      this.appServ.loggedInUserInfo?.persona == 'seller'
+      this.appServ.loggedInUserInfo?.persona == 'admin'
+        ? '#efd7d7'
+        : this.appServ.loggedInUserInfo?.persona == 'seller'
         ? '#FFD6C7'
         : '#a1ebeb'
     "
@@ -26,7 +28,9 @@
       *ngIf="user"
       [style.background-color]="
         this.appServ.isUserLoggedIn &&
-        this.appServ.loggedInUserInfo?.persona == 'seller'
+        this.appServ.loggedInUserInfo?.persona == 'admin'
+          ? '#e16262'
+          : this.appServ.loggedInUserInfo?.persona == 'seller'
           ? '#EB5821'
           : '#08b5ae'
       "
@@ -35,7 +39,9 @@
         <img
           [attr.src]="
             this.appServ.isUserLoggedIn &&
-            this.appServ.loggedInUserInfo?.persona == 'seller'
+            this.appServ.loggedInUserInfo?.persona == 'admin'
+              ? './../../../../assets/images/admin-dummy-dp.png'
+              : this.appServ.loggedInUserInfo?.persona == 'seller'
               ? './../../../../assets/images/seller-dummy-dp.png'
               : './../../../../assets/images/buyer-dummy-dp.png'
           "
@@ -51,9 +57,7 @@
           <p class="text--normal mt-2">
             <span>{{ this.appServ.loggedInUserInfo.address }}</span>
             <span>, {{ this.appServ.loggedInUserInfo.city }}</span>
-            <span>
-              - {{ this.appServ.loggedInUserInfo.pinCode }}.</span
-            >
+            <span> - {{ this.appServ.loggedInUserInfo.pinCode }}.</span>
             <span> {{ this.appServ.loggedInUserInfo.mobNo }}</span>
           </p>
         </div>

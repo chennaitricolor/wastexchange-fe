@@ -14,7 +14,7 @@
   </div>
 </div>
 
-<wm-page-actions [user]="this.buyer">
+<wm-page-actions [user]="this.appServ.loggedInUserInfo">
   <div class="seller-details-template">
     <ng-container *ngTemplateOutlet="sellerDetailsTemplate"></ng-container>
   </div>

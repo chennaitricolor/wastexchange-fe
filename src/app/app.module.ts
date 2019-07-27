@@ -46,6 +46,7 @@ import { WmMinDirective } from './directives/wm-min-validator.directive';
 import { AppService, AuthGuard, UserSessionDataResolver, UserDataResolver } from './app.service';
 import { SidenavMenuComponent } from './shared/components/sidenav-menu/sidenav-menu.component';
 import { InfoComponent } from './shared/components/info/info.component';
+import { SellerListComponent } from './pages/admin/seller-list/seller-list.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { InfoComponent } from './shared/components/info/info.component';
     WmMaxDirective,
     WmMinDirective,
     SidenavMenuComponent,
-    InfoComponent
+    InfoComponent,
+    SellerListComponent
   ],
   imports: [
     BrowserModule,
