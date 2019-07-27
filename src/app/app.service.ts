@@ -69,6 +69,17 @@ export class AppService {
     return this.httpClient.get<any[]>(environment.hostName + "/users");
   }
 
+  public getAllUsersAndFilter(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.getAllUsers().subscribe(response => {
+        this.allUsers = response;
+        this.allBuyers = response.filter(user => user.persona == "buyer");
+        this.allSellers = response.filter(user => user.persona == "seller");
+        resolve(true);
+      });
+    });
+  }
+
   public sendOtp(payload: any): Observable<any> {
     return this.httpClient.post<any>(
       environment.hostName + "/users/sendOtp",
@@ -91,7 +102,9 @@ export class AppService {
           this.setSessionData(response);
           this.getMe().subscribe(response => {
             this.loggedInUserInfo = response;
-            resolve(true);
+            this.getAllUsersAndFilter().then(() => {
+              resolve(true);
+            });
           });
         });
     });
@@ -219,14 +232,7 @@ export class UserDataResolver implements Resolve<any> {
     return new Promise((resolve, reject) => {
       this.appServ.allUsers.length
         ? resolve(true)
-        : this.appServ.getAllUsers().subscribe(response => {
-            this.appServ.allUsers = response;
-            this.appServ.allBuyers = response.filter(
-              user => user.persona == "buyer"
-            );
-            this.appServ.allSellers = response.filter(
-              user => user.persona == "seller"
-            );
+        : this.appServ.getAllUsersAndFilter().then(() => {
             resolve(true);
           });
     });
