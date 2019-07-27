@@ -4,7 +4,8 @@ import {
   HttpInterceptor,
   HttpHandler,
   HttpRequest,
-  HttpResponse
+  HttpResponse,
+  HttpHeaders
 } from "@angular/common/http";
 
 import { Observable } from "rxjs";
@@ -23,7 +24,16 @@ export class ApiLoaderInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     this.totalRequests++;
     this.appServ.setLoading(true);
-    return next.handle(request).pipe(
+
+    const authReq = this.appServ.isUserLoggedIn
+      ? request.clone({
+          headers: new HttpHeaders({
+            "x-access-token": this.appServ.getSessionValue("token")
+          })
+        })
+      : request;
+
+    return next.handle(authReq).pipe(
       tap(res => {
         if (res instanceof HttpResponse) {
           this.decreaseRequests();

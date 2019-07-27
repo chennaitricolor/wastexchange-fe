@@ -98,10 +98,7 @@ export class AppService {
   }
 
   public getMe(): Observable<any> {
-    let headers = { "x-access-token": this.getSessionValue("token") };
-    return this.httpClient.get<any>(environment.hostName + "/users/me", {
-      headers
-    });
+    return this.httpClient.get<any>(environment.hostName + "/users/me");
   }
 
   public authorizeUser(): boolean {
