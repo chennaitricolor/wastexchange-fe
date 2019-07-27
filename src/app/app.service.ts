@@ -17,6 +17,7 @@ export class AppService {
   public allUsers: any[] = [];
   public isLoading: boolean = false;
   public materials = MATERIALS;
+  public hidePageActions: boolean = false;
 
   constructor(
     private httpClient: HttpClient,
