@@ -14,13 +14,16 @@
       <ng-container *ngIf="this.bids.length">
         <tr *ngFor="let bid of this.bids">
           <td class="text--left background--blue ">
-            <ng-container *ngIf="this.appServ.loggedInUserInfo?.persona == 'seller'" class="text--left">
-              <p class="text--blue text--normal">{{ bid.buyer?.name }}</p>
+            <ng-container
+              *ngIf="this.appServ.loggedInUserInfo?.persona == 'seller' || this.appServ.loggedInUserInfo?.persona == 'admin'"
+              class="text--left"
+            >
+              <p class="text--blue text--normal text--trim--200">{{ bid.buyer?.name }}</p>
               <p class="text--medium">{{ bid.buyer?.address }}</p>
               <p class="text--medium">{{ bid.buyer?.mobNo }}</p>
             </ng-container>
             <ng-container *ngIf="this.appServ.loggedInUserInfo?.persona == 'buyer'" class="text--left">
-              <p class="text--blue text--normal">{{ bid.seller?.name }}</p>
+              <p class="text--blue text--normal text--trim--200">{{ bid.seller?.name }}</p>
               <p class="text--medium">{{ bid.seller?.address }}</p>
               <p class="text--medium">{{ bid.seller?.mobNo }}</p>
             </ng-container>
@@ -58,7 +61,10 @@
                 mat-flat-button
                 color="primary"
                 class="rounded-button mb-2"
-                *ngIf="this.appServ.isUserLoggedIn && this.appServ.loggedInUserInfo?.persona == 'seller'"
+                *ngIf="
+                  this.appServ.isUserLoggedIn &&
+                  (this.appServ.loggedInUserInfo?.persona == 'seller' || this.appServ.loggedInUserInfo?.persona == 'admin')
+                "
                 (click)="this.updateStatusOfBid(bid, 'approved')"
               >
                 Approve
@@ -67,7 +73,10 @@
                 mat-stroked-button
                 color="primary"
                 class="rounded-button mb-2"
-                *ngIf="this.appServ.isUserLoggedIn && this.appServ.loggedInUserInfo?.persona == 'seller'"
+                *ngIf="
+                  this.appServ.isUserLoggedIn &&
+                  (this.appServ.loggedInUserInfo?.persona == 'seller' || this.appServ.loggedInUserInfo?.persona == 'admin')
+                "
                 (click)="this.updateStatusOfBid(bid, 'denied')"
               >
                 Deny

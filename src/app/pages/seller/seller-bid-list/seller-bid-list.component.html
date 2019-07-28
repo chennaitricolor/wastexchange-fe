@@ -59,8 +59,8 @@
       {{ this.isSellerDataEditable ? 'Update data' : 'Edit' }}
     </button>
   </div>
-  <hr />
-  <div class="text--center mt-4" *ngIf="this.appServ.loggedInUserInfo?.persona == 'admin'">
+  <div class="text--center mt-2" *ngIf="this.appServ.loggedInUserInfo?.persona == 'admin'">
+    <hr />
     <button mat-flat-button color="primary" class="rounded-button mr-2" [routerLink]="['/admin', 'seller-list']">
       View all sellers
     </button>
