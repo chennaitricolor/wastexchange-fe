@@ -1,6 +1,6 @@
 <wm-map [sellers]="this.appServ.allSellers"></wm-map>
 
-<wm-page-actions [user]="this.buyer">
+<wm-page-actions [user]="this.appServ.loggedInUserInfo">
   <div class="browse-by-container">
     <mat-radio-group [(ngModel)]="browseBy">
       <mat-radio-button color="primary" [value]="'bySeller'">

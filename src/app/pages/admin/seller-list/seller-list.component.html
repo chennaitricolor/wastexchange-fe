@@ -1,16 +1,23 @@
 <div class="seller-list-container">
-  <h4 class="text--blue text--center">Seller list</h4>
+  <div class="flex space-between">
+    <h4 class="text--blue text--center">Seller list</h4>
+    <mat-form-field class="search-seller-input">
+      <mat-label>Search Sellers</mat-label>
+      <input matInput [(ngModel)]="this.searchText" />
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+  </div>
   <table class="table mt-2">
     <thead>
       <tr>
         <th scope="col">Seller name</th>
-        <th scope="col">Email id</th>
+        <th scope="col">Login id</th>
         <th scope="col">Mobile no.</th>
         <th scope="col">Actions</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let seller of this.appServ.allSellers">
+      <tr *ngFor="let seller of this.appServ.allSellers | filter: searchText">
         <td>{{ seller.name }}</td>
         <td>{{ seller.emailId }}</td>
         <td>{{ seller.mobNo }}</td>

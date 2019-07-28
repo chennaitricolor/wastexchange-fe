@@ -14,7 +14,7 @@
   </div>
 </div>
 
-<wm-page-actions [user]="this.appServ.loggedInUserInfo">
+<wm-page-actions [user]="this.seller">
   <div class="seller-details-template">
     <ng-container *ngTemplateOutlet="sellerDetailsTemplate"></ng-container>
   </div>
@@ -50,6 +50,15 @@
   </table>
   <div class="actions flex justify-end">
     <button
+      *ngIf="this.isSellerDataEditable"
+      mat-flat-button
+      color="accent"
+      class="rounded-button mr-2"
+      (click)="this.isSellerDataEditable = false"
+    >
+      Cancel
+    </button>
+    <button
       mat-flat-button
       color="primary"
       class="rounded-button"
@@ -59,7 +68,21 @@
           : (this.isSellerDataEditable = true)
       "
     >
-      {{ isSellerDataEditable ? "Update data" : "Edit" }}
+      {{ this.isSellerDataEditable ? "Update data" : "Edit" }}
+    </button>
+  </div>
+  <hr />
+  <div
+    class="text--center mt-4"
+    *ngIf="this.appServ.loggedInUserInfo?.persona == 'admin'"
+  >
+    <button
+      mat-flat-button
+      color="primary"
+      class="rounded-button mr-2"
+      [routerLink]="['/admin', 'seller-list']"
+    >
+      View all sellers
     </button>
   </div>
 </ng-template>

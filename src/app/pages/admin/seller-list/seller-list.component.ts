@@ -7,5 +7,6 @@ import { AppService } from 'src/app/app.service';
   styleUrls: ['./seller-list.component.scss']
 })
 export class SellerListComponent {
+  public searchText: string;
   constructor(public appServ: AppService) {}
 }
