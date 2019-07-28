@@ -1,0 +1,17 @@
+/** Generic component styles go here**/
+
+@import "./material.scss";
+@import "./ngx-bootstrap.scss";
+
+.table th {
+  color: #000088;
+  font-weight: normal;
+}
+
+.rounded-button {
+  border-radius: 24px !important;
+}
+
+// button {
+//   min-width: 80px !important;
+// }

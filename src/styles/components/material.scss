@@ -1,0 +1,22 @@
+/** Style override for material angular components go here **/
+
+.mat-form-field-wrapper {
+  margin: 0 !important;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.mat-simple-snackbar-action .mat-button-wrapper {
+  color: #e91e63 !important;
+}
+
+mat-icon {
+  font-family: "Material Icons" !important;
+  color: #000088;
+}
+
+// .mat-progress-bar.mat-accent .mat-progress-bar-fill::after {
+//   background-color: #eb5821e0;
+// }

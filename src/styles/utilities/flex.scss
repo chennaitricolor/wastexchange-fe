@@ -1,0 +1,31 @@
+/** Styles for flex layout goes here**/
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.justify-start {
+  justify-content: flex-start;
+}
+
+.align-start {
+  align-items: flex-start;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.space-evenly {
+  justify-content: space-evenly;
+}
+
+.direction-column {
+  flex-direction: column;
+}

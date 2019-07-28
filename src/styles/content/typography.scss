@@ -1,0 +1,107 @@
+/** Global styles for typography goes here */
+
+h1,
+h3 {
+  color: $app-primary;
+}
+
+p {
+  margin: 0;
+}
+
+.text {
+  &--gray {
+    color: #838383;
+  }
+
+  &--primary {
+    color: $app-primary;
+  }
+
+  &--small {
+    font-size: 10px;
+  }
+
+  &--medium {
+    font-size: 12px;
+  }
+
+  &--normal {
+    font-size: 16px;
+  }
+
+  &--large {
+    font-size: 20px;
+  }
+
+  &--largesecondary {
+    font-size: 24px;
+  }
+
+  &--xlarge {
+    font-size: 28px;
+  }
+
+  &--center {
+    text-align: center;
+  }
+
+  &--left {
+    text-align: left !important;
+  }
+
+  &--right {
+    text-align: right !important;
+  }
+
+  &--orange {
+    color: #eb5821e0;
+  }
+
+  &--green {
+    color: #08b5ae;
+  }
+
+  &--blue {
+    color: #000088;
+  }
+
+  &--right {
+    text-align: right;
+  }
+
+  &--bold {
+    font-weight: bold;
+  }
+}
+
+.background--blue {
+  background-color: #f5fcfe;
+}
+
+.tag {
+  border-radius: 4px;
+  padding: 2px 10px;
+  font-size: 13px;
+  max-width: 80px;
+  text-align: center;
+  text-transform: capitalize;
+
+  &--approved {
+    background-color: #e0f5f0;
+    color: #007958;
+    border: 1px #b4e5d9 solid;
+  }
+
+  &--denied {
+    background-color: #ffecf0;
+    color: #c82124;
+    border: 1px #ffd0d6 solid;
+  }
+
+  &--cancelled {
+    background-color: #ebeff3;
+    color: #384551;
+    border: 1px #ebeff3 solid;
+  }
+}
