@@ -151,6 +151,10 @@ p {
     font-size: 28px;
   }
 
+  &--trim--200 {
+    max-width: 200px;
+  }
+
   &--center {
     text-align: center;
   }
@@ -231,9 +235,9 @@ p {
   cursor: pointer;
 }
 
-// button {
-//   min-width: 80px !important;
-// }
+button {
+  min-height: 36px !important;
+}
 
 .mat-form-field-wrapper {
   margin: 0 !important;

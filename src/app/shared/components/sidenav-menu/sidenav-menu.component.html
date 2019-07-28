@@ -1,12 +1,12 @@
 <mat-nav-list>
   <ng-container *ngFor="let menu of menuMaster">
-    <ng-container *ngTemplateOutlet="menuItemTemplate; context: { menu: menu }">
-    </ng-container>
+    <ng-container *ngTemplateOutlet="menuItemTemplate; context: { menu: menu }"> </ng-container>
   </ng-container>
 </mat-nav-list>
 
 <ng-template #menuItemTemplate let-menu="menu" let-depth="depth">
-  <a mat-list-item
+  <a
+    mat-list-item
     (click)="onMenuSelected(menu)"
     [ngClass]="{
       active: menu.link ? router.isActive(menu.link, true) : false,
@@ -25,13 +25,7 @@
   <div *ngIf="menu.expanded">
     <ng-container *ngFor="let child of menu.children">
       <div class="pl-3">
-        <ng-container
-          *ngTemplateOutlet="
-            menuItemTemplate;
-            context: { menu: child, depth: depth + 1 }
-          "
-        >
-        </ng-container>
+        <ng-container *ngTemplateOutlet="menuItemTemplate; context: { menu: child, depth: depth + 1 }"> </ng-container>
       </div>
     </ng-container>
   </div>

@@ -17,6 +17,7 @@ export class AppService {
   public allUsers: any[] = [];
   public isLoading: boolean = false;
   public materials = MATERIALS;
+  public hidePageActions: boolean = false;
 
   constructor(private httpClient: HttpClient, private rtr: Router, public snackBar: MatSnackBar) {}
 
@@ -26,6 +27,10 @@ export class AppService {
 
   public getBidsForBuyer(buyerId): Observable<Bid[]> {
     return this.httpClient.get<Bid[]>(environment.hostName + `/buyer/${buyerId}/bids`);
+  }
+
+  public getBidsForSeller(sellerId): Observable<Bid[]> {
+    return this.httpClient.get<Bid[]>(environment.hostName + `/seller/${sellerId}/bids`);
   }
 
   public getSellerItems(sellerId): Observable<SellerItem> {

@@ -50,8 +50,7 @@
 
   <div class="otp-container" *ngIf="this.otpSent">
     <p class="text--blue text--medium mb-1 text--center">
-      We have sent an OTP to the entered email and mobile. Type in the OTP to
-      complete the registration
+      We have sent an OTP to the entered email and mobile. Type in the OTP to complete the registration
     </p>
     <mat-form-field>
       <mat-label>Enter your otp</mat-label>
@@ -66,12 +65,7 @@
   </div>
 
   <div class="actions flex justify-end">
-    <button
-      mat-stroked-button
-      color="primary"
-      class="rounded-button mr-2"
-      (click)="onCancel()"
-    >
+    <button mat-stroked-button color="primary" class="rounded-button mr-2" (click)="onCancel()">
       Cancel
     </button>
     <button

@@ -3,8 +3,7 @@
     Current Bids
   </p>
   <p class="text--normal text--gray">
-    Bids not accepted before 18hrs of pick-up time will be automatically
-    cancelled.
+    Bids not accepted before 18hrs of pick-up time will be automatically cancelled.
   </p>
   <div class="bid-list-table-container mt-4">
     <wm-bid-list-table [bids]="this.bids"></wm-bid-list-table>
@@ -13,12 +12,7 @@
 
 <wm-page-actions [user]="this.appServ.loggedInUserInfo">
   <div class="actions flex mt-4">
-    <button
-      mat-flat-button
-      color="primary"
-      class="rounded-button"
-      [routerLink]="['/buyer', this.appServ.loggedInUserInfo.id, 'browse']"
-    >
+    <button mat-flat-button color="primary" class="rounded-button" [routerLink]="['/buyer', this.appServ.loggedInUserInfo.id, 'browse']">
       Browse and Bid
     </button>
   </div>

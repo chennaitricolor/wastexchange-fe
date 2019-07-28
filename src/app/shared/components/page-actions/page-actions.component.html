@@ -1,21 +1,8 @@
 <ng-template #pageActions>
-  <div
-    class="info-container"
-    [style.background-color]="
-      this.appServ.isUserLoggedIn &&
-      this.appServ.loggedInUserInfo?.persona == 'seller'
-        ? '#FFD6C7'
-        : '#a1ebeb'
-    "
-  >
+  <div class="info-container" [style.background-color]="this.appServ.isUserLoggedIn && this.secondaryColors[(this.user?.persona)]">
     <div class="edit-profile-details flex justify-end" *ngIf="user">
       <div class="actions">
-        <button
-          mat-stroked-button
-          color="primary"
-          class="rounded-button"
-          (click)="this.appServ.forceLogoutUser()"
-        >
+        <button mat-stroked-button color="primary" class="rounded-button" (click)="this.appServ.forceLogoutUser()">
           Logout
         </button>
       </div>
@@ -24,37 +11,25 @@
     <div
       class="user-details"
       *ngIf="user"
-      [style.background-color]="
-        this.appServ.isUserLoggedIn &&
-        this.appServ.loggedInUserInfo?.persona == 'seller'
-          ? '#EB5821'
-          : '#08b5ae'
-      "
+      [style.background-color]="this.appServ.isUserLoggedIn && this.primaryColors[(this.user?.persona)]"
     >
       <div class="display-picture">
         <img
-          [attr.src]="
-            this.appServ.isUserLoggedIn &&
-            this.appServ.loggedInUserInfo?.persona == 'seller'
-              ? './../../../../assets/images/seller-dummy-dp.png'
-              : './../../../../assets/images/buyer-dummy-dp.png'
-          "
+          [attr.src]="this.appServ.isUserLoggedIn && './../../../../assets/images/' + this.user?.persona + '-dummy-dp.png'"
           alt="Display picture"
           height="88"
         />
       </div>
       <div class="user-basic-info flex space-between align-start">
         <div class="address">
-          <p class="text--largesecondary">
-            {{ this.appServ.loggedInUserInfo.name }}
+          <p class="text--large">
+            {{ this.user.name }}
           </p>
           <p class="text--normal mt-2">
-            <span>{{ this.appServ.loggedInUserInfo.address }}</span>
-            <span>, {{ this.appServ.loggedInUserInfo.city }}</span>
-            <span>
-              - {{ this.appServ.loggedInUserInfo.pinCode }}.</span
-            >
-            <span> {{ this.appServ.loggedInUserInfo.mobNo }}</span>
+            <span>{{ this.user.address }}</span>
+            <span>, {{ this.user.city }}</span>
+            <span> - {{ this.user.pinCode }}.</span>
+            <span> {{ this.user.mobNo }}</span>
           </p>
         </div>
         <div class="user-logout">

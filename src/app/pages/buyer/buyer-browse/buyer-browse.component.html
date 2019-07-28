@@ -1,6 +1,6 @@
 <wm-map [sellers]="this.appServ.allSellers"></wm-map>
 
-<wm-page-actions [user]="this.buyer">
+<wm-page-actions [user]="this.appServ.loggedInUserInfo">
   <div class="browse-by-container">
     <mat-radio-group [(ngModel)]="browseBy">
       <mat-radio-button color="primary" [value]="'bySeller'">
@@ -8,12 +8,7 @@
         <p>Rollover seller locations on map to</p>
         <p>see materials they have for sale.</p>
       </mat-radio-button>
-      <mat-radio-button
-        color="primary"
-        [disabled]="true"
-        [value]="'byMaterial'"
-        class="mt-4"
-      >
+      <mat-radio-button color="primary" [disabled]="true" [value]="'byMaterial'" class="mt-4">
         <p class="text--large">Browse materials</p>
         <p>Searching for a specific material?</p>
         <p>We’ll show your best path.</p>
@@ -21,12 +16,7 @@
     </mat-radio-group>
   </div>
   <div class="actions flex mt-4">
-    <button
-      mat-flat-button
-      color="primary"
-      class="rounded-button"
-      [routerLink]="['/buyer', this.appServ.loggedInUserInfo.id, 'bid-list']"
-    >
+    <button mat-flat-button color="primary" class="rounded-button" [routerLink]="['/buyer', this.appServ.loggedInUserInfo.id, 'bid-list']">
       View Pending Bids
     </button>
   </div>

@@ -1,33 +1,22 @@
-<agm-map
-  [latitude]="this.appServ.loggedInUserInfo?.lat || lat"
-  [longitude]="this.appServ.loggedInUserInfo?.long || long"
-  [zoom]="zoom"
->
+<agm-map [latitude]="this.appServ.loggedInUserInfo?.lat || lat" [longitude]="this.appServ.loggedInUserInfo?.long || long" [zoom]="zoom">
   <agm-marker
     *ngIf="this.appServ.loggedInUserInfo?.persona == 'buyer'"
     [latitude]="this.appServ.loggedInUserInfo?.lat"
     [longitude]="this.appServ.loggedInUserInfo?.long"
-    [label]="'B'"
+    [iconUrl]="'https://maps.google.com/mapfiles/ms/icons/green-dot.png'"
   >
   </agm-marker>
-  <agm-marker-cluster
-    imagePath="https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m"
-  >
+  <agm-marker-cluster imagePath="https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m">
     <agm-marker
       *ngFor="let seller of this.sellers; let index = index"
       [latitude]="seller.lat"
       [longitude]="seller.long"
-      [label]="'S'"
       (markerClick)="this.onMarkerClick(index)"
+      [iconUrl]="'https://maps.google.com/mapfiles/ms/icons/orange-dot.png'"
     >
       <agm-info-window [disableAutoPan]="true">
         <ng-container *ngIf="seller.details">
-          <ng-container
-            *ngTemplateOutlet="
-              sellerDetailsTemplate;
-              context: { sellerDetails: seller }
-            "
-          ></ng-container>
+          <ng-container *ngTemplateOutlet="sellerDetailsTemplate; context: { sellerDetails: seller }"></ng-container>
         </ng-container>
       </agm-info-window>
     </agm-marker>
