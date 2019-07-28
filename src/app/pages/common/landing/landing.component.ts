@@ -1,9 +1,9 @@
-import { Component, OnInit } from "@angular/core";
-import { MatDialog } from "@angular/material/dialog";
-import { LoginComponent } from "./login/login.component";
-import { SignUpComponent } from "./sign-up/sign-up.component";
-import { AppService } from "app/app.service";
-import { Router } from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { LoginComponent } from './login/login.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { AppService } from 'app/app.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'wm-landing',

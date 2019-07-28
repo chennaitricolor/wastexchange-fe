@@ -1,7 +1,7 @@
-import { Component, OnInit, Input } from "@angular/core";
-import { AppService } from "app/app.service";
-import { MATERIALS } from "app/app.model";
-import { environment } from "environments/environment";
+import { Component, OnInit, Input } from '@angular/core';
+import { AppService } from 'app/app.service';
+import { MATERIALS } from 'app/app.model';
+import { environment } from 'environments/environment';
 
 @Component({
   selector: 'wm-map',

@@ -1,7 +1,7 @@
-import { Component, OnInit, Inject } from "@angular/core";
-import { MatDialogRef } from "@angular/material/dialog";
-import { AppService } from "app/app.service";
-import { Router } from "@angular/router";
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
+import { AppService } from 'app/app.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'wm-login',

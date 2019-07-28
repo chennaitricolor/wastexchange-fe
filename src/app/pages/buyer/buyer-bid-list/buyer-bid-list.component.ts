@@ -1,6 +1,6 @@
-import { Component, OnInit } from "@angular/core";
-import { AppService } from "app/app.service";
-import { Bid } from "app/app.model";
+import { Component, OnInit } from '@angular/core';
+import { AppService } from 'app/app.service';
+import { Bid } from 'app/app.model';
 
 @Component({
   selector: 'wm-buyer-bid-list',

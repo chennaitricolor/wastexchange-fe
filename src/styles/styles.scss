@@ -1,10 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import "./utilities/theme.scss"; // Comes with the color palette
-@import "~bootstrap/dist/css/bootstrap.css";
-@import "./content/typography.scss";
-@import "./utilities/flex.scss";
-@import "./components/components.scss"; // Comes with material and ngx-bootstrap components
+@import './utilities/theme.scss'; // Comes with the color palette
+@import '~bootstrap/dist/css/bootstrap.css';
+@import './content/typography.scss';
+@import './utilities/flex.scss';
+@import './components/components.scss'; // Comes with material and ngx-bootstrap components
 
 * {
   box-sizing: border-box;

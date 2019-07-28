@@ -1,7 +1,7 @@
-import { Component, OnInit } from "@angular/core";
-import { AppService } from "app/app.service";
-import { Bid, MATERIALS, SellerItem } from "app/app.model";
-import { ActivatedRoute, Router, ParamMap } from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { AppService } from 'app/app.service';
+import { Bid, MATERIALS, SellerItem } from 'app/app.model';
+import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'wm-buyer-bid',

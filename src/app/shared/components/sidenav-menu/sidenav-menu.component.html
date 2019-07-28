@@ -5,10 +5,15 @@
 </mat-nav-list>
 
 <ng-template #menuItemTemplate let-menu="menu" let-depth="depth">
-  <a mat-list-item (click)="onMenuSelected(menu)" [ngClass]="{
+  <a
+    mat-list-item
+    (click)="onMenuSelected(menu)"
+    [ngClass]="{
       active: menu.link ? router.isActive(menu.link, true) : false,
       expanded: menu.expanded
-    }" class="menu-list-item">
+    }"
+    class="menu-list-item"
+  >
     <mat-icon class="routeIcon">{{ menu.icon }}</mat-icon>
     {{ menu.name }}
     <span class="flex" *ngIf="menu.children && menu.children.length">

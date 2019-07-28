@@ -1,5 +1,5 @@
-import { Component, OnInit } from "@angular/core";
-import { Buyer, BUYER_DATA } from "app/app.model";
+import { Component, OnInit } from '@angular/core';
+import { Buyer, BUYER_DATA } from 'app/app.model';
 import { AppService } from 'app/app.service';
 
 @Component({

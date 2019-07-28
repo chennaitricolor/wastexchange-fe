@@ -1,9 +1,9 @@
-import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
-import { environment } from "environments/environment";
-import { HttpClient } from "@angular/common/http";
-import { Bid, SellerItem, MATERIALS } from "./app.model";
-import { MatSnackBar } from "@angular/material";
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { environment } from 'environments/environment';
+import { HttpClient } from '@angular/common/http';
+import { Bid, SellerItem, MATERIALS } from './app.model';
+import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
 import { BuyerService } from './shared/services/buyer.service';
 import { SellerService } from './shared/services/seller.service';
@@ -28,7 +28,7 @@ export class AppService {
     public snackBar: MatSnackBar,
     private buyerServ: BuyerService,
     private sellerServ: SellerService
-  ) { }
+  ) {}
 
   public getAllBids(): Observable<Bid[]> {
     return this.buyerServ.getAllBids();
@@ -59,7 +59,7 @@ export class AppService {
   }
 
   public getAllUsers(): Observable<any[]> {
-    return this.http.get<any[]>(environment.hostName + "/users");
+    return this.http.get<any[]>(environment.hostName + '/users');
   }
 
   public getAllUsersAndFilter(): Promise<any> {
@@ -74,29 +74,21 @@ export class AppService {
   }
 
   public sendOtp(payload: any): Observable<any> {
-    return this.http.post<any>(
-      environment.hostName + "/users/sendOtp",
-      payload
-    );
+    return this.http.post<any>(environment.hostName + '/users/sendOtp', payload);
   }
 
   public registerUser(userDetails: any): Observable<any> {
-    return this.http.post<any>(
-      environment.hostName + "/users/register",
-      userDetails
-    );
+    return this.http.post<any>(environment.hostName + '/users/register', userDetails);
   }
 
   public loginUser(loginPayload: any): Promise<boolean> {
     return new Promise((resolve, reject) => {
-      this.http
-        .post<any>(environment.hostName + "/users/login", loginPayload)
-        .subscribe(response => {
-          this.setSessionData(response);
-          this.getMe().subscribe(response => {
-            this.loggedInUserInfo = response;
-            this.getAllUsersAndFilter().then(() => {
-              resolve(true);
+      this.http.post<any>(environment.hostName + '/users/login', loginPayload).subscribe(response => {
+        this.setSessionData(response);
+        this.getMe().subscribe(response => {
+          this.loggedInUserInfo = response;
+          this.getAllUsersAndFilter().then(() => {
+            resolve(true);
           });
         });
       });
@@ -104,7 +96,7 @@ export class AppService {
   }
 
   public getMe(): Observable<any> {
-    return this.http.get<any>(environment.hostName + "/users/me");
+    return this.http.get<any>(environment.hostName + '/users/me');
   }
 
   public authorizeUser(): boolean {

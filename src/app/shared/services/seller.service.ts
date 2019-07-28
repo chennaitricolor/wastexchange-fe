@@ -5,23 +5,16 @@ import { SellerItem } from 'app/app.model';
 import { environment } from 'environments/environment';
 
 @Injectable({
-    providedIn: "root"
+  providedIn: 'root'
 })
 export class SellerService {
+  constructor(private http: HttpClient) {}
 
-    constructor(private http: HttpClient) { }
+  public getSellerItems(sellerId): Observable<SellerItem> {
+    return this.http.get<SellerItem>(environment.hostName + `/seller/${sellerId}/items`);
+  }
 
-    public getSellerItems(sellerId): Observable<SellerItem> {
-        return this.http.get<SellerItem>(
-            environment.hostName + `/seller/${sellerId}/items`
-        );
-    }
-
-    public updateSellerItem(sellerItem: SellerItem): Observable<any> {
-        return this.http.put<any>(
-            environment.hostName + `/items/${sellerItem.id}`,
-            sellerItem
-        );
-    }
-
+  public updateSellerItem(sellerItem: SellerItem): Observable<any> {
+    return this.http.put<any>(environment.hostName + `/items/${sellerItem.id}`, sellerItem);
+  }
 }
