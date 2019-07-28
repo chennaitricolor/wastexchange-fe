@@ -34,7 +34,7 @@ export class BuyerBidComponent implements OnInit {
     };
     this.appServ.getSellerItems(this.sellerId).subscribe(data => {
       this.bidId
-        ? this.appServ.getBid(this.bidId).subscribe(response => {
+        ? this.appServ.getBidById(this.bidId).subscribe(response => {
             this.bid = response;
             onBid(data);
           })

@@ -1,14 +1,15 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { BuyerBidComponent } from './pages/buyer/buyer-bid/buyer-bid.component';
-import { BuyerBidListComponent } from './pages/buyer/buyer-bid-list/buyer-bid-list.component';
-import { SellerBidListComponent } from './pages/seller/seller-bid-list/seller-bid-list.component';
-import { BuyerBrowseComponent } from './pages/buyer/buyer-browse/buyer-browse.component';
-import { LandingComponent } from './pages/common/landing/landing.component';
-import { InfoComponent } from './shared/components/info/info.component';
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
+import { BuyerBidComponent } from "./pages/buyer/buyer-bid/buyer-bid.component";
+import { BuyerBidListComponent } from "./pages/buyer/buyer-bid-list/buyer-bid-list.component";
+import { SellerBidListComponent } from "./pages/seller/seller-bid-list/seller-bid-list.component";
+import { BuyerBrowseComponent } from "./pages/buyer/buyer-browse/buyer-browse.component";
+import { LandingComponent } from "./pages/common/landing/landing.component";
+import { InfoComponent } from "./shared/components/info/info.component";
+import { AuthGuard } from './guards/auth.guard';
+import { UserDataResolver } from './resolvers/user-data.resolver';
+import { UserSessionDataResolver } from './resolvers/user-session-data.resolver';
 import { SellerListComponent } from './pages/admin/seller-list/seller-list.component';
-
-import { AuthGuard, UserSessionDataResolver, UserDataResolver } from './app.service';
 
 const routes: Routes = [
   {
@@ -61,4 +62,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
