@@ -3,9 +3,9 @@
     class="info-container"
     [style.background-color]="
       this.appServ.isUserLoggedIn &&
-      this.appServ.loggedInUserInfo?.persona == 'admin'
+      this.user?.persona == 'admin'
         ? '#efd7d7'
-        : this.appServ.loggedInUserInfo?.persona == 'seller'
+        : this.user?.persona == 'seller'
         ? '#FFD6C7'
         : '#a1ebeb'
     "
@@ -28,9 +28,9 @@
       *ngIf="user"
       [style.background-color]="
         this.appServ.isUserLoggedIn &&
-        this.appServ.loggedInUserInfo?.persona == 'admin'
+        this.user?.persona == 'admin'
           ? '#e16262'
-          : this.appServ.loggedInUserInfo?.persona == 'seller'
+          : this.user?.persona == 'seller'
           ? '#EB5821'
           : '#08b5ae'
       "
@@ -39,9 +39,9 @@
         <img
           [attr.src]="
             this.appServ.isUserLoggedIn &&
-            this.appServ.loggedInUserInfo?.persona == 'admin'
+            this.user?.persona == 'admin'
               ? './../../../../assets/images/admin-dummy-dp.png'
-              : this.appServ.loggedInUserInfo?.persona == 'seller'
+              : this.user?.persona == 'seller'
               ? './../../../../assets/images/seller-dummy-dp.png'
               : './../../../../assets/images/buyer-dummy-dp.png'
           "
@@ -52,13 +52,13 @@
       <div class="user-basic-info flex space-between align-start">
         <div class="address">
           <p class="text--large">
-            {{ this.appServ.loggedInUserInfo.name }}
+            {{ this.user.name }}
           </p>
           <p class="text--normal mt-2">
-            <span>{{ this.appServ.loggedInUserInfo.address }}</span>
-            <span>, {{ this.appServ.loggedInUserInfo.city }}</span>
-            <span> - {{ this.appServ.loggedInUserInfo.pinCode }}.</span>
-            <span> {{ this.appServ.loggedInUserInfo.mobNo }}</span>
+            <span>{{ this.user.address }}</span>
+            <span>, {{ this.user.city }}</span>
+            <span> - {{ this.user.pinCode }}.</span>
+            <span> {{ this.user.mobNo }}</span>
           </p>
         </div>
         <div class="user-logout">
