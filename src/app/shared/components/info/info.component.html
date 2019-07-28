@@ -9,6 +9,9 @@
     <ng-container *ngSwitchCase="'idea'">
       <ng-container *ngTemplateOutlet="ideaTemplate"></ng-container>
     </ng-container>
+    <ng-container *ngSwitchCase="'advisory-team'">
+        <ng-container *ngTemplateOutlet="advisoryTeamTemplate"></ng-container>
+      </ng-container>
   </ng-container>
 </div>
 
@@ -198,3 +201,55 @@
     </div>
   </div>
 </ng-template>
+<<<<<<< HEAD
+=======
+
+<ng-template #advisoryTeamTemplate>
+    <div class="special-thanks-container">
+      <h3 class="text--center text--blue">Advisory Team</h3>
+      <div class="flex space-evenly mt-4">
+        <div class="member-container flex direction-column">
+          <img src="./../../../../assets/info/advisory-team/durga-shankar-mishra.png" alt="" />
+          <div class="member-details-container flex direction-column mt-2">
+            <p class="text--normal text--blue">Mr Durga Shanker Mishra</p>
+            <p class="text--medium">Secretary</p>
+            <p class="text--medium">Ministry of Housing and Urban Affairs</p>
+          </div>
+        </div>
+        <div class="member-container flex direction-column">
+          <img src="./../../../../assets/info/advisory-team/kunal-kumar.png" alt="" />
+          <div class="member-details-container flex direction-column mt-2">
+            <p class="text--normal text--blue">Mr Kunal Kumar</p>
+            <p class="text--medium">Mission Director(Smart Cities)</p>
+            <p class="text--medium">Ministry of Housing and Urban Affairs</p>
+          </div>
+        </div>
+        <div class="member-container flex direction-column">
+          <img src="./../../../../assets/info/advisory-team/janaki.png" alt="" />
+          <div class="member-details-container flex direction-column mt-2">
+            <p class="text--normal text--blue">Ms. M. Janaki</p>
+            <p class="text--medium">Deputy Secretary</p>
+            <p class="text--medium">Ministry of Housing and Urban Affairs</p>
+          </div>
+        </div>
+        <div class="member-container flex direction-column">
+          <img src="./../../../../assets/info/advisory-team/masilamani.png" alt="" />
+          <div class="member-details-container flex direction-column mt-2">
+            <p class="text--normal text--blue">Prof. R.J. Masilamani</p>
+            <p class="text--medium">Guest Professor</p>
+            <p class="text--medium">BIMTECH</p>
+          </div>
+        </div>
+        <div class="member-container flex direction-column">
+            <img src="./../../../../assets/info/advisory-team/jagan-shah.png" alt="" />
+            <div class="member-details-container flex direction-column mt-2">
+              <p class="text--normal text--blue">Mr Jagan Shah</p>
+              <p class="text--medium">Former Director</p>
+              <p class="text--medium">National Institute of Urban Affairs</p>
+            </div>
+          </div>
+      </div>
+    </div>
+  </ng-template>
+  
+>>>>>>> aff5df6... Added advisory team page
