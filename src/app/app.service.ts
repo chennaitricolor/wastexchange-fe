@@ -20,7 +20,7 @@ export class AppService {
   public allUsers: any[] = [];
   public isLoading: boolean = false;
   public materials = MATERIALS;
-  public title = "INDIA WASTE EXCHANGE";
+  public title = 'INDIA WASTE EXCHANGE';
   public hidePageActions: boolean = false;
 
   constructor(
