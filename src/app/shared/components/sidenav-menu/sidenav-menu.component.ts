@@ -12,22 +12,17 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
     trigger('indicatorRotate', [
       state('collapsed', style({ transform: 'rotate(0deg)' })),
       state('expanded', style({ transform: 'rotate(180deg)' })),
-      transition('expanded <=> collapsed',
-        animate('225ms cubic-bezier(0.4,0.0,0.2,1)')
-      ),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4,0.0,0.2,1)'))
     ])
   ]
 })
 export class SidenavMenuComponent implements OnInit {
-
   public menuMaster: Menu[] = MENUMASTER;
   @Output('close') private close: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  constructor(public router: Router) { }
+  constructor(public router: Router) {}
 
-
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   /**
    * @description triggered upon selection of menu
@@ -42,5 +37,4 @@ export class SidenavMenuComponent implements OnInit {
       menu.expanded = !menu.expanded;
     }
   }
-
 }

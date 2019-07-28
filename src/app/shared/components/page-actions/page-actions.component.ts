@@ -9,21 +9,21 @@ import {
   ComponentFactoryResolver,
   ViewContainerRef,
   Input
-} from "@angular/core";
-import { DomPortalHost, PortalHost, CdkPortal } from "@angular/cdk/portal";
-import { TemplatePortal } from "@angular/cdk/portal";
+} from '@angular/core';
+import { DomPortalHost, PortalHost, CdkPortal } from '@angular/cdk/portal';
+import { TemplatePortal } from '@angular/cdk/portal';
 import { AppService } from 'src/app/app.service';
 
 @Component({
-  selector: "wm-page-actions",
-  templateUrl: "./page-actions.component.html",
-  styleUrls: ["./page-actions.component.scss"]
+  selector: 'wm-page-actions',
+  templateUrl: './page-actions.component.html',
+  styleUrls: ['./page-actions.component.scss']
 })
 export class PageActionsComponent implements OnInit, AfterViewInit, OnDestroy {
   private portalHost: PortalHost;
-  @Input() user:any;
+  @Input() user: any;
   @ViewChild(CdkPortal) portal;
-  @ViewChild("pageActions") pageActionsTmplRef;
+  @ViewChild('pageActions') pageActionsTmplRef;
 
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
@@ -38,21 +38,18 @@ export class PageActionsComponent implements OnInit, AfterViewInit, OnDestroy {
   ngAfterViewInit(): void {
     // Create a portalHost from a DOM element
     this.portalHost = new DomPortalHost(
-      document.querySelector("#page-actions-container"),
+      document.querySelector('#page-actions-container'),
       this.componentFactoryResolver,
       this.appRef,
       this.injector
     );
     // Locate the component factory for the HeaderComponent
-    this.portal = new TemplatePortal(
-      this.pageActionsTmplRef,
-      this.viewContainerRef
-    );
+    this.portal = new TemplatePortal(this.pageActionsTmplRef, this.viewContainerRef);
 
     // Attach portal to host
     this.portalHost.attach(this.portal);
   }
-  
+
   ngOnDestroy(): void {
     this.portalHost.detach();
   }

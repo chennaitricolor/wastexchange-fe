@@ -8,9 +8,8 @@ describe('BidListTableComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BidListTableComponent ]
-    })
-    .compileComponents();
+      declarations: [BidListTableComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

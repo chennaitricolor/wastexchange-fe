@@ -1,13 +1,13 @@
-import { Component, OnInit } from "@angular/core";
-import { Buyer, BUYER_DATA, Seller, SELLER_DATA } from "./../../../app.model";
-import { AppService } from "./../../../app.service";
-import { Bid, MATERIALS, SellerItem } from "./../../../app.model";
-import { ActivatedRoute, Router, ParamMap } from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { Buyer, BUYER_DATA, Seller, SELLER_DATA } from './../../../app.model';
+import { AppService } from './../../../app.service';
+import { Bid, MATERIALS, SellerItem } from './../../../app.model';
+import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 
 @Component({
-  selector: "wm-buyer-bid",
-  templateUrl: "./buyer-bid.component.html",
-  styleUrls: ["./buyer-bid.component.scss"]
+  selector: 'wm-buyer-bid',
+  templateUrl: './buyer-bid.component.html',
+  styleUrls: ['./buyer-bid.component.scss']
 })
 export class BuyerBidComponent implements OnInit {
   public materials = MATERIALS;
@@ -18,21 +18,15 @@ export class BuyerBidComponent implements OnInit {
   public sellerName: string;
   public canRaiseBid: boolean = false;
 
-  constructor(
-    public appServ: AppService,
-    private router: Router,
-    private activatedRoute: ActivatedRoute
-  ) {
+  constructor(public appServ: AppService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.activatedRoute.queryParams.subscribe((params: ParamMap) => {
-      this.bidId = +params["bidId"];
-      this.sellerId = +params["sellerId"];
+      this.bidId = +params['bidId'];
+      this.sellerId = +params['sellerId'];
     });
   }
 
   ngOnInit() {
-    this.sellerName = this.appServ.allSellers.filter(
-      user => user.id == this.sellerId
-    )[0].name;
+    this.sellerName = this.appServ.allSellers.filter(user => user.id == this.sellerId)[0].name;
     let onBid = data => {
       this.sellerItem = data;
       this.setDefaultMaterialData();
@@ -51,12 +45,12 @@ export class BuyerBidComponent implements OnInit {
   private setDefaultMaterialData() {
     !this.bid &&
       (this.bid = {
-        buyerId: this.appServ.loggedInUserInfo["id"],
+        buyerId: this.appServ.loggedInUserInfo['id'],
         sellerId: this.sellerId,
         details: {},
-        status: "pending",
+        status: 'pending',
         totalBid: 0,
-        contactName: ""
+        contactName: ''
       });
 
     this.sellerItem = this.appServ.setDefaultMaterialData(this.sellerItem);
@@ -72,24 +66,18 @@ export class BuyerBidComponent implements OnInit {
 
   public calculateTotalBid() {
     let sum = 0;
-    Object.keys(this.bid.details).forEach((detail) => {
+    Object.keys(this.bid.details).forEach(detail => {
       sum += this.bid.details[detail].bidCost * this.bid.details[detail].bidQuantity;
-    })
+    });
     this.bid.totalBid = sum;
   }
 
   public createOrUpdateBid() {
     let action = this.bid.id ? 'updated' : 'raised';
-    let observable = this.bid.id
-      ? this.appServ.updateBid(this.bid)
-      : this.appServ.createBid(this.bid);
+    let observable = this.bid.id ? this.appServ.updateBid(this.bid) : this.appServ.createBid(this.bid);
     observable.subscribe(response => {
-      this.appServ.openSnackBar(`Bid ${action} successfully`, "DISMISS");
-      this.router.navigate([
-        "buyer",
-        this.appServ.loggedInUserInfo["id"],
-        "bid-list"
-      ]);
+      this.appServ.openSnackBar(`Bid ${action} successfully`, 'DISMISS');
+      this.router.navigate(['buyer', this.appServ.loggedInUserInfo['id'], 'bid-list']);
     });
   }
 }

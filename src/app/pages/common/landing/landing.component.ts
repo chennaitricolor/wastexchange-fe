@@ -1,15 +1,15 @@
-import { Component, OnInit } from "@angular/core";
-import { environment } from "./../../../../environments/environment";
-import { MatDialog } from "@angular/material/dialog";
-import { LoginComponent } from "./login/login.component";
-import { SignUpComponent } from "./sign-up/sign-up.component";
-import { AppService } from "src/app/app.service";
-import { Router } from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { environment } from './../../../../environments/environment';
+import { MatDialog } from '@angular/material/dialog';
+import { LoginComponent } from './login/login.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { AppService } from 'src/app/app.service';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: "wm-landing",
-  templateUrl: "./landing.component.html",
-  styleUrls: ["./landing.component.scss"]
+  selector: 'wm-landing',
+  templateUrl: './landing.component.html',
+  styleUrls: ['./landing.component.scss']
 })
 export class LandingComponent implements OnInit {
   // public staticMapImageUrl = `https://maps.googleapis.com/maps/api/staticmap?center=Brooklyn+Bridge,New+York,NY&zoom=13&size=600x600&maptype=roadmap
@@ -17,11 +17,7 @@ export class LandingComponent implements OnInit {
   // &markers=color:red%7Clabel:C%7C40.718217,-73.998284
   // &key=${environment.googleMapsApiKey}`;
 
-  constructor(
-    public dialog: MatDialog,
-    public appServ: AppService,
-    private router: Router
-  ) {}
+  constructor(public dialog: MatDialog, public appServ: AppService, private router: Router) {}
 
   ngOnInit() {
     this.redirectUser();
@@ -29,21 +25,18 @@ export class LandingComponent implements OnInit {
 
   redirectUser() {
     if (this.appServ.isUserLoggedIn) {
-      let [persona, userId] = [
-        this.appServ.loggedInUserInfo["persona"],
-        this.appServ.loggedInUserInfo["id"]
-      ];
-      if (persona == "seller") {
-        this.router.navigate(["seller", userId, "bid-list"]);
-      } else if (persona == "buyer") {
-        this.router.navigate(["buyer", userId, "browse"]);
+      let [persona, userId] = [this.appServ.loggedInUserInfo['persona'], this.appServ.loggedInUserInfo['id']];
+      if (persona == 'seller') {
+        this.router.navigate(['seller', userId, 'bid-list']);
+      } else if (persona == 'buyer') {
+        this.router.navigate(['buyer', userId, 'browse']);
       }
     }
   }
 
   openLoginDialog(): void {
     const dialogRef = this.dialog.open(LoginComponent, {
-      width: "300px"
+      width: '300px'
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -53,7 +46,7 @@ export class LandingComponent implements OnInit {
 
   openSignupDialog(): void {
     const dialogRef = this.dialog.open(SignUpComponent, {
-      width: "400px"
+      width: '400px'
     });
 
     dialogRef.afterClosed().subscribe(result => {

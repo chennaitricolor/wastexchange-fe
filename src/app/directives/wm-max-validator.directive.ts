@@ -1,7 +1,7 @@
-import { Directive, HostListener, ElementRef, Input } from "@angular/core";
+import { Directive, HostListener, ElementRef, Input } from '@angular/core';
 
 @Directive({
-  selector: "[wmMax]"
+  selector: '[wmMax]'
 })
 export class WmMaxDirective {
   @Input() wmMax: number;
@@ -10,16 +10,16 @@ export class WmMaxDirective {
   constructor(private elementRef: ElementRef) {
     this.el = this.elementRef.nativeElement;
   }
-  @HostListener("keyup", ["$event"]) onchange(event: any) {
+  @HostListener('keyup', ['$event']) onchange(event: any) {
     let value = this.el.value;
     let isValid = parseInt(value) >= 0 && parseInt(value) <= this.wmMax;
     if (!isValid) {
       value = value.substr(0, value.length - 1);
       this.el.value = value;
 
-      // dispatching input manually to bubble the value for other event handlers 
+      // dispatching input manually to bubble the value for other event handlers
       // or host listeners on the same element.
-      let event = new Event("input", { bubbles: true });
+      let event = new Event('input', { bubbles: true });
       this.el.dispatchEvent(event);
     }
   }
