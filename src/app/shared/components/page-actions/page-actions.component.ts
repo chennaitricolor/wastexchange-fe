@@ -14,6 +14,18 @@ import { DomPortalHost, PortalHost, CdkPortal } from '@angular/cdk/portal';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { AppService } from 'src/app/app.service';
 
+const PRIMARY_COLORS = {
+  admin: '#e16262',
+  seller: '#eb5821',
+  buyer: '#08b5ae'
+};
+
+const SECONDARY_COLORS = {
+  admin: '#efd7d7',
+  seller: '#ffd6c7',
+  buyer: '#a1ebeb'
+};
+
 @Component({
   selector: 'wm-page-actions',
   templateUrl: './page-actions.component.html',
@@ -21,6 +33,9 @@ import { AppService } from 'src/app/app.service';
 })
 export class PageActionsComponent implements OnInit, AfterViewInit, OnDestroy {
   private portalHost: PortalHost;
+  public primaryColors = PRIMARY_COLORS;
+  public secondaryColors = SECONDARY_COLORS;
+
   @Input() user: any;
   @ViewChild(CdkPortal) portal;
   @ViewChild('pageActions') pageActionsTmplRef;

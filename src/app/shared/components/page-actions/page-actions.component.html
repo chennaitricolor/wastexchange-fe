@@ -1,10 +1,5 @@
 <ng-template #pageActions>
-  <div
-    class="info-container"
-    [style.background-color]="
-      this.appServ.isUserLoggedIn && this.user?.persona == 'admin' ? '#efd7d7' : this.user?.persona == 'seller' ? '#FFD6C7' : '#a1ebeb'
-    "
-  >
+  <div class="info-container" [style.background-color]="this.appServ.isUserLoggedIn && this.secondaryColors[(this.user?.persona)]">
     <div class="edit-profile-details flex justify-end" *ngIf="user">
       <div class="actions">
         <button mat-stroked-button color="primary" class="rounded-button" (click)="this.appServ.forceLogoutUser()">
@@ -16,9 +11,7 @@
     <div
       class="user-details"
       *ngIf="user"
-      [style.background-color]="
-        this.appServ.isUserLoggedIn && this.user?.persona == 'admin' ? '#e16262' : this.user?.persona == 'seller' ? '#EB5821' : '#08b5ae'
-      "
+      [style.background-color]="this.appServ.isUserLoggedIn && this.primaryColors[(this.user?.persona)]"
     >
       <div class="display-picture">
         <img
