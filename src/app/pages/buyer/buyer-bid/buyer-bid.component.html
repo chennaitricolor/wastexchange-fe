@@ -2,20 +2,14 @@
   <div class="seller-info flex justify-start">
     <p class="text--large">{{ this.sellerName }}</p>
     <div class="display-picture">
-      <img
-        [attr.src]="'./../../../../assets/images/seller-dummy-dp.png'"
-        alt="Display picture"
-        height="88"
-      />
+      <img [attr.src]="'./../../../../assets/images/seller-dummy-dp.png'" alt="Display picture" height="88" />
     </div>
   </div>
 
   <div class="seller-basic-info">
     <p class="text--medium">
       Data last updated by seller at
-      <span class="text--bold">{{
-        this.sellerItem?.updatedAt | date: "medium"
-      }}</span>
+      <span class="text--bold">{{ this.sellerItem?.updatedAt | date: 'medium' }}</span>
     </p>
   </div>
 
@@ -23,11 +17,7 @@
     <p class="text--largesecondary text--blue">Bidding Form</p>
     <div class="flex">
       <div class="contact-name">
-        <input
-          class="form-control"
-          [(ngModel)]="this.bid.contactName"
-          placeholder="Contact name *"
-        />
+        <input class="form-control" [(ngModel)]="this.bid.contactName" placeholder="Contact name *" />
       </div>
       <div class="datapicker-field ml-4">
         <input
@@ -81,10 +71,7 @@
               />
             </td>
             <td>
-              {{
-                this.bid.details[material.key].bidQuantity *
-                  this.bid.details[material.key].bidCost
-              }}
+              {{ this.bid.details[material.key].bidQuantity * this.bid.details[material.key].bidCost }}
             </td>
           </tr>
         </ng-container>
@@ -110,9 +97,7 @@
         color="primary"
         class="rounded-button"
         (click)="this.createOrUpdateBid()"
-        [disabled]="
-          !this.bid.contactName || !this.bid.pDateTime || !this.bid.totalBid
-        "
+        [disabled]="!this.bid.contactName || !this.bid.pDateTime || !this.bid.totalBid"
       >
         Confirm
       </button>
@@ -122,12 +107,7 @@
 
 <wm-page-actions [user]="this.appServ.loggedInUserInfo">
   <div class="actions flex mt-4">
-    <button
-      mat-flat-button
-      color="primary"
-      class="rounded-button"
-      [routerLink]="['/buyer', this.appServ.loggedInUserInfo.id, 'bid-list']"
-    >
+    <button mat-flat-button color="primary" class="rounded-button" [routerLink]="['/buyer', this.appServ.loggedInUserInfo.id, 'bid-list']">
       View Pending Bids
     </button>
   </div>

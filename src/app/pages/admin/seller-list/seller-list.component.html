@@ -22,12 +22,7 @@
         <td>{{ seller.emailId }}</td>
         <td>{{ seller.mobNo }}</td>
         <td>
-          <button
-            mat-flat-button
-            color="primary"
-            class="rounded-button"
-            [routerLink]="['/seller', seller.id, 'bid-list']"
-          >
+          <button mat-flat-button color="primary" class="rounded-button" [routerLink]="['/seller', seller.id, 'bid-list']">
             Manage
           </button>
         </td>

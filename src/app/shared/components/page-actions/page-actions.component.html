@@ -2,22 +2,12 @@
   <div
     class="info-container"
     [style.background-color]="
-      this.appServ.isUserLoggedIn &&
-      this.user?.persona == 'admin'
-        ? '#efd7d7'
-        : this.user?.persona == 'seller'
-        ? '#FFD6C7'
-        : '#a1ebeb'
+      this.appServ.isUserLoggedIn && this.user?.persona == 'admin' ? '#efd7d7' : this.user?.persona == 'seller' ? '#FFD6C7' : '#a1ebeb'
     "
   >
     <div class="edit-profile-details flex justify-end" *ngIf="user">
       <div class="actions">
-        <button
-          mat-stroked-button
-          color="primary"
-          class="rounded-button"
-          (click)="this.appServ.forceLogoutUser()"
-        >
+        <button mat-stroked-button color="primary" class="rounded-button" (click)="this.appServ.forceLogoutUser()">
           Logout
         </button>
       </div>
@@ -27,19 +17,13 @@
       class="user-details"
       *ngIf="user"
       [style.background-color]="
-        this.appServ.isUserLoggedIn &&
-        this.user?.persona == 'admin'
-          ? '#e16262'
-          : this.user?.persona == 'seller'
-          ? '#EB5821'
-          : '#08b5ae'
+        this.appServ.isUserLoggedIn && this.user?.persona == 'admin' ? '#e16262' : this.user?.persona == 'seller' ? '#EB5821' : '#08b5ae'
       "
     >
       <div class="display-picture">
         <img
           [attr.src]="
-            this.appServ.isUserLoggedIn &&
-            this.user?.persona == 'admin'
+            this.appServ.isUserLoggedIn && this.user?.persona == 'admin'
               ? './../../../../assets/images/admin-dummy-dp.png'
               : this.user?.persona == 'seller'
               ? './../../../../assets/images/seller-dummy-dp.png'

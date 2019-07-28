@@ -4,9 +4,7 @@
       <img src="./../../assets/logos/ministry-logo.png" height="64" />
       <img src="./../../assets/logos/smart-city-logo.png" height="64" />
     </div>
-    <div
-      class="body-container flex direction-column justify-start text--center"
-    >
+    <div class="body-container flex direction-column justify-start text--center">
       <p class="text--xlarge text--blue">India Waste Exchange</p>
       <p class="text--normal mt-4">
         Please view the application on desktop or on devices with wider display.
@@ -20,11 +18,7 @@
 
 <ng-template #appTemplate>
   <mat-sidenav-container class="sidenav-container">
-    <mat-sidenav
-      #sidenav
-      [mode]="'over'"
-      class="sidenav-menu-container no-select"
-    >
+    <mat-sidenav #sidenav [mode]="'over'" class="sidenav-menu-container no-select">
       <wm-sidenav-menu (close)="sidenavClose()"></wm-sidenav-menu>
     </mat-sidenav>
 
@@ -35,12 +29,7 @@
           <div class="header">
             <div class="government-logo flex">
               <!-- <button mat-mini-fab class="mr-2" (click)="drawer.toggle()"> -->
-              <mat-icon
-                color="primary"
-                class="cursor-pointer ml-2"
-                (click)="sidenav.toggle()"
-                >apps</mat-icon
-              >
+              <mat-icon color="primary" class="cursor-pointer ml-2" (click)="sidenav.toggle()">apps</mat-icon>
               <!-- </button> -->
               <img src="./../../assets/logos/ministry-logo.png" height="64" />
             </div>
@@ -52,25 +41,14 @@
             </div>
           </div>
           <div class="progress-bar-container">
-            <mat-progress-bar
-              color="primary"
-              *ngIf="this.appServ.isLoading"
-              mode="indeterminate"
-            ></mat-progress-bar>
+            <mat-progress-bar color="primary" *ngIf="this.appServ.isLoading" mode="indeterminate"></mat-progress-bar>
           </div>
         </div>
         <div class="body" [class.app__loading]="this.appServ.isLoading">
-          <div
-            class="router-outlet-container"
-            [class.full-router-outlet-container]="this.appServ.hidePageActions"
-          >
+          <div class="router-outlet-container" [class.full-router-outlet-container]="this.appServ.hidePageActions">
             <router-outlet></router-outlet>
           </div>
-          <div
-            *ngIf="!this.appServ.hidePageActions"
-            class="page-actions-container"
-            id="page-actions-container"
-          >
+          <div *ngIf="!this.appServ.hidePageActions" class="page-actions-container" id="page-actions-container">
             <!-- content will be placed dynamically via Cdk Portal -->
           </div>
         </div>
