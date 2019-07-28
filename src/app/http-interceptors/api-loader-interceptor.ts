@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpResponse, HttpHeaders } from '@angular/common/http';
 
-import { Observable } from 'rxjs';
-import { AppService } from '../app.service';
-import { tap, catchError } from 'rxjs/operators';
+import { Observable } from "rxjs";
+import { AppService } from "app/app.service";
+import { tap, catchError } from "rxjs/operators";
 
 @Injectable()
 export class ApiLoaderInterceptor implements HttpInterceptor {

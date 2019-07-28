@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { environment } from './../environments/environment';
+import { environment } from "environments/environment";
 
 import { ApiLoaderInterceptor } from './http-interceptors/api-loader-interceptor';
 

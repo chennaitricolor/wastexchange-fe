@@ -1,7 +1,13 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { FormControl, FormGroupDirective, NgForm, Validators, FormGroup } from '@angular/forms';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { AppService } from 'src/app/app.service';
+import { Component, OnInit } from "@angular/core";
+import {
+  FormControl,
+  Validators,
+  FormGroup
+} from "@angular/forms";
+import {
+  MatDialogRef
+} from "@angular/material/dialog";
+import { AppService } from "app/app.service";
 
 @Component({
   selector: 'wm-sign-up',

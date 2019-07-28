@@ -6,7 +6,7 @@ import {
     ActivatedRouteSnapshot
 } from "@angular/router";
 import { Injectable } from '@angular/core';
-import { AppService } from '../app.service';
+import { AppService } from 'app/app.service';
 
 @Injectable()
 export class UserDataResolver implements Resolve<any> {

@@ -9,10 +9,10 @@ import {
   ComponentFactoryResolver,
   ViewContainerRef,
   Input
-} from '@angular/core';
-import { DomPortalHost, PortalHost, CdkPortal } from '@angular/cdk/portal';
-import { TemplatePortal } from '@angular/cdk/portal';
-import { AppService } from 'src/app/app.service';
+} from "@angular/core";
+import { DomPortalHost, PortalHost, CdkPortal } from "@angular/cdk/portal";
+import { TemplatePortal } from "@angular/cdk/portal";
+import { AppService } from 'app/app.service';
 
 const PRIMARY_COLORS = {
   admin: '#e16262',

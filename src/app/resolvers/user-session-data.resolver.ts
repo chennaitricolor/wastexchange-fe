@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { Resolve, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
-import { AppService } from '../app.service';
+import { AppService } from 'app/app.service';
 
 @Injectable()
 export class UserSessionDataResolver implements Resolve<any> {

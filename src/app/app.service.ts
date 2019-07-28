@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { environment } from "./../environments/environment";
+import { environment } from "environments/environment";
 import { HttpClient } from "@angular/common/http";
-import { Bid, SellerItem, Seller, MATERIALS } from "./app.model";
+import { Bid, SellerItem, MATERIALS } from "./app.model";
 import { MatSnackBar } from "@angular/material";
 import { Router } from '@angular/router';
 import { BuyerService } from './shared/services/buyer.service';
