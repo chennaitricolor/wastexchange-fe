@@ -30,31 +30,26 @@ import {
   MatIconModule
 } from '@angular/material';
 
-import { LayoutModule } from "@angular/cdk/layout";
+import { LayoutModule } from '@angular/cdk/layout';
 
-import { BuyerBidComponent } from "./pages/buyer/buyer-bid/buyer-bid.component";
-import { BuyerBidListComponent } from "./pages/buyer/buyer-bid-list/buyer-bid-list.component";
-import { SellerBidListComponent } from "./pages/seller/seller-bid-list/seller-bid-list.component";
-import { BuyerBrowseComponent } from "./pages/buyer/buyer-browse/buyer-browse.component";
-import { PageActionsComponent } from "./shared/components/page-actions/page-actions.component";
-import { BidListTableComponent } from "./pages/common/bid-list-table/bid-list-table.component";
-import { LoginComponent } from "./pages/common/landing/login/login.component";
-import { SignUpComponent } from "./pages/common/landing/sign-up/sign-up.component";
+import { BuyerBidComponent } from './pages/buyer/buyer-bid/buyer-bid.component';
+import { BuyerBidListComponent } from './pages/buyer/buyer-bid-list/buyer-bid-list.component';
+import { SellerBidListComponent } from './pages/seller/seller-bid-list/seller-bid-list.component';
+import { BuyerBrowseComponent } from './pages/buyer/buyer-browse/buyer-browse.component';
+import { PageActionsComponent } from './shared/components/page-actions/page-actions.component';
+import { BidListTableComponent } from './pages/common/bid-list-table/bid-list-table.component';
+import { LoginComponent } from './pages/common/landing/login/login.component';
+import { SignUpComponent } from './pages/common/landing/sign-up/sign-up.component';
 
-import { WmMaxDirective } from "./directives/wm-max-validator.directive";
-import { WmMinDirective } from "./directives/wm-min-validator.directive";
+import { WmMaxDirective } from './directives/wm-max-validator.directive';
+import { WmMinDirective } from './directives/wm-min-validator.directive';
 
-import { FilterListPipe } from "./pipes/filter-list.pipe";
+import { FilterListPipe } from './pipes/filter-list.pipe';
 
-import {
-  AppService,
-  AuthGuard,
-  UserSessionDataResolver,
-  UserDataResolver
-} from "./app.service";
-import { SidenavMenuComponent } from "./shared/components/sidenav-menu/sidenav-menu.component";
-import { InfoComponent } from "./shared/components/info/info.component";
-import { SellerListComponent } from "./pages/admin/seller-list/seller-list.component";
+import { AppService, AuthGuard, UserSessionDataResolver, UserDataResolver } from './app.service';
+import { SidenavMenuComponent } from './shared/components/sidenav-menu/sidenav-menu.component';
+import { InfoComponent } from './shared/components/info/info.component';
+import { SellerListComponent } from './pages/admin/seller-list/seller-list.component';
 
 @NgModule({
   declarations: [

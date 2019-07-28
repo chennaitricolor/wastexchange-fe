@@ -1,8 +1,8 @@
-import { Component, OnInit } from "@angular/core";
-import { Buyer, BUYER_DATA, Seller, SELLER_DATA } from "./../../../app.model";
-import { AppService } from "./../../../app.service";
-import { Bid, MATERIALS, SellerItem } from "./../../../app.model";
-import { ActivatedRoute, Router, ParamMap } from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { Buyer, BUYER_DATA, Seller, SELLER_DATA } from './../../../app.model';
+import { AppService } from './../../../app.service';
+import { Bid, MATERIALS, SellerItem } from './../../../app.model';
+import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'wm-seller-bid-list',
@@ -17,19 +17,14 @@ export class SellerBidListComponent implements OnInit {
   public sellerItem: SellerItem;
   public isSellerDataEditable: boolean = false;
 
-  constructor(
-    public appServ: AppService,
-    private activatedRoute: ActivatedRoute
-  ) {
+  constructor(public appServ: AppService, private activatedRoute: ActivatedRoute) {
     this.activatedRoute.params.subscribe((params: ParamMap) => {
-      this.sellerId = params["id"];
+      this.sellerId = params['id'];
     });
   }
 
   ngOnInit() {
-    this.seller = this.appServ.allSellers.filter(
-      seller => seller.id == this.sellerId
-    )[0];
+    this.seller = this.appServ.allSellers.filter(seller => seller.id == this.sellerId)[0];
 
     this.appServ.getBids().subscribe(data => {
       this.bids = data.filter(bid => bid.sellerId == +this.sellerId);

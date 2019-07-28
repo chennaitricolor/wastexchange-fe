@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { BuyerBidComponent } from './pages/buyer/buyer-bid/buyer-bid.component';
@@ -10,23 +9,6 @@ import { InfoComponent } from './shared/components/info/info.component';
 import { SellerListComponent } from './pages/admin/seller-list/seller-list.component';
 
 import { AuthGuard, UserSessionDataResolver, UserDataResolver } from './app.service';
-=======
-import { NgModule } from "@angular/core";
-import { Routes, RouterModule } from "@angular/router";
-import { BuyerBidComponent } from "./pages/buyer/buyer-bid/buyer-bid.component";
-import { BuyerBidListComponent } from "./pages/buyer/buyer-bid-list/buyer-bid-list.component";
-import { SellerBidListComponent } from "./pages/seller/seller-bid-list/seller-bid-list.component";
-import { BuyerBrowseComponent } from "./pages/buyer/buyer-browse/buyer-browse.component";
-import { LandingComponent } from "./pages/common/landing/landing.component";
-import { InfoComponent } from "./shared/components/info/info.component";
-import { SellerListComponent } from "./pages/admin/seller-list/seller-list.component";
-
-import {
-  AuthGuard,
-  UserSessionDataResolver,
-  UserDataResolver
-} from "./app.service";
->>>>>>> 3970f9592677455205d341d66522944f1d5ea02e
 
 const routes: Routes = [
   {
@@ -59,21 +41,13 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-<<<<<<< HEAD
     path: 'admin/seller-list',
-=======
-    path: "admin/seller-list",
->>>>>>> 3970f9592677455205d341d66522944f1d5ea02e
     component: SellerListComponent,
     resolve: [UserSessionDataResolver, UserDataResolver],
     canActivate: [AuthGuard]
   },
   {
-<<<<<<< HEAD
     path: 'info/:page',
-=======
-    path: "info/:page",
->>>>>>> 3970f9592677455205d341d66522944f1d5ea02e
     component: InfoComponent
   },
   {
