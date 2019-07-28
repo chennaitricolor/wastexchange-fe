@@ -31,7 +31,7 @@ export const MENUMASTER: Menu[] = [
       },
       {
         id: 9,
-        link: '',
+        link: "info/idea",
         name: 'Our idea',
         parentId: 2,
         icon: 'movie_filter'

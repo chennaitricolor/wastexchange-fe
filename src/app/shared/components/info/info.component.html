@@ -1,10 +1,13 @@
 <div class="info-container">
   <ng-container [ngSwitch]="this.page">
+    <ng-container *ngSwitchCase="'our-team'">
+      <ng-container *ngTemplateOutlet="ourTeamTemplate"></ng-container>
+    </ng-container>
     <ng-container *ngSwitchCase="'special-thanks'">
       <ng-container *ngTemplateOutlet="specialThanksTemplate"></ng-container>
     </ng-container>
-    <ng-container *ngSwitchCase="'our-team'">
-      <ng-container *ngTemplateOutlet="ourTeamTemplate"></ng-container>
+    <ng-container *ngSwitchCase="'idea'">
+      <ng-container *ngTemplateOutlet="ideaTemplate"></ng-container>
     </ng-container>
   </ng-container>
 </div>
@@ -134,6 +137,64 @@
           <p class="text--medium">Greater Chennai Corporation</p>
         </div>
       </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #ideaTemplate>
+  <div class="our-team-container">
+    <div class="our-team-info-container">
+      <div class="our-team-sub-container">
+        <h4 class="text--blue text--center">Our idea</h4>
+        <p class="justified-text">
+          India Waste Exchange is a trading platform for municipal solid waste (MSW) and it is the India’s First
+          waste Exchange for MSW. It is also believed to be world’s first Waste Exchange for MSW. This platform
+          helps cities to achieve zero waste by bringing in the concept of Circular Economy in Waste Management.
+          It helps the City administrators to collaborate with private players and informal players in the field of
+          Waste management to solve the menace of waste management problem.
+        </p>
+        <img src="./../../../../assets/info/idea/waste-exchange-process.png" alt="" class="m2 process-img" />
+      </div>
+      <p class="justified-text">
+        <b>
+          Phase One:
+        </b>
+      </p>
+      <p class="justified-text">
+        Team ZERO WASTE did a complete study of process involved right from door to door collection to dumping of waste
+        by visiting every zone across Chennai city. Further we visited all kind of waste processing facilities including
+        Bio-gas plants from house hold waste, market waste and animal waste etc to get clear picture.
+      </p>
+      <p>
+        <b>
+          Phase Two:
+        </b>
+      </p>
+      <p class="justified-text">
+        Waste Exchange platform to handle Municipal solid waste has been developed and feasibility test is being carried
+        out in Chennai city with the help of Greater Chennai Corporation (GCC). Post studies, it will be scaled up both
+        Horizontally by including other form of waste like e-waste, C&D waste etc and vertically by expanding
+        geographically.
+      </p>
+      <p>
+        <b>
+          Phase Three:
+        </b>
+      </p>
+      <p class="justified-text">
+        The Platform will be expanded to other Smart Cities in Tamil Nadu to study how networking among cities help in
+        solving the Solid waste management problem.
+      </p>
+      <p>
+        <b>
+          Phase Four:
+        </b>
+      </p>
+      <p class="justified-text">
+        This Waste Exchange platform will be scaled up across all 100 Smart Cities in India. This will create a huge set
+        of micro networks in waste management supply chain across India to communicate among each other. This in turn
+        will help country to achieve net zero waste.
+      </p>
     </div>
   </div>
 </ng-template>
