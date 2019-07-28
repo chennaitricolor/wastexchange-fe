@@ -1,6 +1,6 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Router, ParamMap } from '@angular/router';
-import { AppService } from 'src/app/app.service';
+import { Component, OnInit, OnDestroy } from "@angular/core";
+import { ActivatedRoute, Router, ParamMap } from "@angular/router";
+import { AppService } from "src/app/app.service";
 
 @Component({
   selector: 'wm-info',
@@ -9,7 +9,11 @@ import { AppService } from 'src/app/app.service';
 })
 export class InfoComponent implements OnInit, OnDestroy {
   public page: string;
-  constructor(private router: Router, private activatedRoute: ActivatedRoute, public appServ: AppService) {
+  constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    public appServ: AppService
+  ) {
     this.activatedRoute.params.subscribe((params: ParamMap) => {
       this.page = params['page'];
     });

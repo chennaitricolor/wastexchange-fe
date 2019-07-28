@@ -25,13 +25,16 @@ export class LandingComponent implements OnInit {
 
   redirectUser() {
     if (this.appServ.isUserLoggedIn) {
-      let [persona, userId] = [this.appServ.loggedInUserInfo['persona'], this.appServ.loggedInUserInfo['id']];
-      if (persona == 'admin') {
-        this.router.navigate(['admin', 'seller-list']);
-      } else if (persona == 'seller') {
-        this.router.navigate(['seller', userId, 'bid-list']);
-      } else if (persona == 'buyer') {
-        this.router.navigate(['buyer', userId, 'browse']);
+      let [persona, userId] = [
+        this.appServ.loggedInUserInfo["persona"],
+        this.appServ.loggedInUserInfo["id"]
+      ];
+      if (persona == "admin") {
+        this.router.navigate(["admin", "seller-list"]);
+      } else if (persona == "seller") {
+        this.router.navigate(["seller", userId, "bid-list"]);
+      } else if (persona == "buyer") {
+        this.router.navigate(["buyer", userId, "browse"]);
       }
     }
   }
