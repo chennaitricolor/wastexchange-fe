@@ -1,7 +1,7 @@
-import { Directive, HostListener, ElementRef, Input } from "@angular/core";
+import { Directive, HostListener, ElementRef, Input } from '@angular/core';
 
 @Directive({
-  selector: "[wmMin]"
+  selector: '[wmMin]'
 })
 export class WmMinDirective {
   @Input() wmMin: number;
@@ -10,8 +10,8 @@ export class WmMinDirective {
   constructor(private elementRef: ElementRef) {
     this.el = this.elementRef.nativeElement;
   }
-  @HostListener("blur", ["$event"]) onchange(event: any) {
+  @HostListener('blur', ['$event']) onchange(event: any) {
     let value = this.el.value;
-    !(parseInt(value) >= this.wmMin) && (this.el.value = "0");
+    !(parseInt(value) >= this.wmMin) && (this.el.value = '0');
   }
 }

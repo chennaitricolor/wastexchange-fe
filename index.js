@@ -15,7 +15,7 @@ app.use(express.static(__dirname + '/dist/wastexchange-fe'));
 // Heroku port
 
 app.listen(process.env.PORT || 8080);
-console.log('app is listening to 8080 port now..')
+console.log('app is listening to 8080 port now..');
 // app.use(bodyParser.json()); // support json encoded bodies
 // app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 

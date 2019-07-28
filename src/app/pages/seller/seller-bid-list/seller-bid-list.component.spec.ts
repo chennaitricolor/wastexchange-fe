@@ -8,9 +8,8 @@ describe('SellerBidListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SellerBidListComponent ]
-    })
-    .compileComponents();
+      declarations: [SellerBidListComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

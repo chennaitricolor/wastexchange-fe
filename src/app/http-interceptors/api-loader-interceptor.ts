@@ -1,16 +1,9 @@
-import { Injectable } from "@angular/core";
-import {
-  HttpEvent,
-  HttpInterceptor,
-  HttpHandler,
-  HttpRequest,
-  HttpResponse,
-  HttpHeaders
-} from "@angular/common/http";
+import { Injectable } from '@angular/core';
+import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpResponse, HttpHeaders } from '@angular/common/http';
 
-import { Observable } from "rxjs";
-import { AppService } from "../app.service";
-import { tap, catchError } from "rxjs/operators";
+import { Observable } from 'rxjs';
+import { AppService } from '../app.service';
+import { tap, catchError } from 'rxjs/operators';
 
 @Injectable()
 export class ApiLoaderInterceptor implements HttpInterceptor {
@@ -18,17 +11,14 @@ export class ApiLoaderInterceptor implements HttpInterceptor {
 
   constructor(public appServ: AppService) {}
 
-  intercept(
-    request: HttpRequest<any>,
-    next: HttpHandler
-  ): Observable<HttpEvent<any>> {
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     this.totalRequests++;
     this.appServ.setLoading(true);
 
     const authReq = this.appServ.isUserLoggedIn
       ? request.clone({
           headers: new HttpHeaders({
-            "x-access-token": this.appServ.getSessionValue("token")
+            'x-access-token': this.appServ.getSessionValue('token')
           })
         })
       : request;

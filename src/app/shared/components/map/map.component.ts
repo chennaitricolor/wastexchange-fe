@@ -1,12 +1,12 @@
-import { Component, OnInit, Input } from "@angular/core";
-import { AppService } from "src/app/app.service";
-import { MATERIALS } from "./../../../app.model";
-import { environment } from "./../../../../environments/environment";
+import { Component, OnInit, Input } from '@angular/core';
+import { AppService } from 'src/app/app.service';
+import { MATERIALS } from './../../../app.model';
+import { environment } from './../../../../environments/environment';
 
 @Component({
-  selector: "wm-map",
-  templateUrl: "./map.component.html",
-  styleUrls: ["./map.component.scss"]
+  selector: 'wm-map',
+  templateUrl: './map.component.html',
+  styleUrls: ['./map.component.scss']
 })
 export class MapComponent implements OnInit {
   @Input() sellers: any[] = [];
@@ -23,15 +23,9 @@ export class MapComponent implements OnInit {
 
   public onMarkerClick(index) {
     !this.sellers[index].details &&
-      this.appServ
-        .getSellerItems(this.sellers[index].id)
-        .subscribe(response => {
-          this.sellers[index].canBidBeRaisedAgainst = !!Object.keys(
-            response.details
-          ).length;
-          this.sellers[index].details = this.appServ.setDefaultMaterialData(
-            response || { details: {} }
-          ).details;
-        });
+      this.appServ.getSellerItems(this.sellers[index].id).subscribe(response => {
+        this.sellers[index].canBidBeRaisedAgainst = !!Object.keys(response.details).length;
+        this.sellers[index].details = this.appServ.setDefaultMaterialData(response || { details: {} }).details;
+      });
   }
 }
