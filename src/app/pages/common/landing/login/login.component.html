@@ -2,11 +2,11 @@
   <div class="login-form">
     <mat-form-field>
       <mat-label>Email</mat-label>
-      <input matInput [(ngModel)]="this.userEmail" />
+      <input (keyup.enter)="loginUser()" matInput [(ngModel)]="this.userEmail" />
     </mat-form-field>
     <mat-form-field>
       <mat-label>Password</mat-label>
-      <input matInput type="password" [(ngModel)]="this.userPassword" />
+      <input (keyup.enter)="loginUser()" matInput type="password" [(ngModel)]="this.userPassword" />
     </mat-form-field>
   </div>
 

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { MATERIALS } from './../../../app.model';
-import { AppService } from 'src/app/app.service';
+import { MATERIALS } from 'app/app.model';
+import { AppService } from 'app/app.service';
 @Component({
   selector: 'wm-bid-list-table',
   templateUrl: './bid-list-table.component.html',

@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from './../environments/environment';
+import { environment } from 'environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { Bid, SellerItem, Seller, MATERIALS } from './app.model';
+import { Bid, SellerItem, MATERIALS } from './app.model';
 import { MatSnackBar } from '@angular/material';
+import { Router } from '@angular/router';
+import { BuyerService } from './shared/services/buyer.service';
+import { SellerService } from './shared/services/seller.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,42 +22,44 @@ export class AppService {
   public materials = MATERIALS;
   public hidePageActions: boolean = false;
 
-  constructor(private httpClient: HttpClient, private rtr: Router, public snackBar: MatSnackBar) {}
+  constructor(
+    private http: HttpClient,
+    private rtr: Router,
+    public snackBar: MatSnackBar,
+    private buyerServ: BuyerService,
+    private sellerServ: SellerService
+  ) {}
 
-  public getBids(): Observable<Bid[]> {
-    return this.httpClient.get<Bid[]>(environment.hostName + '/bids');
+  public getAllBids(): Observable<Bid[]> {
+    return this.buyerServ.getAllBids();
   }
 
   public getBidsForBuyer(buyerId): Observable<Bid[]> {
-    return this.httpClient.get<Bid[]>(environment.hostName + `/buyer/${buyerId}/bids`);
-  }
-
-  public getBidsForSeller(sellerId): Observable<Bid[]> {
-    return this.httpClient.get<Bid[]>(environment.hostName + `/seller/${sellerId}/bids`);
+    return this.buyerServ.getBidsForBuyer(buyerId);
   }
 
   public getSellerItems(sellerId): Observable<SellerItem> {
-    return this.httpClient.get<SellerItem>(environment.hostName + `/seller/${sellerId}/items`);
+    return this.sellerServ.getSellerItems(sellerId);
   }
 
   public updateSellerItem(sellerItem: SellerItem): Observable<any> {
-    return this.httpClient.put<any>(environment.hostName + `/items/${sellerItem.id}`, sellerItem);
+    return this.sellerServ.updateSellerItem(sellerItem);
   }
 
   public createBid(bid: Bid): Observable<any> {
-    return this.httpClient.post<any>(environment.hostName + `/buyer/${bid.buyerId}/bids`, bid);
+    return this.buyerServ.createBid(bid);
   }
 
   public updateBid(bid: Bid): Observable<any> {
-    return this.httpClient.put<any>(environment.hostName + `/bids/${bid.id}`, bid);
+    return this.buyerServ.updateBid(bid);
   }
 
-  public getBid(bidId: number): Observable<any> {
-    return this.httpClient.get<any>(environment.hostName + `/bids/${bidId}`);
+  public getBidById(bidId: number): Observable<any> {
+    return this.buyerServ.getBid(bidId);
   }
 
   public getAllUsers(): Observable<any[]> {
-    return this.httpClient.get<any[]>(environment.hostName + '/users');
+    return this.http.get<any[]>(environment.hostName + '/users');
   }
 
   public getAllUsersAndFilter(): Promise<any> {
@@ -69,16 +74,16 @@ export class AppService {
   }
 
   public sendOtp(payload: any): Observable<any> {
-    return this.httpClient.post<any>(environment.hostName + '/users/sendOtp', payload);
+    return this.http.post<any>(environment.hostName + '/users/sendOtp', payload);
   }
 
   public registerUser(userDetails: any): Observable<any> {
-    return this.httpClient.post<any>(environment.hostName + '/users/register', userDetails);
+    return this.http.post<any>(environment.hostName + '/users/register', userDetails);
   }
 
   public loginUser(loginPayload: any): Promise<boolean> {
     return new Promise((resolve, reject) => {
-      this.httpClient.post<any>(environment.hostName + '/users/login', loginPayload).subscribe(response => {
+      this.http.post<any>(environment.hostName + '/users/login', loginPayload).subscribe(response => {
         this.setSessionData(response);
         this.getMe().subscribe(response => {
           this.loggedInUserInfo = response;
@@ -91,7 +96,7 @@ export class AppService {
   }
 
   public getMe(): Observable<any> {
-    return this.httpClient.get<any>(environment.hostName + '/users/me');
+    return this.http.get<any>(environment.hostName + '/users/me');
   }
 
   public authorizeUser(): boolean {
@@ -149,52 +154,5 @@ export class AppService {
       !sellerItem.details[material] && (sellerItem.details[material] = { quantity: 0, cost: 0, bid: 0 });
     });
     return sellerItem;
-  }
-}
-
-import { CanActivate } from '@angular/router';
-@Injectable()
-export class AuthGuard implements CanActivate {
-  constructor(public appServ: AppService) {}
-  canActivate(): boolean {
-    return this.appServ.authorizeUser();
-  }
-}
-
-@Injectable()
-export class UserSessionDataResolver implements Resolve<any> {
-  constructor(public appServ: AppService, private rtr: Router) {}
-
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
-    this.appServ.authorizeUser();
-    this.appServ.userSessionData = this.appServ.getUserSessionDataFromSession();
-
-    return new Promise((resolve, reject) => {
-      this.appServ.isUserLoggedIn && !this.appServ.loggedInUserInfo
-        ? this.appServ.getMe().subscribe(response => {
-            this.appServ.loggedInUserInfo = response;
-            resolve(true);
-          })
-        : resolve(true);
-    });
-  }
-}
-
-import { Router, Resolve, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
-
-@Injectable()
-export class UserDataResolver implements Resolve<any> {
-  constructor(public appServ: AppService, private rtr: Router) {}
-
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
-    this.appServ.userSessionData = this.appServ.getUserSessionDataFromSession();
-
-    return new Promise((resolve, reject) => {
-      this.appServ.allUsers.length
-        ? resolve(true)
-        : this.appServ.getAllUsersAndFilter().then(() => {
-            resolve(true);
-          });
-    });
   }
 }

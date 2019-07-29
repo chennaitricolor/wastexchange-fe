@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Buyer, BUYER_DATA, Seller, SELLER_DATA } from './../../../app.model';
-import { AppService } from './../../../app.service';
-import { Bid, MATERIALS, SellerItem } from './../../../app.model';
+import { AppService } from 'app/app.service';
+import { Bid, MATERIALS, SellerItem } from 'app/app.model';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 
 @Component({
@@ -34,7 +33,7 @@ export class BuyerBidComponent implements OnInit {
     };
     this.appServ.getSellerItems(this.sellerId).subscribe(data => {
       this.bidId
-        ? this.appServ.getBid(this.bidId).subscribe(response => {
+        ? this.appServ.getBidById(this.bidId).subscribe(response => {
             this.bid = response;
             onBid(data);
           })

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Buyer, Seller } from './../../../app.model';
-import { AppService } from './../../../app.service';
-import { Bid } from './../../../app.model';
+import { AppService } from 'app/app.service';
+import { Bid } from 'app/app.model';
 
 @Component({
   selector: 'wm-buyer-bid-list',

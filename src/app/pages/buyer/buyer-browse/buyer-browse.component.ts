@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Buyer, BUYER_DATA } from './../../../app.model';
-import { AppService } from 'src/app/app.service';
+import { Buyer, BUYER_DATA } from 'app/app.model';
+import { AppService } from 'app/app.service';
 
 @Component({
   selector: 'wm-buyer-browse',

@@ -6,9 +6,10 @@ import { SellerBidListComponent } from './pages/seller/seller-bid-list/seller-bi
 import { BuyerBrowseComponent } from './pages/buyer/buyer-browse/buyer-browse.component';
 import { LandingComponent } from './pages/common/landing/landing.component';
 import { InfoComponent } from './shared/components/info/info.component';
+import { AuthGuard } from './guards/auth.guard';
+import { UserDataResolver } from './resolvers/user-data.resolver';
+import { UserSessionDataResolver } from './resolvers/user-session-data.resolver';
 import { SellerListComponent } from './pages/admin/seller-list/seller-list.component';
-
-import { AuthGuard, UserSessionDataResolver, UserDataResolver } from './app.service';
 
 const routes: Routes = [
   {

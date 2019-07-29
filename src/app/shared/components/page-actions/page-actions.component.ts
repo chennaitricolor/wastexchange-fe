@@ -12,7 +12,7 @@ import {
 } from '@angular/core';
 import { DomPortalHost, PortalHost, CdkPortal } from '@angular/cdk/portal';
 import { TemplatePortal } from '@angular/cdk/portal';
-import { AppService } from 'src/app/app.service';
+import { AppService } from 'app/app.service';
 
 const PRIMARY_COLORS = {
   admin: '#e16262',

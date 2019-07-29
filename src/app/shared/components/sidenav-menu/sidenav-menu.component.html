@@ -16,7 +16,7 @@
   >
     <mat-icon class="routeIcon">{{ menu.icon }}</mat-icon>
     {{ menu.name }}
-    <span *ngIf="menu.children && menu.children.length">
+    <span class="flex" *ngIf="menu.children && menu.children.length">
       <mat-icon [@indicatorRotate]="menu.expanded ? 'expanded' : 'collapsed'">
         expand_more
       </mat-icon>

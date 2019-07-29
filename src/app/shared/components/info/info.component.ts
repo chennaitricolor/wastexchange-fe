@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
-import { AppService } from 'src/app/app.service';
+import { AppService } from 'app/app.service';
 
 @Component({
   selector: 'wm-info',

@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { environment } from './../environments/environment';
+import { environment } from 'environments/environment';
 
 import { ApiLoaderInterceptor } from './http-interceptors/api-loader-interceptor';
 
@@ -32,6 +32,9 @@ import {
 
 import { LayoutModule } from '@angular/cdk/layout';
 
+import { FilterListPipe } from './pipes/filter-list.pipe';
+
+import { SellerListComponent } from './pages/admin/seller-list/seller-list.component';
 import { BuyerBidComponent } from './pages/buyer/buyer-bid/buyer-bid.component';
 import { BuyerBidListComponent } from './pages/buyer/buyer-bid-list/buyer-bid-list.component';
 import { SellerBidListComponent } from './pages/seller/seller-bid-list/seller-bid-list.component';
@@ -44,12 +47,11 @@ import { SignUpComponent } from './pages/common/landing/sign-up/sign-up.componen
 import { WmMaxDirective } from './directives/wm-max-validator.directive';
 import { WmMinDirective } from './directives/wm-min-validator.directive';
 
-import { FilterListPipe } from './pipes/filter-list.pipe';
-
-import { AppService, AuthGuard, UserSessionDataResolver, UserDataResolver } from './app.service';
 import { SidenavMenuComponent } from './shared/components/sidenav-menu/sidenav-menu.component';
 import { InfoComponent } from './shared/components/info/info.component';
-import { SellerListComponent } from './pages/admin/seller-list/seller-list.component';
+import { AuthGuard } from './guards/auth.guard';
+import { UserDataResolver } from './resolvers/user-data.resolver';
+import { UserSessionDataResolver } from './resolvers/user-session-data.resolver';
 
 @NgModule({
   declarations: [
@@ -98,7 +100,6 @@ import { SellerListComponent } from './pages/admin/seller-list/seller-list.compo
   ],
   entryComponents: [LoginComponent, SignUpComponent],
   providers: [
-    AppService,
     AuthGuard,
     UserSessionDataResolver,
     UserDataResolver,
