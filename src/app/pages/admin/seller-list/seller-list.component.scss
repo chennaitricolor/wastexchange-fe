@@ -5,4 +5,11 @@
   .search-seller-input {
     width: 300px;
   }
+  .table tr th {
+    width: 16%;
+
+    &.title {
+      width: 52%;
+    }
+  }
 }

@@ -10,14 +10,14 @@
   <table class="table mt-2">
     <thead>
       <tr>
-        <th scope="col">Seller name</th>
+        <th scope="col" class="title">Seller name</th>
         <th scope="col">Login id</th>
         <th scope="col">Mobile no.</th>
         <th scope="col">Actions</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let seller of this.appServ.allSellers | filter: searchText">
+      <tr *ngFor="let seller of this.appServ.allSellers | filter: searchText:['name', 'emailId']">
         <td>{{ seller.name }}</td>
         <td>{{ seller.emailId }}</td>
         <td>{{ seller.mobNo }}</td>

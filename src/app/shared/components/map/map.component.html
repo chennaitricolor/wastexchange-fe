@@ -15,7 +15,7 @@
       [iconUrl]="'https://maps.google.com/mapfiles/ms/icons/orange-dot.png'"
     >
       <agm-info-window [disableAutoPan]="true">
-        <ng-container *ngIf="seller.details">
+        <ng-container>
           <ng-container *ngTemplateOutlet="sellerDetailsTemplate; context: { sellerDetails: seller }"></ng-container>
         </ng-container>
       </agm-info-window>
@@ -27,7 +27,7 @@
   <p class="text--blue text--normal text--bold text--center mb-1">
     {{ seller.name }}
   </p>
-  <table class="table mt-2 table-sm">
+  <table class="table mt-2 table-sm" *ngIf="seller.details">
     <tbody>
       <ng-container *ngFor="let material of this.materials | keyvalue">
         <tr *ngIf="seller.details[material.key].quantity">
@@ -51,8 +51,8 @@
     >
       Bid to buy
     </button>
-    <!-- <p *ngIf="!this.appServ.isUserLoggedIn" class="text--blue text--normal">
+    <p *ngIf="!this.appServ.isUserLoggedIn" class="text--orange text--normal mt-2">
       Login to bid
-    </p> -->
+    </p>
   </div>
 </ng-template>
