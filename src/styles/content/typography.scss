@@ -14,6 +14,10 @@ p {
     color: #838383;
   }
 
+  &--white {
+    color: #fff;
+  }
+
   &--primary {
     color: $app-primary;
   }

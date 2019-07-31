@@ -22,9 +22,20 @@
         <td>{{ buyer.emailId }}</td>
         <td>{{ buyer.mobNo }}</td>
         <td>
-          <button mat-flat-button color="primary" class="rounded-button" [routerLink]="['/buyer', buyer.id, 'bid-list']">
+          <button
+            *ngIf="buyer.approved; else buyerApprovalTemplate"
+            mat-flat-button
+            color="primary"
+            class="rounded-button"
+            [routerLink]="['/buyer', buyer.id, 'bid-list']"
+          >
             Manage
           </button>
+          <ng-template #buyerApprovalTemplate>
+            <button mat-flat-button color="primary" class="rounded-button" (click)="approveBuyer(buyer)">
+              Approve
+            </button>
+          </ng-template>
         </td>
       </tr>
     </tbody>

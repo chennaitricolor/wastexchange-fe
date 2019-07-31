@@ -58,6 +58,14 @@ export class AppService {
     return this.buyerServ.getBid(bidId);
   }
 
+  /**
+   * @description approve a particular user by id
+   * @param id the user id to approve
+   */
+  public approveUser(id: number): Observable<any> {
+    return this.http.put<any>(environment.hostName + '/users/' + id + '/approve', {});
+  }
+
   public getAllUsers(): Observable<any[]> {
     return this.http.get<any[]>(environment.hostName + '/users');
   }
@@ -144,8 +152,14 @@ export class AppService {
     }, 0);
   }
 
+  /**
+   * @description open material snackbar
+   * @param message the message to display
+   * @param action the action label
+   * @param duration the duration of the snackbar, default: 5000 ms
+   */
   public openSnackBar(message: string, action: string, duration: number = 5000) {
-    return this.snackBar.open(message, action, { duration: duration });
+    return this.snackBar.open(message, action, { duration: duration, panelClass: 'text--white' });
   }
 
   //utils
