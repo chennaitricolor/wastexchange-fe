@@ -13,6 +13,7 @@
       expanded: menu.expanded
     }"
     class="menu-list-item"
+    *ngIf="!menu.authorizedPersona || menu.authorizedPersona.includes(this.appServ.loggedInUserInfo?.persona)"
   >
     <mat-icon class="routeIcon">{{ menu.icon }}</mat-icon>
     {{ menu.name }}

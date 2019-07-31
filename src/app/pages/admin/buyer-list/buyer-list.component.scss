@@ -1,0 +1,15 @@
+.buyer-list-container {
+  padding: 16px 32px;
+  width: 100%;
+
+  .search-buyer-input {
+    width: 300px;
+  }
+  .table tr th {
+    width: 16%;
+
+    &.title {
+      width: 52%;
+    }
+  }
+}

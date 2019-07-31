@@ -52,6 +52,7 @@ import { InfoComponent } from './shared/components/info/info.component';
 import { AuthGuard } from './guards/auth.guard';
 import { UserDataResolver } from './resolvers/user-data.resolver';
 import { UserSessionDataResolver } from './resolvers/user-session-data.resolver';
+import { BuyerListComponent } from './pages/admin/buyer-list/buyer-list.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { UserSessionDataResolver } from './resolvers/user-session-data.resolver'
     SidenavMenuComponent,
     InfoComponent,
     SellerListComponent,
-    FilterListPipe
+    FilterListPipe,
+    BuyerListComponent
   ],
   imports: [
     BrowserModule,

@@ -10,6 +10,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { UserDataResolver } from './resolvers/user-data.resolver';
 import { UserSessionDataResolver } from './resolvers/user-session-data.resolver';
 import { SellerListComponent } from './pages/admin/seller-list/seller-list.component';
+import { BuyerListComponent } from './pages/admin/buyer-list/buyer-list.component';
 
 const routes: Routes = [
   {
@@ -44,6 +45,12 @@ const routes: Routes = [
   {
     path: 'admin/seller-list',
     component: SellerListComponent,
+    resolve: [UserSessionDataResolver, UserDataResolver],
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'admin/buyer-list',
+    component: BuyerListComponent,
     resolve: [UserSessionDataResolver, UserDataResolver],
     canActivate: [AuthGuard]
   },

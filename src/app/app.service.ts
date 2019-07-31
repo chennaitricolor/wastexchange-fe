@@ -117,6 +117,7 @@ export class AppService {
     sessionStorage.clear();
     this.userSessionData = new Object();
     this.isUserLoggedIn = false;
+    this.loggedInUserInfo = null;
   }
 
   public forceLogoutUser() {

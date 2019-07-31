@@ -26,7 +26,7 @@ export class LandingComponent implements OnInit {
     if (this.appServ.isUserLoggedIn) {
       let [persona, userId] = [this.appServ.loggedInUserInfo['persona'], this.appServ.loggedInUserInfo['id']];
       let params = {
-        admin: ['admin', 'seller-list'],
+        admin: ['admin', 'buyer-list'],
         seller: ['seller', userId, 'bid-list'],
         buyer: ['buyer', userId, 'browse']
       };

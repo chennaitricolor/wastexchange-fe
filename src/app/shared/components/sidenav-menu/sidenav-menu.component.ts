@@ -3,6 +3,7 @@ import { MENUMASTER } from './sidenav-menu.data';
 import { Menu } from './sidenav-menu';
 import { Router } from '@angular/router';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { AppService } from 'app/app.service';
 
 @Component({
   selector: 'wm-sidenav-menu',
@@ -20,7 +21,7 @@ export class SidenavMenuComponent implements OnInit {
   public menuMaster: Menu[] = MENUMASTER;
   @Output('close') private close: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  constructor(public router: Router) {}
+  constructor(public router: Router, public appServ: AppService) {}
 
   ngOnInit() {}
 

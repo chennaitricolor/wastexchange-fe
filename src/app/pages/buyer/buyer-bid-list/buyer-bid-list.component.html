@@ -10,10 +10,17 @@
   </div>
 </div>
 
-<wm-page-actions [user]="this.appServ.loggedInUserInfo">
+<wm-page-actions [user]="this.buyer">
   <div class="actions flex mt-4">
-    <button mat-flat-button color="primary" class="rounded-button" [routerLink]="['/buyer', this.appServ.loggedInUserInfo.id, 'browse']">
-      Browse and Bid
-    </button>
+    <ng-container *ngIf="this.appServ.loggedInUserInfo?.persona === 'admin'; else buyerPageActionTemplate">
+      <button mat-flat-button color="primary" class="rounded-button" [routerLink]="['/admin', 'buyer-list']">
+        View all buyers
+      </button>
+    </ng-container>
+    <ng-template #buyerPageActionTemplate>
+      <button mat-flat-button color="primary" class="rounded-button" [routerLink]="['/buyer', this.appServ.loggedInUserInfo.id, 'browse']">
+        Browse and Bid
+      </button>
+    </ng-template>
   </div>
 </wm-page-actions>
