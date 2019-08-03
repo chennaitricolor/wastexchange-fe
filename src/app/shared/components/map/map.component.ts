@@ -22,7 +22,8 @@ export class MapComponent implements OnInit {
   ngOnInit() {}
 
   public onMarkerClick(index) {
-    !this.sellers[index].details && this.appServ.isUserLoggedIn &&
+    !this.sellers[index].details &&
+      this.appServ.isUserLoggedIn &&
       this.appServ.getSellerItems(this.sellers[index].id).subscribe(response => {
         this.sellers[index].canBidBeRaisedAgainst = !!Object.keys(response.details).length;
         this.sellers[index].details = this.appServ.setDefaultMaterialData(response || { details: {} }).details;
