@@ -81,6 +81,24 @@ export class AppService {
     });
   }
 
+  /**
+   * @description delelte a particular user by id
+   * @param id the user id to perform the delete operation on
+   */
+  public deleteUser(id: number): Observable<any> {
+    return this.http.delete<any>(environment.hostName + `/users/${id}`);
+  }
+
+  /**
+   * @description remove a user from the client
+   * @param id the id to remove
+   */
+  public removeUserById(id: number) {
+    this.allBuyers = this.allBuyers.filter(buyer => buyer.id !== id);
+    this.allSellers = this.allSellers.filter(seller => seller.id !== id);
+    this.allUsers = this.allUsers.filter(user => user.id !== id);
+  }
+
   public sendOtp(payload: any): Observable<any> {
     return this.http.post<any>(environment.hostName + '/users/sendOtp', payload);
   }

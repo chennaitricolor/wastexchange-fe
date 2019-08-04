@@ -27,9 +27,19 @@ export class BuyerListComponent {
     );
   }
 
-  public denyBuyer(buyer: Buyer) {
-    /**
-     * TODO: Perform operation for denying buyer if distinct from approval flow
-     */
+  /**
+   * @description delete the buyer
+   * @param buyer the buyer to delete
+   */
+  public deleteBuyer(buyer: Buyer) {
+    this.appServ.deleteUser(buyer.id).subscribe(
+      () => {
+        this.appServ.removeUserById(buyer.id);
+        this.appServ.openSnackBar('Buyer removed successfully', 'DISMISS');
+      },
+      () => {
+        this.appServ.openSnackBar(`Oops! Could not delete buyer`, 'DISMISS');
+      }
+    );
   }
 }
