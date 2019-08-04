@@ -50,7 +50,7 @@ export class BuyerBidListComponent implements OnInit, OnDestroy {
     this.appServ.getBidsForBuyer(buyerId).subscribe(data => {
       this.bids = data;
       this.bids.forEach(bid => {
-        bid.buyer = this.appServ.allBuyers.find(buyer => buyer.id == bid.buyerId);
+        bid.seller = this.appServ.allSellers.find(seller => seller.id == bid.sellerId); // Set the seller details in the bid object
       });
     });
   }
