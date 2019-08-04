@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start-dev": "ng serve --port 4201 --host 0.0.0.0",
+    "build-dev": "rm -rf dist && ng build",
     "build": "rm -rf dist && ng build --configuration=production",
     "test": "ng test",
     "lint": "ng lint",
