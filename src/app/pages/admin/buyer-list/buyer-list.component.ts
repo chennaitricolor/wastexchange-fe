@@ -26,4 +26,10 @@ export class BuyerListComponent {
       }
     );
   }
+
+  public denyBuyer(buyer: Buyer) {
+    /**
+     * TODO: Perform operation for denying buyer if distinct from approval flow
+     */
+  }
 }

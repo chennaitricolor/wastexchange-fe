@@ -13,7 +13,6 @@
         <th scope="col" class="title">Buyer name</th>
         <th scope="col">Login id</th>
         <th scope="col">Mobile no.</th>
-        <th scope="col">Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -32,9 +31,14 @@
             Manage
           </button>
           <ng-template #buyerApprovalTemplate>
-            <button mat-flat-button color="primary" class="rounded-button" (click)="approveBuyer(buyer)">
-              Approve
-            </button>
+            <div class="flex direction-column">
+              <button mat-flat-button color="primary" class="rounded-button" (click)="approveBuyer(buyer)">
+                Approve
+              </button>
+              <button mat-stroked-button color="primary" class="rounded-button mt-2" (click)="denyBuyer(buyer)">
+                Deny
+              </button>
+            </div>
           </ng-template>
         </td>
       </tr>
