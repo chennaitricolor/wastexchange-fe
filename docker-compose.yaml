@@ -9,11 +9,11 @@ services:
     environment:
       POSTGRES_USER: dev
       POSTGRES_PASSWORD: dev
-      POSTGRES_DB: waste_exchange_dev
+      POSTGRES_DB: wastexchange_development
   backend:
     build:
       context: ../wastexchange-be
-      dockerfile: Dockerfile.new
+      dockerfile: new.Dockerfile
     ports:
       - "7000:7000"
     environment:
