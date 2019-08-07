@@ -47,14 +47,14 @@ export const MENUMASTER: Menu[] = [
       },
       {
         id: 9,
-        link: '',
+        link: 'info/idea',
         name: 'Our idea',
         parentId: 2,
         icon: 'movie_filter'
       },
       {
         id: 10,
-        link: '',
+        link: 'info/advisory-team',
         name: 'Advisory team',
         parentId: 2,
         icon: 'folder_special'
