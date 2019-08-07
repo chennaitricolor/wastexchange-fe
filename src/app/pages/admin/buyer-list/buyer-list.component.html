@@ -20,7 +20,7 @@
         <td>{{ buyer.name }}</td>
         <td>{{ buyer.emailId }}</td>
         <td>{{ buyer.mobNo }}</td>
-        <td>
+        <td class="flex direction-column">
           <button
             *ngIf="buyer.approved; else buyerApprovalTemplate"
             mat-flat-button
@@ -31,14 +31,12 @@
             Manage
           </button>
           <ng-template #buyerApprovalTemplate>
-            <div class="flex direction-column">
-              <button mat-flat-button color="primary" class="rounded-button" (click)="approveBuyer(buyer)">
-                Approve
-              </button>
-              <button mat-stroked-button color="warn" class="rounded-button mt-2 border--warn" (click)="deleteBuyer(buyer)">
-                Delete buyer
-              </button>
-            </div>
+            <button mat-flat-button color="primary" class="rounded-button" (click)="approveBuyer(buyer)">
+              Approve
+            </button>
+            <button mat-stroked-button color="warn" class="rounded-button mt-2 border--warn" (click)="deleteBuyer(buyer)">
+              Delete buyer
+            </button>
           </ng-template>
         </td>
       </tr>
