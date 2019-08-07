@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Buyer, BUYER_DATA, Seller, SELLER_DATA } from 'app/app.model';
+import { Buyer, Seller } from 'app/app.model';
 import { AppService } from 'app/app.service';
 import { Bid, MATERIALS, SellerItem } from 'app/app.model';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';

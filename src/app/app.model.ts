@@ -65,54 +65,21 @@ export interface Seller {
   long: number;
 }
 
-export const SELLER_DATA: Seller[] = [
-  {
-    id: 1,
-    name: 'Resource Recovery Centre 002',
-    lat: 12.9652163,
-    long: 80.1902814
-  },
-  {
-    id: 2,
-    name: 'Seller 2',
-    lat: 12.952377,
-    long: 80.186376
-  },
-  {
-    id: 3,
-    name: 'Seller 3',
-    lat: 12.963962,
-    long: 80.204229
-  },
-  {
-    id: 4,
-    name: 'Seller 4',
-    lat: 12.961652,
-    long: 80.239031
-  },
-  {
-    id: 5,
-    name: 'Seller 5',
-    lat: 12.940156,
-    long: 80.237498
-  },
-  {
-    id: 6,
-    name: 'Seller 6',
-    lat: 12.990103,
-    long: 80.218733
-  },
-  {
-    id: 7,
-    name: 'Seller 7',
-    lat: 12.993266,
-    long: 80.253921
-  }
-];
-
 export const MATERIALS = {
-  plastic_waste: 'Plastic Waste',
-  hdpe: 'HDPE',
-  pet: 'PET Waste',
-  rubber: 'Rubber'
+  hdp: 'HDP Waste',
+  shreddedPlastic: 'Shredded Plastic',
+  coconutShells: 'Coconut Shells',
+  cocoPit: 'Coco Pit',
+  slippers: 'Slippers',
+  foams: 'Foams',
+  thermocol: 'Thermocol',
+  bags: 'Bags',
+  mlp: 'Multi Level Plastic',
+  plasticBottles: 'Plastic Bottles',
+  glassBottles: 'Glass Bottles',
+  clothes: 'Clothes',
+  rubber: 'Tyre / Rubber',
+  lights: 'Tube / LED Lights',
+  compost: 'Compost (Manure)',
+  vermiCompost: 'Vermi Compost'
 };

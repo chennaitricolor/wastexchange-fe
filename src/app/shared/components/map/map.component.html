@@ -27,20 +27,22 @@
   <p class="text--blue text--normal text--bold text--center mb-1">
     {{ seller.name }}
   </p>
-  <table class="table mt-2 table-sm" *ngIf="seller.details">
-    <tbody>
-      <ng-container *ngFor="let material of this.materials | keyvalue">
-        <tr *ngIf="seller.details[material.key].quantity">
-          <td>{{ material.value }}</td>
-          <td>
-            <span> {{ seller.details[material.key].quantity }} kg </span>
-            (₹<span> {{ seller.details[material.key].cost }} </span> / kg)
-          </td>
-        </tr>
-      </ng-container>
-    </tbody>
-  </table>
-  <div class="actions flex">
+  <div class="table-container">
+    <table class="table mt-2 table-sm" *ngIf="seller.details">
+      <tbody>
+        <ng-container *ngFor="let material of this.materials | keyvalue">
+          <tr *ngIf="seller.details[material.key].quantity">
+            <td>{{ material.value }}</td>
+            <td>
+              <span> {{ seller.details[material.key].quantity }} kg </span>
+              (₹<span> {{ seller.details[material.key].cost }} </span> / kg)
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+  <div class="actions flex mt-1">
     <button
       *ngIf="this.appServ.isUserLoggedIn && seller.canBidBeRaisedAgainst"
       mat-flat-button

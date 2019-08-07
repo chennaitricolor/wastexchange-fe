@@ -8,27 +8,28 @@
   <div class="info-container">
     <div class="content">
       <p class="title-1">
-        We have 64 sellers listed with us so far and number of buyers registering is increasing everyday.
+        We have listed all Greater Chennai Corporation’s selling points. Buyers can register to use this platform. Soon it will be open to
+        all sellers
       </p>
+      <hr />
+      <div class="actions">
+        <div class="action">
+          <p class="text--normal mb-2">New user?</p>
+          <button mat-raised-button (click)="openSignupDialog()" color="primary">
+            Sign up
+          </button>
+        </div>
+        <div class="action">
+          <p class="text--normal mb-2">Existing user?</p>
+          <button mat-raised-button (click)="openLoginDialog()" color="primary">
+            Account login
+          </button>
+        </div>
+      </div>
       <hr />
       <p class="title-2">
         Join us and be a part of our effort to make Chennai an efficient net Zero Waste City.
       </p>
-      <hr />
-    </div>
-    <div class="actions">
-      <div class="action">
-        <p class="text--normal mb-2">New user?</p>
-        <button mat-raised-button (click)="openSignupDialog()" color="primary">
-          Sign up
-        </button>
-      </div>
-      <div class="action">
-        <p class="text--normal mb-2">Existing user?</p>
-        <button mat-raised-button (click)="openLoginDialog()" color="primary">
-          Account login
-        </button>
-      </div>
     </div>
   </div>
 </wm-page-actions>

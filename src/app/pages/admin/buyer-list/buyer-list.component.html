@@ -32,10 +32,10 @@
             Manage
           </button>
           <ng-template #buyerApprovalTemplate>
-            <button mat-flat-button color="primary" class="rounded-button" (click)="approveBuyer(buyer)">
+            <button mat-flat-button color="primary" class="rounded-button" (click)="this.appServ.approveUserData(buyer)">
               Approve
             </button>
-            <button mat-stroked-button color="warn" class="rounded-button mt-2 border--warn" (click)="deleteBuyer(buyer)">
+            <button mat-stroked-button color="warn" class="rounded-button mt-2 border--warn" (click)="this.appServ.deleteUserData(buyer)">
               Delete buyer
             </button>
           </ng-template>

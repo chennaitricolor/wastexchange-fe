@@ -22,3 +22,8 @@ button {
     border: 1px solid $app-warn !important;
   }
 }
+
+agm-map .agm-info-window-content .table-container {
+  max-height: 150px;
+  overflow: auto;
+}
