@@ -2,6 +2,7 @@
 
 @import './material.scss';
 @import './ngx-bootstrap.scss';
+@import 'styles/utilities/color-palette.scss';
 
 .table th {
   color: #000088;
@@ -14,4 +15,10 @@
 
 button {
   min-height: 36px !important;
+}
+
+.border {
+  &--warn {
+    border: 1px solid $app-warn !important;
+  }
 }

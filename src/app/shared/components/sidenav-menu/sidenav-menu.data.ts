@@ -9,6 +9,22 @@ export const MENUMASTER: Menu[] = [
     icon: 'home'
   },
   {
+    id: 13,
+    link: 'admin/buyer-list',
+    name: 'Buyer',
+    parentId: 0,
+    icon: 'nature_people',
+    authorizedPersona: ['admin']
+  },
+  {
+    id: 14,
+    link: 'admin/seller-list',
+    name: 'Seller',
+    parentId: 0,
+    icon: 'delete_sweep',
+    authorizedPersona: ['admin']
+  },
+  {
     id: 2,
     link: '',
     name: 'About us',

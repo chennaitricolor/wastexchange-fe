@@ -3,17 +3,24 @@
     Current Bids
   </p>
   <p class="text--normal text--gray">
-    Bids not accepted before 18hrs of pick-up time will be automatically cancelled.
+    Bids not accepted before 24hrs of pick-up time will be automatically cancelled.
   </p>
   <div class="bid-list-table-container mt-4">
     <wm-bid-list-table [bids]="this.bids"></wm-bid-list-table>
   </div>
 </div>
 
-<wm-page-actions [user]="this.appServ.loggedInUserInfo">
+<wm-page-actions [user]="this.buyer">
   <div class="actions flex mt-4">
-    <button mat-flat-button color="primary" class="rounded-button" [routerLink]="['/buyer', this.appServ.loggedInUserInfo.id, 'browse']">
-      Browse and Bid
-    </button>
+    <ng-container *ngIf="this.appServ.loggedInUserInfo?.persona === 'admin'; else buyerPageActionTemplate">
+      <button mat-flat-button color="primary" class="rounded-button" [routerLink]="['/admin', 'buyer-list']">
+        View all buyers
+      </button>
+    </ng-container>
+    <ng-template #buyerPageActionTemplate>
+      <button mat-flat-button color="primary" class="rounded-button" [routerLink]="['/buyer', this.appServ.loggedInUserInfo.id, 'browse']">
+        Browse and Bid
+      </button>
+    </ng-template>
   </div>
 </wm-page-actions>

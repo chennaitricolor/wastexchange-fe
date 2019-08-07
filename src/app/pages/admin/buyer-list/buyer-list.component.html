@@ -1,0 +1,47 @@
+<div class="buyer-list-container">
+  <div class="flex space-between">
+    <h4 class="text--blue text--center">Buyer list</h4>
+    <mat-form-field class="search-buyer-input">
+      <mat-label>Search buyers</mat-label>
+      <input matInput [(ngModel)]="this.searchText" autocomplete="off" />
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+  </div>
+  <table class="table mt-2">
+    <thead>
+      <tr>
+        <th scope="col" class="title">Buyer name</th>
+        <th scope="col">Login id</th>
+        <th scope="col">Mobile no.</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let buyer of this.appServ.allBuyers | filter: searchText:['name', 'emailId', 'mobNo']">
+        <td>{{ buyer.name }}</td>
+        <td>{{ buyer.emailId }}</td>
+        <td>{{ buyer.mobNo }}</td>
+        <td class="flex direction-column">
+          <button
+            *ngIf="buyer.approved; else buyerApprovalTemplate"
+            mat-flat-button
+            color="primary"
+            class="rounded-button"
+            [routerLink]="['/buyer', buyer.id, 'bid-list']"
+          >
+            Manage
+          </button>
+          <ng-template #buyerApprovalTemplate>
+            <button mat-flat-button color="primary" class="rounded-button" (click)="approveBuyer(buyer)">
+              Approve
+            </button>
+            <button mat-stroked-button color="warn" class="rounded-button mt-2 border--warn" (click)="deleteBuyer(buyer)">
+              Delete buyer
+            </button>
+          </ng-template>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<wm-page-actions [user]="this.appServ.loggedInUserInfo"> </wm-page-actions>

@@ -35,6 +35,7 @@ export interface Buyer {
   long: number;
   createdAt: string;
   updatedAt: string;
+  approved: boolean;
 }
 
 export const BUYER_DATA: Buyer[] = [
@@ -51,7 +52,8 @@ export const BUYER_DATA: Buyer[] = [
     lat: 18.92,
     long: 20.96,
     createdAt: '2019-07-08T05:43:41.347Z',
-    updatedAt: '2019-07-08T05:43:41.347Z'
+    updatedAt: '2019-07-08T05:43:41.347Z',
+    approved: true
   }
 ];
 

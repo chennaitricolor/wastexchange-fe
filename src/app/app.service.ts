@@ -58,6 +58,14 @@ export class AppService {
     return this.buyerServ.getBid(bidId);
   }
 
+  /**
+   * @description approve a particular user by id
+   * @param id the user id to approve
+   */
+  public approveUser(id: number): Observable<any> {
+    return this.http.put<any>(environment.hostName + '/users/' + id + '/approve', {});
+  }
+
   public getAllUsers(): Observable<any[]> {
     return this.http.get<any[]>(environment.hostName + '/users');
   }
@@ -73,6 +81,24 @@ export class AppService {
     });
   }
 
+  /**
+   * @description delelte a particular user by id
+   * @param id the user id to perform the delete operation on
+   */
+  public deleteUser(id: number): Observable<any> {
+    return this.http.delete<any>(environment.hostName + `/users/${id}`);
+  }
+
+  /**
+   * @description remove a user from the client
+   * @param id the id to remove
+   */
+  public removeUserById(id: number) {
+    this.allBuyers = this.allBuyers.filter(buyer => buyer.id !== id);
+    this.allSellers = this.allSellers.filter(seller => seller.id !== id);
+    this.allUsers = this.allUsers.filter(user => user.id !== id);
+  }
+
   public sendOtp(payload: any): Observable<any> {
     return this.http.post<any>(environment.hostName + '/users/sendOtp', payload);
   }
@@ -81,16 +107,18 @@ export class AppService {
     return this.http.post<any>(environment.hostName + '/users/register', userDetails);
   }
 
-  public loginUser(loginPayload: any): Promise<boolean> {
+  public loginUser(loginPayload: any): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.http.post<any>(environment.hostName + '/users/login', loginPayload).subscribe(response => {
-        this.setSessionData(response);
+      this.http.post<any>(environment.hostName + '/users/login', loginPayload).subscribe((loginResponse) => {
+        this.setSessionData(loginResponse);
         this.getMe().subscribe(response => {
           this.loggedInUserInfo = response;
           this.getAllUsersAndFilter().then(() => {
-            resolve(true);
+            resolve(loginResponse);
           });
         });
+      }, error => {
+        reject(error)
       });
     });
   }
@@ -117,6 +145,7 @@ export class AppService {
     sessionStorage.clear();
     this.userSessionData = new Object();
     this.isUserLoggedIn = false;
+    this.loggedInUserInfo = null;
   }
 
   public forceLogoutUser() {
@@ -143,8 +172,14 @@ export class AppService {
     }, 0);
   }
 
+  /**
+   * @description open material snackbar
+   * @param message the message to display
+   * @param action the action label
+   * @param duration the duration of the snackbar, default: 5000 ms
+   */
   public openSnackBar(message: string, action: string, duration: number = 5000) {
-    return this.snackBar.open(message, action, { duration: duration });
+    return this.snackBar.open(message, action, { duration: duration, panelClass: 'text--white' });
   }
 
   //utils

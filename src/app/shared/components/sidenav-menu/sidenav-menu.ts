@@ -6,4 +6,5 @@ export interface Menu {
   children?: Menu[];
   icon: string;
   expanded?: boolean;
+  authorizedPersona?: string[];
 }
