@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 
 const LOGIN_ERROR_MESSAGES = {
   '401': 'Authorization failed. Please try again.',
-  '404': 'You are not registered with us'
+  '404': 'You are not registered with us.'
 };
 
 @Component({
@@ -39,6 +39,7 @@ export class LoginComponent implements OnInit {
           let errorMessage = '';
           try {
             errorMessage = this.loginErrorMessages[err.status.toString()];
+            errorMessage = errorMessage || 'Login Failed';
           } catch (e) {
             errorMessage = 'Login failed';
           }

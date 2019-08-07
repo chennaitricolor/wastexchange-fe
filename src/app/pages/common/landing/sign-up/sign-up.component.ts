@@ -60,6 +60,8 @@ export class SignUpComponent implements OnInit {
     this.appServ.registerUser(formValues).subscribe(response => {
       this.appServ.openSnackBar('Registered successfully', 'DISMISS');
       this.closeSignupDialog();
+    }, err => {
+      this.appServ.openSnackBar('Registration failed. Please contact administrator.', 'DISMISS');
     });
   }
 
