@@ -3,6 +3,11 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { AppService } from 'app/app.service';
 import { Router } from '@angular/router';
 
+const LOGIN_ERROR_MESSAGES = {
+  '401': 'Authorization failed. Please try again.',
+  '404': 'You are not registered with us'
+};
+
 @Component({
   selector: 'wm-login',
   templateUrl: './login.component.html',
@@ -11,6 +16,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   public userEmail: string;
   public userPassword: string;
+  private loginErrorMessages = LOGIN_ERROR_MESSAGES;
 
   constructor(public dialogRef: MatDialogRef<LoginComponent>, public appServ: AppService, private router: Router) {}
 
@@ -24,10 +30,21 @@ export class LoginComponent implements OnInit {
 
   loginUser() {
     if (this.userEmail && this.userPassword) {
-      this.appServ.loginUser({ loginId: this.userEmail, password: this.userPassword }).then(() => {
-        this.appServ.openSnackBar('Logged in successfully', 'DISMISS');
-        this.closeLoginDialog();
-      });
+      this.appServ.loginUser({ loginId: this.userEmail, password: this.userPassword }).then(
+        () => {
+          this.appServ.openSnackBar('Logged in successfully', 'DISMISS');
+          this.closeLoginDialog();
+        },
+        err => {
+          let errorMessage = '';
+          try {
+            errorMessage = this.loginErrorMessages[err.status.toString()];
+          } catch (e) {
+            errorMessage = 'Login failed';
+          }
+          this.appServ.openSnackBar(errorMessage, 'DISMISS');
+        }
+      );
     }
   }
 

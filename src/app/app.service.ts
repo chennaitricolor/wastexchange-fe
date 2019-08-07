@@ -107,16 +107,18 @@ export class AppService {
     return this.http.post<any>(environment.hostName + '/users/register', userDetails);
   }
 
-  public loginUser(loginPayload: any): Promise<boolean> {
+  public loginUser(loginPayload: any): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.http.post<any>(environment.hostName + '/users/login', loginPayload).subscribe(response => {
-        this.setSessionData(response);
+      this.http.post<any>(environment.hostName + '/users/login', loginPayload).subscribe((loginResponse) => {
+        this.setSessionData(loginResponse);
         this.getMe().subscribe(response => {
           this.loggedInUserInfo = response;
           this.getAllUsersAndFilter().then(() => {
-            resolve(true);
+            resolve(loginResponse);
           });
         });
+      }, error => {
+        reject(error)
       });
     });
   }

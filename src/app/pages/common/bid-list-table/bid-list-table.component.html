@@ -22,7 +22,7 @@
               <p class="text--medium">{{ bid.buyer?.address }}</p>
               <p class="text--medium">{{ bid.buyer?.mobNo }}</p>
             </ng-container>
-            <ng-container *ngIf="this.appServ.loggedInUserInfo?.persona == 'buyer'" class="text--left">
+            <ng-container *ngIf="this.appServ.loggedInUserInfo?.persona == 'buyer' || this.appServ.loggedInUserInfo?.persona == 'admin'" class="text--left">
               <p class="text--blue text--normal text--trim--200">{{ bid.seller?.name }}</p>
               <p class="text--medium">{{ bid.seller?.address }}</p>
               <p class="text--medium">{{ bid.seller?.mobNo }}</p>
