@@ -57,12 +57,15 @@ export class SignUpComponent implements OnInit {
     let formValues = this.newUserFormGroup.getRawValue();
     formValues.otp = this.otpValue;
     formValues.persona = 'buyer';
-    this.appServ.registerUser(formValues).subscribe(response => {
-      this.appServ.openSnackBar('Registered successfully', 'DISMISS');
-      this.closeSignupDialog();
-    }, err => {
-      this.appServ.openSnackBar('Registration failed. Please contact administrator.', 'DISMISS');
-    });
+    this.appServ.registerUser(formValues).subscribe(
+      response => {
+        this.appServ.openSnackBar('Registered successfully', 'DISMISS');
+        this.closeSignupDialog();
+      },
+      err => {
+        this.appServ.openSnackBar('Registration failed. Please contact administrator.', 'DISMISS');
+      }
+    );
   }
 
   private getGeoLocation() {
