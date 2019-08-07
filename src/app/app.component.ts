@@ -11,6 +11,8 @@ import { MatSidenav } from '@angular/material';
 })
 export class AppComponent implements OnInit {
   title = 'wastexchange-fe';
+
+  public appTitle = 'India Waste Exchange';
   public isSmallScreen: boolean;
   @ViewChild('sidenav') public sidenav: MatSidenav;
 

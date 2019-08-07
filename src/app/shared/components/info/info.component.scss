@@ -2,16 +2,19 @@
   padding: 32px;
   height: 100%;
 
-  .special-thanks-container img {
+  .special-thanks-container img,
+  .advisory-team-container img {
     height: 200px;
     width: 200px;
     border-radius: 24px;
   }
 
-  .our-team-container {
+  .our-team-container,
+  .idea-container {
     padding: 0 180px;
 
-    .our-team-sub-container {
+    .our-team-sub-container,
+    .idea-sub-container {
       margin: 48px 0;
 
       &.zero-waste-team-container img {
