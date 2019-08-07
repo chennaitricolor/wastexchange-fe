@@ -8,6 +8,7 @@ import { AppService } from 'app/app.service';
 })
 export class BidListTableComponent implements OnInit {
   @Input() bids: any[];
+  @Input() user: any;
   @Output() bidApproved = new EventEmitter();
 
   public materials = MATERIALS;

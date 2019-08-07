@@ -3,7 +3,7 @@
     <thead>
       <tr>
         <th scope="col" class="background--blue">
-          {{ this.appServ.loggedInUserInfo?.persona == 'buyer' ? 'Seller' : 'Buyer' }}
+          {{ this.user?.persona == 'buyer' ? 'Seller' : 'Buyer' }}
         </th>
         <th></th>
         <th>Total Cost</th>
@@ -15,14 +15,17 @@
         <tr *ngFor="let bid of this.bids">
           <td class="text--left background--blue ">
             <ng-container
-              *ngIf="this.appServ.loggedInUserInfo?.persona == 'seller' || this.appServ.loggedInUserInfo?.persona == 'admin'"
+              *ngIf="this.user?.persona == 'seller'"
               class="text--left"
             >
               <p class="text--blue text--normal text--trim--200">{{ bid.buyer?.name }}</p>
               <p class="text--medium">{{ bid.buyer?.address }}</p>
               <p class="text--medium">{{ bid.buyer?.mobNo }}</p>
             </ng-container>
-            <ng-container *ngIf="this.appServ.loggedInUserInfo?.persona == 'buyer' || this.appServ.loggedInUserInfo?.persona == 'admin'" class="text--left">
+            <ng-container
+              *ngIf="this.user?.persona == 'buyer'"
+              class="text--left"
+            >
               <p class="text--blue text--normal text--trim--200">{{ bid.seller?.name }}</p>
               <p class="text--medium">{{ bid.seller?.address }}</p>
               <p class="text--medium">{{ bid.seller?.mobNo }}</p>
@@ -63,7 +66,7 @@
                 class="rounded-button mb-2"
                 *ngIf="
                   this.appServ.isUserLoggedIn &&
-                  (this.appServ.loggedInUserInfo?.persona == 'seller' || this.appServ.loggedInUserInfo?.persona == 'admin')
+                  (this.user?.persona == 'seller')
                 "
                 (click)="this.updateStatusOfBid(bid, 'approved')"
               >
@@ -75,7 +78,7 @@
                 class="rounded-button mb-2"
                 *ngIf="
                   this.appServ.isUserLoggedIn &&
-                  (this.appServ.loggedInUserInfo?.persona == 'seller' || this.appServ.loggedInUserInfo?.persona == 'admin')
+                  (this.user?.persona == 'seller')
                 "
                 (click)="this.updateStatusOfBid(bid, 'denied')"
               >
@@ -85,7 +88,7 @@
                 mat-flat-button
                 color="primary"
                 class="rounded-button mb-2"
-                *ngIf="this.appServ.isUserLoggedIn && this.appServ.loggedInUserInfo?.persona == 'buyer'"
+                *ngIf="this.appServ.isUserLoggedIn && this.user?.persona == 'buyer'"
                 [routerLink]="['/buyer', this.appServ.loggedInUserInfo.id, 'bid']"
                 [queryParams]="{ bidId: bid.id, sellerId: bid.sellerId }"
               >
@@ -95,7 +98,7 @@
                 mat-stroked-button
                 color="primary"
                 class="rounded-button mb-2"
-                *ngIf="this.appServ.isUserLoggedIn && this.appServ.loggedInUserInfo?.persona == 'buyer'"
+                *ngIf="this.appServ.isUserLoggedIn && this.user?.persona == 'buyer'"
                 (click)="this.updateStatusOfBid(bid, 'cancelled')"
               >
                 Cancel

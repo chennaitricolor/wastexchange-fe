@@ -99,6 +99,40 @@ export class AppService {
     this.allUsers = this.allUsers.filter(user => user.id !== id);
   }
 
+  /**
+   * @description approve a user
+   * @param user the user to approve
+   */
+  public approveUserData(user: any) {
+    let userType = user.persona == 'buyer' ? 'Buyer' : 'Seller';
+    this.approveUser(user.id).subscribe(
+      response => {
+        user.approved = true;
+        this.openSnackBar(`${userType} approved successfully`, 'DISMISS');
+      },
+      () => {
+        this.openSnackBar(`Oops! Could not approve ${user.persona}`, 'DISMISS');
+      }
+    );
+  }
+
+  /**
+   * @description delete the user
+   * @param user the user to delete
+   */
+  public deleteUserData(user: any) {
+    let userType = user.persona == 'buyer' ? 'Buyer' : 'Seller';
+    this.deleteUser(user.id).subscribe(
+      () => {
+        this.removeUserById(user.id);
+        this.openSnackBar(`${userType} removed successfully`, 'DISMISS');
+      },
+      () => {
+        this.openSnackBar(`Oops! Could not delete ${user.persona}`, 'DISMISS');
+      }
+    );
+  }
+
   public sendOtp(payload: any): Observable<any> {
     return this.http.post<any>(environment.hostName + '/users/sendOtp', payload);
   }
@@ -109,17 +143,20 @@ export class AppService {
 
   public loginUser(loginPayload: any): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.http.post<any>(environment.hostName + '/users/login', loginPayload).subscribe((loginResponse) => {
-        this.setSessionData(loginResponse);
-        this.getMe().subscribe(response => {
-          this.loggedInUserInfo = response;
-          this.getAllUsersAndFilter().then(() => {
-            resolve(loginResponse);
+      this.http.post<any>(environment.hostName + '/users/login', loginPayload).subscribe(
+        loginResponse => {
+          this.setSessionData(loginResponse);
+          this.getMe().subscribe(response => {
+            this.loggedInUserInfo = response;
+            this.getAllUsersAndFilter().then(() => {
+              resolve(loginResponse);
+            });
           });
-        });
-      }, error => {
-        reject(error)
-      });
+        },
+        error => {
+          reject(error);
+        }
+      );
     });
   }
 

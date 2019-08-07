@@ -21,10 +21,24 @@
         <td>{{ seller.name }}</td>
         <td>{{ seller.emailId }}</td>
         <td>{{ seller.mobNo }}</td>
-        <td>
-          <button mat-flat-button color="primary" class="rounded-button" [routerLink]="['/seller', seller.id, 'bid-list']">
+        <td class="flex direction-column">
+          <button
+            *ngIf="seller.approved; else sellerApprovalTemplate"
+            mat-flat-button
+            color="primary"
+            class="rounded-button"
+            [routerLink]="['/seller', seller.id, 'bid-list']"
+          >
             Manage
           </button>
+          <ng-template #sellerApprovalTemplate>
+            <button mat-flat-button color="primary" class="rounded-button" (click)="this.appServ.approveUserData(seller)">
+              Approve
+            </button>
+            <button mat-stroked-button color="warn" class="rounded-button mt-2 border--warn" (click)="this.appServ.deleteUserData(seller)">
+              Delete seller
+            </button>
+          </ng-template>
         </td>
       </tr>
     </tbody>
