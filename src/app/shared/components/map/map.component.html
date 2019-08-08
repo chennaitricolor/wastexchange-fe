@@ -12,7 +12,11 @@
       [latitude]="seller.lat"
       [longitude]="seller.long"
       (markerClick)="this.onMarkerClick(index)"
-      [iconUrl]="'https://maps.google.com/mapfiles/ms/icons/orange-dot.png'"
+      [iconUrl]="
+        seller.emailId.toLowerCase().includes('rrc')
+          ? 'https://maps.google.com/mapfiles/ms/icons/orange-dot.png'
+          : 'https://maps.google.com/mapfiles/ms/icons/pink-dot.png'
+      "
     >
       <agm-info-window [disableAutoPan]="true">
         <ng-container>
@@ -51,10 +55,10 @@
       [routerLink]="['/buyer', this.appServ.loggedInUserInfo.id, 'bid']"
       [queryParams]="{ sellerId: seller.id }"
     >
-      Bid to buy
+      Click to buy
     </button>
     <p *ngIf="!this.appServ.isUserLoggedIn" class="text--orange text--normal mt-2">
-      Login to bid
+      Login to buy
     </p>
   </div>
 </ng-template>

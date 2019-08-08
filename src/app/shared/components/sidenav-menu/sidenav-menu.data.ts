@@ -98,7 +98,7 @@ export const MENUMASTER: Menu[] = [
   },
   {
     id: 6,
-    link: '',
+    link: 'info/contact-us',
     name: 'Contact us',
     parentId: 0,
     icon: 'forum'

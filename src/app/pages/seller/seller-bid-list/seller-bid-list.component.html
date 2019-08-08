@@ -1,9 +1,9 @@
 <div class="bid-list-container">
   <p class="text--largesecondary text--blue">
-    Current Bids
+    Current Orders
   </p>
   <p class="text--normal text--gray">
-    Bids not accepted before 24hrs of pick-up time will be automatically cancelled.
+    Orders not accepted before 24hrs of pick-up time will be automatically cancelled.
   </p>
   <div class="bid-list-table-container mt-4">
     <wm-bid-list-table [bids]="this.bids" [user]="this.seller" (bidApproved)="this.getSellerItems()"></wm-bid-list-table>
