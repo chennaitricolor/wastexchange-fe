@@ -12,6 +12,9 @@
     <ng-container *ngSwitchCase="'advisory-team'">
       <ng-container *ngTemplateOutlet="advisoryTeamTemplate"></ng-container>
     </ng-container>
+    <ng-container *ngSwitchCase="'contact-us'">
+      <ng-container *ngTemplateOutlet="contactUsTemplate"></ng-container>
+    </ng-container>
   </ng-container>
 </div>
 
@@ -241,6 +244,50 @@
           <p class="text--normal text--blue">Mr Jagan Shah</p>
           <p class="text--medium">Former Director</p>
           <p class="text--medium">National Institute of Urban Affairs</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #contactUsTemplate>
+  <div class="contact-us-container">
+    <h3 class="text--center text--blue">Contact Us</h3>
+
+    <div class="text--center">We are here to assist you</div>
+
+    <div class="row contact-container">
+      <div class="offset-sm-2 col-4 text-right">
+        <div class="row">
+          <div class="col align-self-center text-right">
+            <mat-icon>email</mat-icon>
+          </div>
+          <div class="col align-self-center text-left">
+            <div class="text--blue">
+              BY MAIL
+            </div>
+            <a href="mailto:info.iwx@gmail.com">
+              info.iwx@gmail.com
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-4 text-left">
+        <div class="row">
+          <div class="col align-self-center text-right">
+            <mat-icon>call</mat-icon>
+          </div>
+          <div class="col align-self-center text-left">
+            <div>
+              <span class="text--blue">BY PHONE</span>
+            </div>
+            <div>
+              +916381418620
+            </div>
+            <div>
+              <span> (10 AM – 4 PM, Mon- Fri)</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>

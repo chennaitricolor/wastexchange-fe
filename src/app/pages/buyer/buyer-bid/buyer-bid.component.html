@@ -14,7 +14,7 @@
   </div>
 
   <div *ngIf="this.canRaiseBid" class="bid-form-container">
-    <p class="text--largesecondary text--blue">Bidding Form</p>
+    <p class="text--largesecondary text--blue">Order Form</p>
     <div class="flex">
       <div class="contact-name">
         <input class="form-control" [(ngModel)]="this.bid.contactName" placeholder="Contact name *" />
@@ -41,8 +41,8 @@
         <tr>
           <th scope="col" class="background--blue">Material</th>
           <th scope="col">Available Qty. (in kg)</th>
-          <th scope="col">Bid Qty. (in kg)</th>
-          <th scope="col">Min. Price (in ₹/kg)</th>
+          <th scope="col">Order Qty. (in kg)</th>
+          <th scope="col">Estimated Price (in ₹/kg)</th>
           <th scope="col">Bid Price (in ₹/kg)</th>
           <th scope="col text--right">Total Price (in ₹)</th>
         </tr>
@@ -77,7 +77,7 @@
         </ng-container>
         <tr>
           <td colspan="5" class="text--right text--blue">
-            Total Bid Price
+            Total Order Price
           </td>
           <td>{{ this.bid.totalBid }} (in ₹)</td>
         </tr>
