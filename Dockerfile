@@ -1,13 +1,17 @@
 FROM node:10 as builder
-WORKDIR /opt/app
+WORKDIR /opt/wastexchange-fe
 COPY package*.json ./
 RUN npm install
 COPY ./ ./
-RUN npm run build-dev
+# required to toggle environment at run time using a single docker image
+RUN mkdir staging production
+RUN npm run build-staging && mv ./dist/wastexchange-fe/ ./staging/
+RUN npm run build && mv ./dist/wastexchange-fe/ ./production/
 
 FROM nginx:1.17.2
 WORKDIR /opt/app
-COPY --from=builder /opt/app/dist/wastexchange-fe ./wastexchange-fe
+COPY --from=builder /opt/wastexchange-fe/staging ./staging
+COPY --from=builder /opt/wastexchange-fe/production ./production
 COPY ./nginx.conf.template ./
 RUN apt-get update && apt-get install -y wget
 ENV DOCKERIZE_VERSION v0.6.1
