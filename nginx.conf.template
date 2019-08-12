@@ -3,21 +3,23 @@ server {
 	server_name  {{ .Env.DOMAIN_NAME }} ;
 
 	## frontend configurations
+
 	location / {
-		root   /opt/app/wastexchange-fe/;
-		index  index.html index.htm;
+		root	/opt/app/{{ .Env.STATIC_ASSETS_ENV_DIR }}/wastexchange-fe/;
+		index	index.html index.htm;
 	}
 
 	## 5xx errors
+
 	error_page  500 502 503 504 /50x.html;
 	location = /50x.html {
-		root   /usr/share/nginx/html;
+		root	/usr/share/nginx/html;
 	}
 
 	## backend configurations
 
 	location = /api {
-    	return 302 /api/;
+		return	302 /api/;
 	}
 
 	location /api/ {
