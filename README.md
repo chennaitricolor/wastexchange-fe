@@ -30,3 +30,27 @@ Frontend for [indiawasteexchange.com](https://indiawasteexchange.com).
     ```
     npm run start-dev
     ```
+
+## Deployment
+
+### Build and Push Docker Image
+
+```
+# build
+docker build -t chennaitricolor/wastexchange-fe:$(git rev-parse --short HEAD) -t chennaitricolor/wastexchange-fe:latest .
+
+# push
+docker push chennaitricolor/wastexchange-fe:$(git rev-parse --short HEAD)
+docker push chennaitricolor/wastexchange-fe:latest
+```
+
+### Deploy Docker Image
+
+* Install Ansible 2.8.3
+* Run the ansible playbook
+	```
+	ansible-playbook -i deployment/inventory.yaml \
+		--private-key <ssh-private-key> \
+		--extra-vars "env=<staging|prod> app_version=<docker-image-tag>" \
+		deployment/playbook.yaml
+	```

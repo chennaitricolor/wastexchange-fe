@@ -1,0 +1,34 @@
+---
+- hosts: "{{ env }}"
+  become: yes
+  become_user: root
+
+  vars:
+    app_name: wastexchange-fe
+    app_image: chennaitricolor/wastexchange-fe
+
+  tasks:
+    - name: Get old container info
+      docker_container_info:
+        name: "{{ app_name }}"
+      register: result
+
+    - name: Check if old contaner is running
+      debug:
+        msg: "Old container is {{ 'running' if result.container['State']['Running'] else 'not running' }}"
+      when: result.exists
+
+    - name: Stop and remove the old container
+      docker_container:
+        name: "{{ app_name }}"
+        state: absent
+      when: result.exists and result.container['State']['Running']
+
+    - name: Start new container
+      docker_container:
+        name: "{{ app_name }}"
+        image: "{{ app_image }}:{{ app_version | default('latest') }}"
+        state: started
+        network_mode: host
+        restart_policy: always
+        env: "{{ app_configs }}"

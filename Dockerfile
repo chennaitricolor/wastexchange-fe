@@ -13,7 +13,9 @@ WORKDIR /opt/app
 COPY --from=builder /opt/wastexchange-fe/staging ./staging
 COPY --from=builder /opt/wastexchange-fe/production ./production
 COPY ./nginx.conf.template ./
-RUN apt-get update && apt-get install -y wget
+RUN apt-get update \
+    && apt-get install -y wget \
+    && apt-get autoclean
 ENV DOCKERIZE_VERSION v0.6.1
 RUN wget -q https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
     && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
