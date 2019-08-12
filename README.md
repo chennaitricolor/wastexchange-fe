@@ -15,6 +15,9 @@ Frontend for [indiawasteexchange.com](https://indiawasteexchange.com).
 4. Start dependencies (Postgres, backend application):
     ```
     docker-compose up
+
+    # OR to rebuild the docker images before starting the services
+    docker-compose up --build
     ```
 5. Install node modules:
     ```
