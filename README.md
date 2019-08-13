@@ -19,6 +19,9 @@ Frontend for [indiawasteexchange.com](https://indiawasteexchange.com).
     # OR to rebuild the docker images before starting the services
     docker-compose up --build
     ```
+
+    To seed test data in to the database refer the [backend readme](https://github.com/chennaitricolor/wastexchange-be#dev-machine-setup).
+
 5. Install node modules:
     ```
     npm install
