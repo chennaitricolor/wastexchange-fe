@@ -1,5 +1,5 @@
 app_configs:
-  DOMAIN_NAME: "ec2-3-15-173-123.us-east-2.compute.amazonaws.com"
+  DOMAIN_NAME: "staging.indiawasteexchange.com"
   BACKEND_HOST: "localhost"
   BACKEND_PORT: "7000"
   STATIC_ASSETS_ENV_DIR: "staging"

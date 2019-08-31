@@ -1,6 +1,24 @@
 server {
-	listen       80;
+	listen 80;
 	server_name  {{ .Env.DOMAIN_NAME }} ;
+
+	location /.well-known/acme-challenge/ {
+        root /var/www/certbot;
+    }
+
+    location / {
+        return 301 https://$host$request_uri;
+    }
+}
+
+server {
+	listen       443 ssl;
+	server_name  {{ .Env.DOMAIN_NAME }} ;
+
+	ssl_certificate /etc/letsencrypt/live/{{ .Env.DOMAIN_NAME }}/fullchain.pem;
+	ssl_certificate_key /etc/letsencrypt/live/{{ .Env.DOMAIN_NAME }}/privkey.pem;
+	include /etc/letsencrypt/options-ssl-nginx.conf;
+	ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
 
 	## frontend configurations
 

@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  hostName: 'http://ec2-3-15-173-123.us-east-2.compute.amazonaws.com/api',
-  googleMapsApiKey: 'AIzaSyB8NCphJh5-XfQFXb2EcrKO922PgoLt-Aw'
+  hostName: 'https://staging.indiawasteexchange.com/api',
+  googleMapsApiKey: 'AIzaSyBF5139v5xWhHnZVAQSUxY9WLcwASxh3GA'
 };
