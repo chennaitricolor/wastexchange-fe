@@ -31,4 +31,7 @@
         state: started
         network_mode: host
         restart_policy: always
+        volumes:
+          - /var/www/certbot:/var/www/certbot
+          - /etc/letsencrypt:/etc/letsencrypt
         env: "{{ app_configs }}"

@@ -1,6 +1,6 @@
 staging:
   hosts:
-    ec2-3-15-173-123.us-east-2.compute.amazonaws.com:
+    ec2-18-224-169-23.us-east-2.compute.amazonaws.com:
   vars:
     ansible_ssh_user: ubuntu
 production:
