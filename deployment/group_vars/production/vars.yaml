@@ -1,0 +1,5 @@
+app_configs:
+  DOMAIN_NAME: "www.indiawasteexchange.com"
+  BACKEND_HOST: "localhost"
+  BACKEND_PORT: "7000"
+  STATIC_ASSETS_ENV_DIR: "production"
