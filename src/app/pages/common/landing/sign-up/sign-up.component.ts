@@ -9,7 +9,7 @@ import { AppService } from 'app/app.service';
   styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent implements OnInit {
-  public mapInitZoom: number = 8;
+  public mapInitZoom: number = 10;
   public mapCenterLat: number = 13.083437855572445;
   public mapCenterLng: number = 80.26962129752246;
 
@@ -20,6 +20,7 @@ export class SignUpComponent implements OnInit {
   public otpSent: boolean = false;
   public geoLocationUnavailable: boolean = false;
   public newUserFormGroup: FormGroup = new FormGroup({
+    persona: new FormControl('', [Validators.required]),
     name: new FormControl('', [Validators.required]),
     city: new FormControl('', [Validators.required]),
     address: new FormControl('', [Validators.required]),
@@ -63,7 +64,6 @@ export class SignUpComponent implements OnInit {
   onNewUserFormSubmit() {
     let formValues = this.newUserFormGroup.getRawValue();
     formValues.otp = this.otpValue;
-    formValues.persona = 'buyer';
     this.appServ.registerUser(formValues).subscribe(
       response => {
         this.appServ.openSnackBar('Registered successfully', 'DISMISS');

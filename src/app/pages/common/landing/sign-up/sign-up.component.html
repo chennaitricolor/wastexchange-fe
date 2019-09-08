@@ -1,10 +1,15 @@
 <div class="signup-container">
   <p class="text--large text--center text--bold text--blue">
-    Buyer Registration
+    Registration
   </p>
   <div class="main-container flex">
     <div class="form-container">
       <form [formGroup]="newUserFormGroup" (ngSubmit)="onNewUserFormSubmit()">
+        <label id="persona-radio-group-label">I am a </label>
+        <mat-radio-group aria-labelledby="persona-radio-group-label" [formControlName]="'persona'">
+          <mat-radio-button color="primary" value="seller">Seller</mat-radio-button>
+          <mat-radio-button color="primary" value="buyer">Buyer</mat-radio-button>
+        </mat-radio-group>
         <mat-form-field>
           <mat-label>Name</mat-label>
           <input matInput [formControlName]="'name'" />
