@@ -1,52 +1,64 @@
 <div class="signup-container">
   <p class="text--large text--center text--bold text--blue">
-    Buyer Registration
+    Registration
   </p>
-  <form [formGroup]="newUserFormGroup" (ngSubmit)="onNewUserFormSubmit()">
-    <mat-form-field>
-      <mat-label>Name</mat-label>
-      <input matInput [formControlName]="'name'" />
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Address</mat-label>
-      <input matInput [formControlName]="'address'" />
-    </mat-form-field>
-    <div class="flex form-group">
-      <mat-form-field>
-        <mat-label>City</mat-label>
-        <input matInput [formControlName]="'city'" />
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Pincode</mat-label>
-        <input matInput type="number" [formControlName]="'pinCode'" />
-      </mat-form-field>
+  <div class="main-container flex">
+    <div class="form-container">
+      <form [formGroup]="newUserFormGroup" (ngSubmit)="onNewUserFormSubmit()">
+        <label id="persona-radio-group-label">I am a </label>
+        <mat-radio-group aria-labelledby="persona-radio-group-label" [formControlName]="'persona'">
+          <mat-radio-button color="primary" value="seller">Seller</mat-radio-button>
+          <mat-radio-button color="primary" value="buyer">Buyer</mat-radio-button>
+        </mat-radio-group>
+        <mat-form-field>
+          <mat-label>Name</mat-label>
+          <input matInput [formControlName]="'name'" />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Address</mat-label>
+          <input matInput [formControlName]="'address'" />
+        </mat-form-field>
+        <div class="flex form-group">
+          <mat-form-field>
+            <mat-label>City</mat-label>
+            <input matInput [formControlName]="'city'" />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Pincode</mat-label>
+            <input matInput type="number" [formControlName]="'pinCode'" />
+          </mat-form-field>
+        </div>
+        <div class="flex form-group">
+          <mat-form-field>
+            <mat-label>Phone</mat-label>
+            <input matInput type="number" [formControlName]="'mobNo'" />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Alternative Phone no</mat-label>
+            <input matInput type="number" [formControlName]="'altMobNo'" />
+          </mat-form-field>
+        </div>
+        <hr />
+        <mat-form-field>
+          <mat-label>Email Id</mat-label>
+          <input matInput type="email" [formControlName]="'emailId'" />
+        </mat-form-field>
+        <div class="flex form-group">
+          <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input matInput type="password" [formControlName]="'password'" />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Confirm Password</mat-label>
+            <input matInput type="password" [formControlName]="'confirmPassword'" />
+          </mat-form-field>
+        </div>
+      </form>
     </div>
-    <div class="flex form-group">
-      <mat-form-field>
-        <mat-label>Phone</mat-label>
-        <input matInput type="number" [formControlName]="'mobNo'" />
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Alternative Phone no</mat-label>
-        <input matInput type="number" [formControlName]="'altMobNo'" />
-      </mat-form-field>
+    <div class="map-container">
+      <ng-container *ngTemplateOutlet="mapTemplate"></ng-container>
     </div>
-    <hr />
-    <mat-form-field>
-      <mat-label>Email Id</mat-label>
-      <input matInput type="email" [formControlName]="'emailId'" />
-    </mat-form-field>
-    <div class="flex form-group">
-      <mat-form-field>
-        <mat-label>Password</mat-label>
-        <input matInput type="password" [formControlName]="'password'" />
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Confirm Password</mat-label>
-        <input matInput type="password" [formControlName]="'confirmPassword'" />
-      </mat-form-field>
-    </div>
-  </form>
+  </div>
 
   <div class="otp-container" *ngIf="this.otpSent">
     <p class="text--blue text--medium mb-1 text--center">
@@ -58,12 +70,6 @@
     </mat-form-field>
   </div>
 
-  <div class="lat-long-alert" *ngIf="this.geoLocationUnavailable">
-    <p class="text--blue text--center text--medium mb-3">
-      Enable location access to continue further.
-    </p>
-  </div>
-
   <div class="actions flex justify-end">
     <button mat-stroked-button color="primary" class="rounded-button mr-2" (click)="onCancel()">
       Cancel
@@ -71,7 +77,7 @@
     <button
       *ngIf="!this.otpSent"
       type="submit"
-      [disabled]="!this.newUserFormGroup.valid || this.geoLocationUnavailable"
+      [disabled]="!this.newUserFormGroup.valid || !this.pinnedLng || !this.pinnedLng"
       mat-flat-button
       color="primary"
       (click)="this.onNewUserFormVerify()"
@@ -92,3 +98,24 @@
     </button>
   </div>
 </div>
+
+<ng-template #mapTemplate>
+  <div class="lat-long-alert" *ngIf="!this.pinnedLat || !this.pinnedLng">
+    <p class="text--red text--center text--medium">
+      Enable location access or pin your location on map.
+    </p>
+  </div>
+  <div class="flex">
+    <mat-form-field>
+      <mat-label>Latitude</mat-label>
+      <input matInput [(ngModel)]="this.pinnedLat" disabled />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Longitude</mat-label>
+      <input matInput [(ngModel)]="this.pinnedLng" disabled />
+    </mat-form-field>
+  </div>
+  <agm-map [latitude]="mapCenterLat" [longitude]="mapCenterLng" [zoom]="mapInitZoom" (mapClick)="mapClicked($event)">
+    <agm-marker [latitude]="pinnedLat" [longitude]="pinnedLng"> </agm-marker>
+  </agm-map>
+</ng-template>

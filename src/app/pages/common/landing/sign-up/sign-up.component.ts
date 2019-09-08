@@ -9,10 +9,18 @@ import { AppService } from 'app/app.service';
   styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent implements OnInit {
+  public mapInitZoom: number = 10;
+  public mapCenterLat: number = 13.083437855572445;
+  public mapCenterLng: number = 80.26962129752246;
+
+  public pinnedLat: number;
+  public pinnedLng: number;
+
   public otpValue: number;
   public otpSent: boolean = false;
   public geoLocationUnavailable: boolean = false;
   public newUserFormGroup: FormGroup = new FormGroup({
+    persona: new FormControl('', [Validators.required]),
     name: new FormControl('', [Validators.required]),
     city: new FormControl('', [Validators.required]),
     address: new FormControl('', [Validators.required]),
@@ -56,7 +64,6 @@ export class SignUpComponent implements OnInit {
   onNewUserFormSubmit() {
     let formValues = this.newUserFormGroup.getRawValue();
     formValues.otp = this.otpValue;
-    formValues.persona = 'buyer';
     this.appServ.registerUser(formValues).subscribe(
       response => {
         this.appServ.openSnackBar('Registered successfully', 'DISMISS');
@@ -70,6 +77,7 @@ export class SignUpComponent implements OnInit {
 
   private getGeoLocation() {
     let setUserCoordinates = position => {
+      [this.pinnedLat, this.pinnedLng] = [position.coords.latitude, position.coords.longitude];
       this.newUserFormGroup.patchValue({
         lat: position.coords.latitude,
         long: position.coords.longitude
@@ -85,6 +93,16 @@ export class SignUpComponent implements OnInit {
       );
     } else {
       this.geoLocationUnavailable = true;
+    }
+  }
+
+  public mapClicked($event: any) {
+    if ($event.coords) {
+      [this.pinnedLat, this.pinnedLng] = [$event.coords.lat, $event.coords.lng];
+      this.newUserFormGroup.patchValue({
+        lat: $event.coords.lat,
+        long: $event.coords.lng
+      });
     }
   }
 }

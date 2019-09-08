@@ -9,3 +9,24 @@
 hr {
   margin: 0 0 15px 0;
 }
+.main-container {
+  max-height: 600px;
+  overflow: auto;
+
+  .form-container,
+  .map-container {
+    width: 50%;
+    padding: 8px;
+  }
+
+  .map-container {
+    height: 400px;
+    .form-group {
+      height: 80px;
+    }
+
+    agm-map {
+      height: 300px;
+    }
+  }
+}
