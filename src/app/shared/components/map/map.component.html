@@ -1,9 +1,14 @@
-<agm-map [latitude]="this.appServ.loggedInUserInfo?.lat || lat" [longitude]="this.appServ.loggedInUserInfo?.long || long" [zoom]="zoom">
+<agm-map
+  [latitude]="this.appServ.loggedInUserInfo?.lat || lat"
+  [longitude]="this.appServ.loggedInUserInfo?.long || long"
+  [zoom]="zoom"
+  #agmMap
+>
   <agm-marker
     *ngIf="this.appServ.loggedInUserInfo?.persona == 'buyer'"
     [latitude]="this.appServ.loggedInUserInfo?.lat"
     [longitude]="this.appServ.loggedInUserInfo?.long"
-    [iconUrl]="'https://maps.google.com/mapfiles/ms/icons/green-dot.png'"
+    [iconUrl]="'https://maps.google.com/mapfiles/ms/icons/blue-dot.png'"
   >
   </agm-marker>
   <agm-marker-cluster imagePath="https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m">
@@ -13,7 +18,11 @@
       [longitude]="seller.long"
       (markerClick)="this.onMarkerClick(index)"
       [iconUrl]="
-        seller.name.toLowerCase().includes('rrc')
+        seller.availability == 'yes'
+          ? 'https://maps.google.com/mapfiles/ms/icons/green-dot.png'
+          : seller.availability == 'no'
+          ? 'https://maps.google.com/mapfiles/ms/icons/red-dot.png'
+          : seller.name.toLowerCase().includes('rrc')
           ? 'https://maps.google.com/mapfiles/ms/icons/orange-dot.png'
           : 'https://maps.google.com/mapfiles/ms/icons/pink-dot.png'
       "

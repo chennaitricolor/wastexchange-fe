@@ -18,6 +18,7 @@ export class AppService {
   public allSellers: any[] = [];
   public allBuyers: any[] = [];
   public allUsers: any[] = [];
+  public allItems: any[] = [];
   public isLoading: boolean = false;
   public materials = MATERIALS;
   public hidePageActions: boolean = false;
@@ -56,6 +57,10 @@ export class AppService {
 
   public getBidById(bidId: number): Observable<any> {
     return this.buyerServ.getBid(bidId);
+  }
+
+  public getAllItems() {
+    return this.http.get<any[]>(environment.hostName + '/items');
   }
 
   /**

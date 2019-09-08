@@ -1,14 +1,14 @@
-<wm-map [sellers]="this.appServ.allSellers"></wm-map>
+<wm-map [sellers]="this.filteredSellers"></wm-map>
 
 <wm-page-actions [user]="this.appServ.loggedInUserInfo">
   <div class="browse-by-container">
     <mat-radio-group [(ngModel)]="browseBy">
-      <mat-radio-button color="primary" [value]="'bySeller'">
+      <mat-radio-button color="primary" [value]="'bySeller'" (click)="this.onBrowseByChange('bySeller')">
         <p class="text--large">Browse sellers</p>
         <p>Rollover seller locations on map to</p>
         <p>see materials they have for sale.</p>
       </mat-radio-button>
-      <mat-radio-button color="primary" [disabled]="true" [value]="'byMaterial'" class="mt-4">
+      <mat-radio-button color="primary" [value]="'byMaterial'" class="mt-4" (click)="this.onBrowseByChange('byMaterial')">
         <p class="text--large">Browse materials</p>
         <p>Searching for a specific material?</p>
         <p>We’ll show your best path.</p>

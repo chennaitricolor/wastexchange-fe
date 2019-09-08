@@ -1,14 +1,16 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, ViewChild } from '@angular/core';
 import { AppService } from 'app/app.service';
 import { MATERIALS } from 'app/app.model';
 import { environment } from 'environments/environment';
+import { AgmMap } from '@agm/core';
 
 @Component({
   selector: 'wm-map',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss']
 })
-export class MapComponent implements OnInit {
+export class MapComponent implements OnInit, OnChanges {
+  @ViewChild('agmMap') public agmMap: AgmMap;
   @Input() sellers: any[] = [];
   public materials = MATERIALS;
   public environment = environment;
@@ -20,6 +22,12 @@ export class MapComponent implements OnInit {
   constructor(public appServ: AppService) {}
 
   ngOnInit() {}
+
+  ngOnChanges() {
+    this.agmMap.zoom = 12;
+    // TO-DO: trigger resize is not working. cant able to reset zoom level. need to check why?!
+    this.agmMap.triggerResize(true);
+  }
 
   public onMarkerClick(index) {
     !this.sellers[index].details &&
