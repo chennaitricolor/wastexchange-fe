@@ -27,7 +27,8 @@ import {
   MatSnackBarModule,
   MatSidenavModule,
   MatListModule,
-  MatIconModule
+  MatIconModule,
+  MatSelectModule
 } from '@angular/material';
 
 import { LayoutModule } from '@angular/cdk/layout';
@@ -39,6 +40,8 @@ import { BuyerBidComponent } from './pages/buyer/buyer-bid/buyer-bid.component';
 import { BuyerBidListComponent } from './pages/buyer/buyer-bid-list/buyer-bid-list.component';
 import { SellerBidListComponent } from './pages/seller/seller-bid-list/seller-bid-list.component';
 import { BuyerBrowseComponent } from './pages/buyer/buyer-browse/buyer-browse.component';
+import { SelectMaterialComponent } from './pages/buyer/buyer-browse/select-material/select-material.component';
+
 import { PageActionsComponent } from './shared/components/page-actions/page-actions.component';
 import { BidListTableComponent } from './pages/common/bid-list-table/bid-list-table.component';
 import { LoginComponent } from './pages/common/landing/login/login.component';
@@ -62,6 +65,7 @@ import { BuyerListComponent } from './pages/admin/buyer-list/buyer-list.componen
     BuyerBidComponent,
     BuyerBidListComponent,
     BuyerBrowseComponent,
+    SelectMaterialComponent,
     SellerBidListComponent,
     PageActionsComponent,
     BidListTableComponent,
@@ -94,13 +98,14 @@ import { BuyerListComponent } from './pages/admin/buyer-list/buyer-list.componen
     MatSidenavModule,
     MatListModule,
     MatIconModule,
+    MatSelectModule,
     LayoutModule,
     AgmCoreModule.forRoot({
       apiKey: environment.googleMapsApiKey
     }),
     AgmJsMarkerClustererModule
   ],
-  entryComponents: [LoginComponent, SignUpComponent],
+  entryComponents: [LoginComponent, SignUpComponent, SelectMaterialComponent],
   providers: [
     AuthGuard,
     UserSessionDataResolver,
