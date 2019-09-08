@@ -58,7 +58,6 @@ export class BuyerBrowseComponent implements OnInit {
       this.filteredSellers.forEach(seller => {
         seller.availability = materialAvailableSellerIds.includes(seller.id) ? 'yes' : 'no';
       });
-      console.log(this.filteredSellers, materialFilteredSellerIds, materialAvailableSellerIds);
     } else {
       allSellers.forEach(seller => {
         seller.availability = undefined;
