@@ -46,7 +46,7 @@ export class LandingComponent implements OnInit {
 
   openSignupDialog(): void {
     const dialogRef = this.dialog.open(SignUpComponent, {
-      width: '400px'
+      width: '900px'
     });
 
     dialogRef.afterClosed().subscribe(result => {
