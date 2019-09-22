@@ -15,6 +15,12 @@
     <ng-container *ngSwitchCase="'contact-us'">
       <ng-container *ngTemplateOutlet="contactUsTemplate"></ng-container>
     </ng-container>
+    <ng-container *ngSwitchCase="'offers'">
+      <ng-container *ngTemplateOutlet="offersTemplate"></ng-container>
+    </ng-container>
+    <ng-container *ngSwitchCase="'terms-and-conditions'">
+      <ng-container *ngTemplateOutlet="termsAndConditionsTemplate"></ng-container>
+    </ng-container>
   </ng-container>
 </div>
 
@@ -280,6 +286,214 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #offersTemplate>
+  <div class="offers-container">
+    <h3 class="text--center text--blue">Offers by Chennai Corporation</h3>
+    <div class="offers-list-container mt-2 p-4">
+      <p class="text--normal">
+        <strong>1.</strong> If the order is more than 1000KG, we will deliver at your door steps if the location is inside Chennai City.
+      </p>
+      <p class="text--normal">
+        <strong>2.</strong> For Bulk Orders above 1000KG, we will bring the ordered stock to the requested RRC, MCC points from the source
+        location for easy pick up.
+      </p>
+      <p class="text--normal"><strong>3.</strong> For any other queries, please contact us through E-mail/ Phone.</p>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #termsAndConditionsTemplate>
+  <div class="terms-and-conditions-container">
+    <h3 class="text--center text--blue">Terms and Conditions</h3>
+    <div class="terms-and-conditions-list-container mt-2 p-4">
+      <p class="text--blue"><strong>INTERPRETATION </strong></p>
+
+      <p>
+        <strong>Buyer:</strong> the person, firm or company who purchases the Goods or Services from the seller through the company. When
+        the Buyer is more than one person, firm or company, each shall be jointly and severally liable to the Company under a Contract.
+      </p>
+
+      <p>
+        <strong>Seller:</strong> the person, firm or company who sells the Goods or Services to Buyer through the Company. When the seller
+        is more than one person, firm or company, each shall be jointly and severally liable to the Company under a Contract.
+      </p>
+
+      <p><strong>Company:</strong> India Waste Exchange (Ministry of Housing and Urban Affairs)</p>
+
+      <p>
+        <strong>Contract:</strong> any contract between the Company and the Buyer/Seller for the sale and purchase of the Goods or Services,
+        incorporating these conditions.
+      </p>
+
+      <p>
+        <strong>Delivery Point:</strong> the place where delivery of the Goods or supply of the Services is to take place under condition
+      </p>
+
+      <p>
+        <strong>Goods:</strong> any goods agreed in the Order/Contract to be supplied to the Buyer by the Seller (including any part or
+        parts of them).
+      </p>
+
+      <p>
+        Services: any services agreed in the Contract to be supplied to the Buyer/Seller by the Company and any services which are required
+        to install the Goods at the Seller’s premises/Buyer’s premises if the Company has expressly agreed in writing to carry out the
+        installation of any Goods under the Contract.
+      </p>
+
+      <p>
+        <br />
+      </p>
+
+      <p class="text--blue"><strong>General</strong></p>
+
+      <p>a) This Waste Exchange is a product of Ministry of Housing and Urban Affairs.</p>
+
+      <p>b) Payment to be made strictly to the Seller during dispatch of Goods.</p>
+
+      <p>c) The Buyer/Seller must provide a valid Government ID proof at the time of delivery of Goods</p>
+
+      <p>
+        d) Any order placed with the Company for goods and/or service implies acceptance of the following conditions which may be varied
+        only in writing by the Company’s authorised representative. Descriptive and clerical errors are subject to correction.
+      </p>
+
+      <p>
+        e) These conditions are in place of and exclude all other warranties and conditions whether implied by statute or otherwise and in
+        particular the Purchaser acknowledges that he has relied solely upon his own inspection and skill and judgement and not by reason of
+        any representation by the company.
+      </p>
+
+      <p>f) The Company’s internal order will constitute the basis of the agreement.</p>
+
+      <p>
+        e) Company has all right to remove Seller/ Buyer from the platform without prior notice in case of wrong information given or for
+        any other reasons company feels necessary.
+      </p>
+
+      <p>
+        <br />
+      </p>
+
+      <p class="text--blue"><strong>Warranties</strong></p>
+
+      <p>
+        The company act as an aggregator, no physical inspection of goods available at the Seller’s place or Sellers/Buyer authenticity is
+        done. So any issue rising out of quality of goods or authenticity of Seller/Buyer, Company will not take the responsibility.
+      </p>
+
+      <p>
+        <br />
+      </p>
+
+      <p class="text--blue"><strong>Acceptance</strong></p>
+
+      <p>
+        Any contract or order based on this or any other tender or quotation is only accepted upon and subject to the Company’s Terms and
+        Conditions. All Orders placed are subject to withdrawal or variation by the Company at anytime. The Company reserves the right to
+        correct any accidental error or omission or quotation or invoice without prior notice.
+      </p>
+
+      <p>
+        <br />
+      </p>
+
+      <p class="text--blue"><strong>Prices</strong></p>
+
+      <p>All prices are net and Goods and Services Tax exclusive unless otherwise stated.</p>
+
+      <p>
+        <br />
+      </p>
+
+      <p class="text--blue"><strong>Goods and Services Tax</strong></p>
+
+      <p>
+        Prices quoted are subject to the addition of goods and services tax and to any tax imposed by any Government authority upon the
+        goods quoted or upon the production, sale, distribution, delivery or upon any feature thereof if applicable. All such taxes shall be
+        payable by the Buyer and may be added to the purchase price by the Company.
+      </p>
+
+      <p>
+        <br />
+      </p>
+
+      <p class="text--blue"><strong>Availability of goods</strong></p>
+
+      <p>
+        The Company shall have no liability direct or indirect for the delay in delivery or non-delivery of items. The delivery time for the
+        goods quoted on an indent basis is an estimate only and is based upon the Company’s knowledge of conditions prevailing at the time
+        the Order is made.
+      </p>
+
+      <p>
+        <br />
+      </p>
+
+      <p class="text--blue"><strong>Acceptance of goods</strong></p>
+
+      <p>
+        The Buyer shall inspect the goods immediately during the delivery. If not satisfied with the quality of goods, Buyer can cancel the
+        order. Buyer shall not be bound to accept and pay for the same accordingly.
+      </p>
+
+      <p>
+        <br />
+      </p>
+
+      <p class="text--blue"><strong>Standing Orders &amp; Contracts</strong></p>
+
+      <p>
+        Any Standing Orders and other contracts that have been made with Company are non-binding. Can be cancelled any parties without
+        mutual agreement.
+      </p>
+
+      <p>
+        <br />
+      </p>
+
+      <p class="text--blue"><strong>Deliveries</strong></p>
+
+      <p>
+        Payment will be made between Seller and Buyer. Company will not have any stake in this transaction. Mode of payment is let to
+        Seller’s convenience.
+      </p>
+
+      <p>
+        If the Ordered goods were not available with the Seller during the pick-up time, the credit rating of the Seller will be reduced. By
+        no means will company take responsibility for this.
+      </p>
+
+      <p>
+        <br />
+      </p>
+
+      <p class="text--blue"><strong>Cancellation</strong></p>
+
+      <p>Orders in approved status can also be cancelled by the company without giving prior information to the Seller’s/ Buyers’.</p>
+
+      <p>
+        <br />
+      </p>
+
+      <p class="text--blue"><strong>Return of Goods</strong></p>
+
+      <p>Once the goods is dispatched or delivered, returns are not possible.</p>
+
+      <p>
+        <br />
+      </p>
+
+      <p class="text--blue"><strong>Price</strong></p>
+
+      <p>Price is set by Seller and it cannot be changed once the order is accepted.</p>
+
+      <p>
+        <br />
+      </p>
     </div>
   </div>
 </ng-template>

@@ -97,7 +97,7 @@
         color="primary"
         class="rounded-button"
         (click)="this.createOrUpdateBid()"
-        [disabled]="!this.bid.contactName || !this.bid.pDateTime || !this.bid.totalBid"
+        [disabled]="!this.bid.contactName || !this.bid.pDateTime || !(this.bid.totalBid >= 0)"
       >
         Confirm
       </button>

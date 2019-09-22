@@ -66,17 +66,26 @@ export class BuyerBidComponent implements OnInit {
   public calculateTotalBid() {
     let sum = 0;
     Object.keys(this.bid.details).forEach(detail => {
-      sum += this.bid.details[detail].bidCost * this.bid.details[detail].bidQuantity;
+      sum += (this.bid.details[detail].bidCost || 0) * (this.bid.details[detail].bidQuantity || 0);
     });
     this.bid.totalBid = sum;
   }
 
   public createOrUpdateBid() {
     let action = this.bid.id ? 'updated' : 'raised';
+    this.bid = this.preprocessDetails(this.bid);
     let observable = this.bid.id ? this.appServ.updateBid(this.bid) : this.appServ.createBid(this.bid);
     observable.subscribe(response => {
       this.appServ.openSnackBar(`Bid ${action} successfully`, 'DISMISS');
       this.router.navigate(['buyer', this.appServ.loggedInUserInfo['id'], 'bid-list']);
     });
+  }
+
+  private preprocessDetails(bid: Bid) {
+    Object.keys(bid.details).forEach(key => {
+      bid.details[key].bidQuantity = bid.details[key].bidQuantity || 0;
+      bid.details[key].bidCost = bid.details[key].bidCost || 0;
+    });
+    return bid;
   }
 }

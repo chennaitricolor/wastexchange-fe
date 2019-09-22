@@ -102,5 +102,19 @@ export const MENUMASTER: Menu[] = [
     name: 'Contact us',
     parentId: 0,
     icon: 'forum'
+  },
+  {
+    id: 7,
+    link: 'info/offers',
+    name: 'Offers',
+    parentId: 0,
+    icon: 'local_play'
+  },
+  {
+    id: 8,
+    link: 'info/terms-and-conditions',
+    name: 'Terms and Conditions',
+    parentId: 0,
+    icon: 'deck'
   }
 ];

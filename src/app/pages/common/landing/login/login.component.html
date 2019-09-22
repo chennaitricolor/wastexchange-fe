@@ -9,7 +9,9 @@
       <input (keyup.enter)="loginUser()" matInput type="password" [(ngModel)]="this.userPassword" />
     </mat-form-field>
   </div>
-
+  <p class="text--normal mt-1 mb-2  text--center">
+    <a href="/#/info/terms-and-conditions" target="_blank">Terms and Conditions</a>
+  </p>
   <div class="actions flex justify-end">
     <button mat-stroked-button color="primary" class="rounded-button mr-2" (click)="this.onCancel()">
       Cancel

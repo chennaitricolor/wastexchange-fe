@@ -55,7 +55,7 @@
       </tbody>
     </table>
   </div>
-  <div class="actions flex mt-1">
+  <div class="actions flex mt-1 direction-column">
     <button
       *ngIf="this.appServ.isUserLoggedIn && seller.canBidBeRaisedAgainst"
       mat-flat-button
@@ -66,6 +66,11 @@
     >
       Click to buy
     </button>
+
+    <p class="text--normal mt-2 mb-2 text--center" *ngIf="this.appServ.isUserLoggedIn && seller.canBidBeRaisedAgainst">
+      <a href="/#/info/offers" target="_blank">View Offers</a>
+    </p>
+
     <p *ngIf="!this.appServ.isUserLoggedIn" class="text--orange text--normal mt-2">
       Login to buy
     </p>
