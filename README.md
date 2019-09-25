@@ -51,6 +51,6 @@ docker push chennaitricolor/wastexchange-fe:latest
 	```
 	ansible-playbook -i deployment/inventory.yaml \
 		--private-key <ssh-private-key> \
-		--extra-vars "env=<staging|prod> app_version=<docker-image-tag>" \
+		--extra-vars "env=<staging|production> app_version=$(git rev-parse --short HEAD)" \
 		deployment/playbook.yaml
 	```
