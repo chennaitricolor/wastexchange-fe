@@ -15,9 +15,18 @@
       </mat-radio-button>
     </mat-radio-group>
   </div>
-  <div class="actions flex mt-4">
+  <div class="actions flex mt-4 space-evenly">
     <button mat-flat-button color="primary" class="rounded-button" [routerLink]="['/buyer', this.appServ.loggedInUserInfo.id, 'bid-list']">
       View Pending Bids
+    </button>
+    <button
+      mat-flat-button
+      color="accent"
+      class="rounded-button"
+      *ngIf="this.materialFilters && this.materialFilters.material"
+      (click)="this.applyBrowseByMaterialFilters({})"
+    >
+      Clear Filters
     </button>
   </div>
 </wm-page-actions>

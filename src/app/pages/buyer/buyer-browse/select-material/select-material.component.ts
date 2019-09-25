@@ -18,8 +18,31 @@ export class SelectMaterialComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<SelectMaterialComponent>, public appServ: AppService, private router: Router) {}
 
   ngOnInit() {
+    this.getItemDetailsAndProcessMaterials();
+  }
+
+  private getItemDetailsAndProcessMaterials() {
+    this.appServ.allItems.length > 0
+      ? this.processMaterials()
+      : this.appServ.getAllItems().subscribe(data => {
+          this.appServ.allItems = data;
+          this.processMaterials();
+        });
+  }
+
+  private processMaterials() {
+    let sumOfMaterialsQuantity = material => {
+      return this.appServ.allItems.reduce((acc, obj) => {
+        return acc + (obj.details[material] ? +obj.details[material].quantity || 0 : 0);
+      }, 0);
+    };
+
     Object.keys(this.materials).forEach(materialKey => {
-      this.materialOptions.push({ key: materialKey, value: this.materials[materialKey] });
+      this.materialOptions.push({
+        key: materialKey,
+        value: this.materials[materialKey],
+        totalQuantity: sumOfMaterialsQuantity(materialKey)
+      });
     });
   }
 

@@ -5,7 +5,7 @@
       <mat-label>Material</mat-label>
       <mat-select [(ngModel)]="this.material">
         <mat-option *ngFor="let material of this.materialOptions" [value]="material.key">
-          {{ material.value }}
+          {{ material.value }} - {{ material.totalQuantity | number }} kg
         </mat-option>
       </mat-select>
     </mat-form-field>

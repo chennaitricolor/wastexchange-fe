@@ -12,6 +12,7 @@ import { SelectMaterialComponent } from './select-material/select-material.compo
 export class BuyerBrowseComponent implements OnInit {
   public browseBy: string = 'bySeller';
   public filteredSellers: any[] = [];
+  public materialFilters: {};
 
   constructor(public appServ: AppService, public dialog: MatDialog) {}
 
@@ -34,6 +35,7 @@ export class BuyerBrowseComponent implements OnInit {
   }
 
   applyBrowseByMaterialFilters(filters) {
+    this.materialFilters = filters;
     this.appServ.allItems.length > 0
       ? this.filterSellersByMaterials(filters)
       : this.appServ.getAllItems().subscribe(data => {
