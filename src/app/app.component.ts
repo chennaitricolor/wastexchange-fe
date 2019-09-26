@@ -1,8 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AppService } from './app.service';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
-import { Router } from '@angular/router';
 import { MatSidenav } from '@angular/material';
+import { Router, NavigationEnd } from '@angular/router'; // import Router and NavigationEnd
+
+declare let ga: Function;
 
 @Component({
   selector: 'app-root',
@@ -19,6 +21,14 @@ export class AppComponent implements OnInit {
   constructor(public appServ: AppService, public breakpointObserver: BreakpointObserver, private router: Router) {
     this.breakpointObserver.observe(['(max-width: 1020px)']).subscribe((state: BreakpointState) => {
       this.isSmallScreen = state.matches;
+    });
+
+    // subscribe to router events and send page views to Google Analytics
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        ga('set', 'page', event.urlAfterRedirects);
+        ga('send', 'pageview');
+      }
     });
   }
 
