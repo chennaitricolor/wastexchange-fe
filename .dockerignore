@@ -1,2 +1,15 @@
-node_modules
+.dockerignore
+.editorconfig
+.git
+.gitignore
+.prettier*
+.tool-versions
+*.md
+dbdata
 deployment
+docker-compose.yaml
+Dockerfile
+e2e
+local.Dockerfile
+node_modules
+test.ts
