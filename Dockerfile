@@ -1,4 +1,4 @@
-FROM node:10 as builder
+FROM node:10.16 as builder
 WORKDIR /opt/wastexchange-fe
 COPY package*.json ./
 RUN npm install
@@ -8,7 +8,7 @@ RUN mkdir staging production
 RUN npm run build-staging && mv ./dist/wastexchange-fe/ ./staging/
 RUN npm run build && mv ./dist/wastexchange-fe/ ./production/
 
-FROM nginx:1.17.2
+FROM nginx:1.17.4
 WORKDIR /opt/app
 COPY --from=builder /opt/wastexchange-fe/staging ./staging
 COPY --from=builder /opt/wastexchange-fe/production ./production
