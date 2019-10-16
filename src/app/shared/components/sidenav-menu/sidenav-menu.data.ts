@@ -118,7 +118,7 @@ export const MENUMASTER: Menu[] = [
     icon: 'deck'
   },
   {
-    id: 8,
+    id: 9,
     link: 'info/privacy-policy',
     name: 'Privacy Policy',
     parentId: 0,
