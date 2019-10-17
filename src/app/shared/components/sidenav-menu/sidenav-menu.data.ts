@@ -116,5 +116,12 @@ export const MENUMASTER: Menu[] = [
     name: 'Terms and Conditions',
     parentId: 0,
     icon: 'deck'
+  },
+  {
+    id: 9,
+    link: 'info/privacy-policy',
+    name: 'Privacy Policy',
+    parentId: 0,
+    icon: 'security'
   }
 ];
