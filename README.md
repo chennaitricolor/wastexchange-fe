@@ -1,6 +1,6 @@
 # Waste Exchange Frontend
 
-Frontend for [indiawasteexchange.com](https://indiawasteexchange.com).
+Frontend for [indiawasteexchange.com](https://www.indiawasteexchange.com/).
 
 ## Dev Machine Setup
 
@@ -54,3 +54,12 @@ docker push chennaitricolor/wastexchange-fe:latest
 		--extra-vars "env=<staging|production> app_version=$(git rev-parse --short HEAD)" \
 		deployment/playbook.yaml
 	```
+
+### Interesting urls:
+
+| Env | URL |
+| --- | --- |
+| Staging env (FE) | https://staging-env.indiawasteexchange.com/ |
+| Production env (FE) | https://www.indiawasteexchange.com/ |
+| CI | |
+| Trello | https://trello.com/b/LxUGt20J/waste-exchange |
