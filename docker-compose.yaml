@@ -13,7 +13,7 @@ services:
   backend:
     build:
       context: ../wastexchange-be
-      dockerfile: new.Dockerfile
+      dockerfile: Dockerfile
     ports:
       - "7000:7000"
     environment:
