@@ -127,18 +127,24 @@ body {
   .resourcePartnerText {
     vertical-align: middle;
     color: #808080e6;
-    border-right: 2px solid grey;
+   // border-right: 1px solid #808080e6;
     padding-right: 15px;
     padding-left:20px;
   }
+  .aVerticalSeparator {
+    border-left: 1px solid #808080e6;
+    width: 1px;
+    vertical-align: middle;
+}
 
   .resourcePartnerLogo{
     align-items: center;
   }
   .resourcePartnerLogo .thoughtworks-logo{
     width: 150px;
+    padding-right:10px; 
   }
-  .resourcePartnerLogo img{
+  .resourcePartnerLogo img {
     max-height: 46px;
     width: 100px;
     padding-left: 10px;
