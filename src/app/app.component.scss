@@ -119,19 +119,29 @@ body {
     border-top: 2px grey;
     justify-content: space-between;
     font-size: 13px;
-    font-weight: 500;
     padding-left: 20px;
     padding-top:5px;
     padding-bottom:5px;
     text-align:center;
   }
+  .resourcePartnerText {
+    vertical-align: middle;
+    color: #808080e6;
+    border-right: 2px solid grey;
+    padding-right: 15px;
+    padding-left:20px;
+  }
+
   .resourcePartnerLogo{
     align-items: center;
-    padding-left:20px;
+  }
+  .resourcePartnerLogo .thoughtworks-logo{
+    width: 150px;
   }
   .resourcePartnerLogo img{
     max-height: 46px;
     width: 100px;
+    padding-left: 10px;
   }
 }
 
