@@ -12,6 +12,9 @@
     <ng-container *ngSwitchCase="'advisory-team'">
       <ng-container *ngTemplateOutlet="advisoryTeamTemplate"></ng-container>
     </ng-container>
+    <ng-container *ngSwitchCase="'resource-partners'">
+      <ng-container *ngTemplateOutlet="resourcePartnersTemplate"></ng-container>
+    </ng-container>
     <ng-container *ngSwitchCase="'contact-us'">
       <ng-container *ngTemplateOutlet="contactUsTemplate"></ng-container>
     </ng-container>
@@ -249,7 +252,35 @@
   </div>
 </ng-template>
 
-<ng-template #contactUsTemplate>
+<ng-template #resourcePartnersTemplate>
+  <div class="resource-partner-container">
+    <h3 class="text--center text--blue">Our Resource Partners</h3>
+    <div class="resource-partner-container-list-container mt-2 p-4">
+      <p class="text--blue"><strong>Sudharsha.com</strong></p>
+      <p>Free lancer on UI designing, combined illustrations, doodles, sketches & comics. </p>
+      <p>
+        <br />
+      </p>
+      <p class="text--blue"><strong>Paperman Foundations</strong></p>
+      <p>Paperman was started in 2010 with an objective to accelerate recycling in India. Their initiatives include public awareness programs, on-demand recycling platform, managing processing units in partnership with various state governments, turnkey contractors for setting up recycling unites, and other ancillary services for the industry.</p>
+      <p>
+        <br />
+      </p>
+      <p class="text--blue"><strong>The Tech for Cities</strong></p>
+      <p>The Tech for Cities effort of the Chennai Tricolor Initiative Trust. Chennai Tricolor Initiative Trust is a non-profit effort run by Volunteers as a way to build a bridge between the Government and Citizens, to together create positive outcomes.
+        More details about Chennai Tricolor Initiative Trust at http://www.chennaitricolor.in</p>
+      <p>
+        <br />
+      </p>
+      <p class="text--blue"><strong>ThoughtWorks Chennai</strong></p>
+      <p>ThoughtWorks Chennai is known for its vibrant culture, people, food, and love for technology. It’s an office with a view - look out the window and you can see the Bay of Bengal. A lot of cool projects happen here, across domains like retail, travel, hospitality, and banking - ranging from small to medium to big businesses. We’re the Geek Night hub of ThoughtWorks India. Technologists get together every month to discuss and debate the latest technology, user experience, and analysis trends.</p>
+      <p>
+        <br />
+      </p>
+    </div>
+  </div>
+</ng-template>
+<ng-template #contactUsTemplate>  
   <div class="contact-us-container">
     <h3 class="text--center text--blue">Contact Us</h3>
 
