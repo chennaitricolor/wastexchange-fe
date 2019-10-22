@@ -123,6 +123,11 @@ body {
     padding-top:5px;
     padding-bottom:5px;
     text-align:center;
+
+    a {
+      text-decoration: none;
+      color: #000088;
+    }
   }
   .resourcePartnerText {
     vertical-align: middle;
@@ -139,15 +144,25 @@ body {
 
   .resourcePartnerLogo{
     align-items: center;
+    font-size: 16px;
+    margin-left: 10px;
+    vertical-align: middle;
   }
   .resourcePartnerLogo .thoughtworks-logo{
     width: 150px;
-    padding-right:10px; 
+    margin-right:10px; 
   }
   .resourcePartnerLogo img {
     max-height: 46px;
     width: 100px;
-    padding-left: 10px;
+  }
+  .paperman-logo{
+    margin-left: 20px;
+    margin-right: 10px;
+    img {
+    width: 70px;
+    max-height: 40px;
+    }
   }
 }
 
