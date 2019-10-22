@@ -61,7 +61,7 @@ export const MENUMASTER: Menu[] = [
       },
       {
         id: 11,
-        link: '',
+        link: 'info/resource-partners',
         name: 'Resource partners',
         parentId: 2,
         icon: 'folder_shared'
