@@ -1,11 +1,21 @@
+:root {
+  --header-height: 68px;
+  --footer-height: 56px;
+  --body-height-exclusion: 124px // --header-height + --footer-height 
+}
+body {
+  height: 100%;
+  position: relative;
+}
 .loading-overlay {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: calc(100vh - 68px);
+  height: calc(100vh - var(--body-height-exclusion));
+  max-height: calc(100vh - var(--body-height-exclusion));
   position: absolute;
-  top: 68px;
+  top: var(--header-height);
   left: 0;
   z-index: 999;
   // background-color: black;
@@ -17,14 +27,14 @@
 
   .header-container {
     width: 100vw;
-    height: 68px;
+    height: var(--header-height);
     background-color: white;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05), 0 1px 4px rgba(0, 0, 0, 0.15);
   }
 
   .body-container {
-    height: calc(100vh - 68px);
-    max-height: calc(100vh - 68px);
+    height: calc(100vh - var(--body-height-exclusion));
+    max-height: calc(100vh - var(--body-height-exclusion));
     overflow: auto;
     padding: 8px;
     padding-top: 20vh;
@@ -41,7 +51,7 @@
 
   .header-container {
     width: 100vw;
-    height: 68px;
+    height: var(--header-height);
     background-color: white;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05), 0 1px 4px rgba(0, 0, 0, 0.15);
 
@@ -68,8 +78,8 @@
   }
 
   .body {
-    height: calc(100vh - 68px);
-    max-height: calc(100vh - 68px);
+    height: calc(100vh - var(--body-height-exclusion));
+    max-height: calc(100vh - var(--body-height-exclusion));
     overflow: auto;
     display: flex;
 
@@ -96,6 +106,62 @@
       height: 100%;
       max-height: 100%;
       overflow: auto;
+    }
+  }
+
+  .footer-container {
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    height: var(--footer-height);
+    background-color: white;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05), 0 1px 4px rgba(0, 0, 0, 0.15);
+    border-top: 2px grey;
+    justify-content: space-between;
+    font-size: 13px;
+    padding-left: 20px;
+    padding-top:5px;
+    padding-bottom:5px;
+    text-align:center;
+
+    a {
+      text-decoration: none;
+      color: #000088;
+    }
+  }
+  .resourcePartnerText {
+    vertical-align: middle;
+    color: #808080e6;
+   // border-right: 1px solid #808080e6;
+    padding-right: 15px;
+    padding-left:20px;
+  }
+  .aVerticalSeparator {
+    border-left: 1px solid #808080e6;
+    width: 1px;
+    vertical-align: middle;
+}
+
+  .resourcePartnerLogo{
+    align-items: center;
+    font-size: 16px;
+    margin-left: 10px;
+    vertical-align: middle;
+  }
+  .resourcePartnerLogo .thoughtworks-logo{
+    width: 150px;
+    margin-right:10px; 
+  }
+  .resourcePartnerLogo img {
+    max-height: 46px;
+    width: 100px;
+  }
+  .paperman-logo{
+    margin-left: 20px;
+    margin-right: 10px;
+    img {
+    width: 70px;
+    max-height: 40px;
     }
   }
 }
