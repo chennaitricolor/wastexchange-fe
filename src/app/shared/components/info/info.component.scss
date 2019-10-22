@@ -27,8 +27,33 @@
       }
     }
   }
-  .resource-partner-container-list-container p{
-    padding-top:8px;
+  .resource-partner-info-container{
+    margin-left: 15px;
+    margin-right: 20px;
+
+    .resource-partner-info-container-table {
+      padding: 10px;
+      border-collapse:separate; 
+      border-spacing:0 20px;
+      
+      .resource-partner-img-container{
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05), 0 2px 8px rgba(0, 0, 0, 0.15);
+        width: 300px;
+        height:100px;
+        max-height:100px;
+        border-radius: 20px;
+        padding: 5px;
+        text-align: center;
+
+        a {
+          text-decoration: none;
+          color: black;
+        }
+      }
+      .resource-partner-description-container {
+        padding: 10px 0px 10px 25px;
+      }
+    }
   }
 }
 
