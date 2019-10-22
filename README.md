@@ -30,6 +30,7 @@ Frontend for [indiawasteexchange.com](https://www.indiawasteexchange.com/).
     ```
     npm run start-dev
     ```
+    You will be able to access the running app [here](http://localhost:4201/)
 
 ## Deployment
 
