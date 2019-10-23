@@ -1,7 +1,6 @@
 :root {
   --header-height: 68px;
   --footer-height: 56px;
-  --body-height-exclusion: 124px // --header-height + --footer-height 
 }
 body {
   height: 100%;
@@ -33,11 +32,12 @@ body {
   }
 
   .body-container {
-    height: calc(100vh - var(--body-height-exclusion));
-    max-height: calc(100vh - var(--body-height-exclusion));
+    height: calc(100vh - var(--header-height));
+    max-height: calc(100vh - var(--header-height));
     overflow: auto;
     padding: 8px;
     padding-top: 20vh;
+    padding-bottom: var(--footer-height);
   }
 }
 
@@ -78,10 +78,11 @@ body {
   }
 
   .body {
-    height: calc(100vh - var(--body-height-exclusion));
-    max-height: calc(100vh - var(--body-height-exclusion));
+    height: calc(100vh - var(--header-height));
+    max-height: calc(100vh - -var(--header-height));
     overflow: auto;
     display: flex;
+    padding-bottom: var(--footer-height);
 
     .router-outlet-container {
       flex-basis: 73%;
