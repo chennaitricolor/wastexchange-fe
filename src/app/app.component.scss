@@ -11,8 +11,8 @@ body {
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: calc(100vh - var(--header-height));
-  max-height: calc(100vh - var(--header-height));
+  height: calc(100vh - 68px);
+  max-height: calc(100vh - 68px);
   position: absolute;
   top: var(--header-height);
   left: 0;
@@ -33,8 +33,8 @@ body {
   }
 
   .body-container {
-    height: calc(100vh - var(--header-height));
-    max-height: calc(100vh - var(--header-height));
+    height: calc(100vh - 68px);
+    max-height: calc(100vh - 68px);
     overflow: auto;
     padding: 8px;
     padding-top: 20vh;
@@ -79,8 +79,8 @@ body {
   }
 
   .body {
-    height: calc(100vh - var(--header-height));
-    max-height: calc(100vh - -var(--header-height));
+    height: calc(100vh - 68px);
+    max-height: calc(100vh - 68px);
     overflow: auto;
     display: flex;
     padding-bottom: var(--footer-height);
