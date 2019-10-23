@@ -11,12 +11,13 @@ body {
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: calc(100vh - var(--body-height-exclusion));
-  max-height: calc(100vh - var(--body-height-exclusion));
+  height: calc(100vh - var(--header-height));
+  max-height: calc(100vh - var(--header-height));
   position: absolute;
   top: var(--header-height);
   left: 0;
   z-index: 999;
+  padding-bottom: var(--footer-height);
   // background-color: black;
   // opacity: 0.8;
 }
