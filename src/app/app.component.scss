@@ -1,6 +1,4 @@
-:root {
-  --header-height: 68px;
-}
+
 body {
   height: 100%;
   position: relative;
@@ -13,7 +11,7 @@ body {
   height: calc(100vh - 68px);
   max-height: calc(100vh - 68px);
   position: absolute;
-  top: var(--header-height);
+  top: 68px;
   left: 0;
   z-index: 999;
   padding-bottom: 56px;
@@ -26,7 +24,7 @@ body {
 
   .header-container {
     width: 100vw;
-    height: var(--header-height);
+    height: 68px;
     background-color: white;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05), 0 1px 4px rgba(0, 0, 0, 0.15);
   }
@@ -51,7 +49,7 @@ body {
 
   .header-container {
     width: 100vw;
-    height: var(--header-height);
+    height: 68px;
     background-color: white;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05), 0 1px 4px rgba(0, 0, 0, 0.15);
 
