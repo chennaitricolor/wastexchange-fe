@@ -36,6 +36,21 @@ body {
     padding-top: 20vh;
     padding-bottom: 56px;
   }
+  .headerLogoDivider {
+    border-right: 1px solid #7d7f82;
+    height: 34px;
+    position: relative;
+    padding-top: 15px;
+  }
+  .smart-cities-logo{
+    margin-left: 10px;
+    position: relative;
+  }
+  .logo-title {
+    position: relative;
+    margin: 15px 10px 10px 5px;
+    vertical-align: middle
+  }
 }
 
 .sidenav-menu-container {
@@ -60,6 +75,28 @@ body {
 
       .app-title {
         letter-spacing: 1px;
+      }
+      .chennai-corporation-logo{
+        padding-right: 10px;
+        padding-top:10px;
+        float:right;
+      }
+      .headerLogoDivider {
+        border-right: 1px solid #7d7f82;
+        height: 34px;
+        position: relative;
+        padding-top: 15px;
+      }
+      .smart-cities-logo{
+        padding:0px 10px 10px 10px;
+        position: relative;
+        width: 40px;
+        height: 40px;
+      }
+      .logo-title {
+        padding: 0px 10px 20px 10px;
+        position: relative;
+        margin: 25px 10px 10px 10px;
       }
     }
   }
