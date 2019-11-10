@@ -77,14 +77,14 @@ export const MENUMASTER: Menu[] = [
   },
   {
     id: 3,
-    link: '',
+    link: 'info/how-it-works',
     name: 'How it works',
     parentId: 0,
     icon: 'help'
   },
   {
     id: 4,
-    link: '',
+    link: 'info/acts-and-rules',
     name: 'Acts and rules',
     parentId: 0,
     icon: 'flare'

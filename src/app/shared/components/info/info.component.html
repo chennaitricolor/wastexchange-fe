@@ -15,6 +15,12 @@
     <ng-container *ngSwitchCase="'resource-partners'">
       <ng-container *ngTemplateOutlet="resourcePartnersTemplate"></ng-container>
     </ng-container>
+    <ng-container *ngSwitchCase="'how-it-works'">
+      <ng-container *ngTemplateOutlet="howItWorksTemplate"></ng-container>
+    </ng-container>
+    <ng-container *ngSwitchCase="'acts-and-rules'">
+      <ng-container *ngTemplateOutlet="actsAndRulesTemplate"></ng-container>
+    </ng-container>
     <ng-container *ngSwitchCase="'contact-us'">
       <ng-container *ngTemplateOutlet="contactUsTemplate"></ng-container>
     </ng-container>
@@ -265,6 +271,25 @@
       </table>
     </div>
 
+  </div>
+</ng-template>
+<ng-template #howItWorksTemplate>
+  <div class="how-it-works-container">
+    <h3 class="text--center text--blue">How it works</h3>
+    <p>
+      <span><a href="https://www.youtube.com/watch?v=9K_PrjBpPtE">Seller</a></span>
+    </p>
+    <p>
+      <span><a href="https://www.youtube.com/watch?v=RNukkL-qWbo&t=15s">Buyer</a></span>
+    </p>
+  </div>
+</ng-template>
+<ng-template #actsAndRulesTemplate>
+  <div class="acts-and-rules-container">
+    <h3 class="text--center text--blue">Acts and Rules</h3>
+    <p>
+      <span><a href="https://kspcb.gov.in/SWM-Rules-2016.pdf">SWM Rules 2016 (pdf)</a></span>
+    </p>
   </div>
 </ng-template>
 <ng-template #contactUsTemplate>
