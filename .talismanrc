@@ -1,5 +1,5 @@
 fileignoreconfig:
-- filename: src/environments/environment.staging.ts
-  checksum: 109a6c915726b5739708c60ada39560c6fc8c0e8f0e3dfa4f84450e13891fa0a
+- filename: src/environments/environment.prod.ts
+  checksum: 0ef0e88e0d24ab6e9ac0f5c3c1ffa292c8244d690b81ae24f02c03771d06b7f1
   ignore_detectors: []
 scopeconfig: []
