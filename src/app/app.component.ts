@@ -14,7 +14,7 @@ declare let ga: Function;
 export class AppComponent implements OnInit {
   title = 'wastexchange-fe';
   public resourcePartnerText:String = "Resource Partners";
-  public appTitle = 'India Waste Exchange';
+  public appTitle = 'Madras Waste Exchange';
   public isSmallScreen: boolean;
 
   @ViewChild('sidenav') public sidenav: MatSidenav;
