@@ -60,7 +60,7 @@ docker push chennaitricolor/wastexchange-fe:latest
 
 | Env | URL |
 | --- | --- |
-| Staging env (FE) | https://staging-env.indiawasteexchange.com/ |
-| Production env (FE) | https://www.indiawasteexchange.com/ |
+| Staging env (FE) | https://staging.madraswasteexchange.com/ |
+| Production env (FE) | https://www.madraswasteexchange.com/ |
 | CI | |
 | Trello | https://trello.com/b/LxUGt20J/waste-exchange |

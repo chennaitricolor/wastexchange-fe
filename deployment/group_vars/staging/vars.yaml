@@ -1,5 +1,5 @@
 app_configs:
-  DOMAIN_NAME: "staging-env.indiawasteexchange.com"
+  DOMAIN_NAME: "staging.madraswasteexchange.com"
   BACKEND_HOST: "localhost"
   BACKEND_PORT: "7000"
   STATIC_ASSETS_ENV_DIR: "staging"
