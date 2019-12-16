@@ -11,6 +11,7 @@ import { UserDataResolver } from './resolvers/user-data.resolver';
 import { UserSessionDataResolver } from './resolvers/user-session-data.resolver';
 import { SellerListComponent } from './pages/admin/seller-list/seller-list.component';
 import { BuyerListComponent } from './pages/admin/buyer-list/buyer-list.component';
+import { BidListComponent } from './pages/admin/bid-list/bid-list.component';
 
 const routes: Routes = [
   {
@@ -51,6 +52,12 @@ const routes: Routes = [
   {
     path: 'admin/buyer-list',
     component: BuyerListComponent,
+    resolve: [UserSessionDataResolver, UserDataResolver],
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'admin/bid-list',
+    component: BidListComponent,
     resolve: [UserSessionDataResolver, UserDataResolver],
     canActivate: [AuthGuard]
   },

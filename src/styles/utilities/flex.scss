@@ -36,3 +36,11 @@
   margin-right: auto;
   width: 50%;
 }
+
+.height-px {
+  @for $i from 0 through 100 {
+    &--#{$i} {
+      height: unquote($i + 'px');
+    }
+  }
+}

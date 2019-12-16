@@ -12,7 +12,7 @@ import { AppComponent } from './app.component';
 import { LandingComponent } from './pages/common/landing/landing.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { ButtonsModule, TimepickerModule, BsDatepickerModule } from 'ngx-bootstrap';
+import { ButtonsModule, TimepickerModule, BsDatepickerModule, PaginationModule } from 'ngx-bootstrap';
 
 import { AgmCoreModule } from '@agm/core';
 import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
@@ -36,6 +36,8 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { FilterListPipe } from './pipes/filter-list.pipe';
 
 import { SellerListComponent } from './pages/admin/seller-list/seller-list.component';
+import { BuyerListComponent } from './pages/admin/buyer-list/buyer-list.component';
+import { BidListComponent } from './pages/admin/bid-list/bid-list.component';
 import { BuyerBidComponent } from './pages/buyer/buyer-bid/buyer-bid.component';
 import { BuyerBidListComponent } from './pages/buyer/buyer-bid-list/buyer-bid-list.component';
 import { SellerBidListComponent } from './pages/seller/seller-bid-list/seller-bid-list.component';
@@ -55,7 +57,6 @@ import { InfoComponent } from './shared/components/info/info.component';
 import { AuthGuard } from './guards/auth.guard';
 import { UserDataResolver } from './resolvers/user-data.resolver';
 import { UserSessionDataResolver } from './resolvers/user-session-data.resolver';
-import { BuyerListComponent } from './pages/admin/buyer-list/buyer-list.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +78,8 @@ import { BuyerListComponent } from './pages/admin/buyer-list/buyer-list.componen
     InfoComponent,
     SellerListComponent,
     FilterListPipe,
-    BuyerListComponent
+    BuyerListComponent,
+    BidListComponent
   ],
   imports: [
     BrowserModule,
@@ -89,6 +91,7 @@ import { BuyerListComponent } from './pages/admin/buyer-list/buyer-list.componen
     ButtonsModule.forRoot(),
     TimepickerModule.forRoot(),
     BsDatepickerModule.forRoot(),
+    PaginationModule.forRoot(),
     MatButtonModule,
     MatRadioModule,
     MatInputModule,
