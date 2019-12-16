@@ -2,7 +2,7 @@
   <p class="text--largesecondary text--blue">
     All Bids
   </p>
-  <div class="bid-list-table-container mt-2">
+  <div class="bid-list-table-container mt-2" *ngIf="this.bids.length">
     <wm-bid-list-table
       *ngIf="this.bids.length"
       [bids]="this.bids"
@@ -10,6 +10,9 @@
       [showBuyer]="true"
       [showSeller]="true"
     ></wm-bid-list-table>
+  </div>
+  <div *ngIf="!this.bids.length" class="height-px--100 flex mt-4">
+    <p class="text--red text--large">No bids here</p>
   </div>
 </div>
 <wm-page-actions [user]="this.appServ.loggedInUserInfo"> </wm-page-actions>
