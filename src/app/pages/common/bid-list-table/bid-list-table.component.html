@@ -1,11 +1,11 @@
 <div class="pagination-container flex space-between height-px--60">
   <pagination
     [totalItems]="this.bids.length"
-    [rotate]="true"
     [maxSize]="6"
     [itemsPerPage]="this.perPageCount"
     [boundaryLinks]="true"
     (pageChanged)="this.pageChanged($event)"
+    [rotate]="false"
   ></pagination>
   <p class="pagination-info text--blue text--normal">
     Showing

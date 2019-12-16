@@ -20,16 +20,12 @@ export class BidListComponent implements OnInit, OnDestroy {
     this.initializeBidList();
   }
 
-  /**
-   * @description initialize the bid list for buyer
-   * @param buyerId the buyer id
-   */
   private initializeBidList() {
     this.appServ.getAllBids().subscribe(data => {
       this.bids = data.sort((a, b) => b.id - a.id)
       this.bids.forEach(bid => {
         bid.seller = this.appServ.allSellers.find(seller => seller.id == bid.sellerId); // Set the seller details in the bid object
-        bid.buyer = this.appServ.allBuyers.find(buyer => buyer.id == bid.buyerId); // Set the seller details in the bid object
+        bid.buyer = this.appServ.allBuyers.find(buyer => buyer.id == bid.buyerId); // Set the buyer details in the bid object
       });
     });
   }
