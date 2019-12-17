@@ -42,14 +42,14 @@ body {
     position: relative;
     padding-top: 15px;
   }
-  .smart-cities-logo{
+  .smart-cities-logo {
     margin-left: 10px;
     position: relative;
   }
   .logo-title {
     position: relative;
     margin: 15px 10px 10px 5px;
-    vertical-align: middle
+    vertical-align: middle;
   }
 }
 
@@ -76,10 +76,10 @@ body {
       .app-title {
         letter-spacing: 1px;
       }
-      .chennai-corporation-logo{
+      .chennai-corporation-logo {
         padding-right: 10px;
-        padding-top:10px;
-        float:right;
+        padding-top: 10px;
+        float: right;
       }
       .headerLogoDivider {
         border-right: 1px solid #7d7f82;
@@ -87,8 +87,8 @@ body {
         position: relative;
         padding-top: 15px;
       }
-      .smart-cities-logo{
-        padding:0px 10px 10px 10px;
+      .smart-cities-logo {
+        padding: 0px 10px 10px 10px;
         position: relative;
         width: 40px;
         height: 40px;
@@ -155,9 +155,9 @@ body {
     justify-content: space-between;
     font-size: 13px;
     padding-left: 20px;
-    padding-top:5px;
-    padding-bottom:5px;
-    text-align:center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: center;
 
     a {
       text-decoration: none;
@@ -167,39 +167,39 @@ body {
   .resourcePartnerText {
     vertical-align: middle;
     color: #808080e6;
-   // border-right: 1px solid #808080e6;
+    // border-right: 1px solid #808080e6;
     padding-right: 15px;
-    padding-left:20px;
+    padding-left: 20px;
   }
   .aVerticalSeparator {
     border-left: 1px solid #808080e6;
     width: 1px;
     vertical-align: middle;
-}
+  }
 
-  .resourcePartnerLogo{
+  .resourcePartnerLogo {
     align-items: center;
     font-size: 16px;
     margin-left: 10px;
     vertical-align: middle;
   }
-  .resourcePartnerLogo .thoughtworks-logo{
+  .resourcePartnerLogo .thoughtworks-logo {
     width: 150px;
-    margin-right:10px;
+    margin-right: 10px;
   }
-  .resourcePartnerLogo .techForCities{
-    margin-right:10px;
+  .resourcePartnerLogo .techForCities {
+    margin-right: 10px;
   }
   .resourcePartnerLogo img {
     max-height: 46px;
     width: 100px;
   }
-  .paperman-logo{
+  .paperman-logo {
     margin-left: 20px;
     margin-right: 10px;
     img {
-    width: 70px;
-    max-height: 40px;
+      width: 70px;
+      max-height: 40px;
     }
   }
 }
@@ -211,6 +211,6 @@ body {
 }
 
 .googlePlaystoreButton {
-  width:145px;
-  height:60px;
+  width: 145px;
+  height: 60px;
 }

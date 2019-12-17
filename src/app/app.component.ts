@@ -13,7 +13,7 @@ declare let ga: Function;
 })
 export class AppComponent implements OnInit {
   title = 'wastexchange-fe';
-  public resourcePartnerText:String = "Resource Partners";
+  public resourcePartnerText: String = 'Resource Partners';
   public appTitle = 'Madras Waste Exchange';
   public isSmallScreen: boolean;
 

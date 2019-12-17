@@ -27,7 +27,7 @@ export class SellerBidListComponent implements OnInit {
     this.seller = this.appServ.allSellers.filter(seller => seller.id == this.sellerId)[0];
 
     this.appServ.getAllBids().subscribe(data => {
-      this.bids = data.filter(bid => bid.sellerId == +this.sellerId).sort((a, b) => b.id - a.id)
+      this.bids = data.filter(bid => bid.sellerId == +this.sellerId).sort((a, b) => b.id - a.id);
       this.bids.forEach(bid => {
         bid.buyer = this.appServ.allBuyers.filter(buyer => buyer.id == bid.buyerId)[0];
       });
