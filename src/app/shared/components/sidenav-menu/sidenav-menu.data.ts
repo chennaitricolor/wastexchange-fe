@@ -11,7 +11,7 @@ export const MENUMASTER: Menu[] = [
   {
     id: 13,
     link: 'admin/buyer-list',
-    name: 'Buyer',
+    name: 'Buyers',
     parentId: 0,
     icon: 'nature_people',
     authorizedPersona: ['admin']
@@ -19,9 +19,17 @@ export const MENUMASTER: Menu[] = [
   {
     id: 14,
     link: 'admin/seller-list',
-    name: 'Seller',
+    name: 'Sellers',
     parentId: 0,
     icon: 'delete_sweep',
+    authorizedPersona: ['admin']
+  },
+  {
+    id: 14,
+    link: 'admin/bid-list',
+    name: 'Bids',
+    parentId: 0,
+    icon: 'chrome_reader_mode',
     authorizedPersona: ['admin']
   },
   {

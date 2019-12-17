@@ -5,8 +5,11 @@
   <p class="text--normal text--gray">
     Orders not accepted before 24hrs of pick-up time will be automatically cancelled.
   </p>
-  <div class="bid-list-table-container mt-4">
-    <wm-bid-list-table [bids]="this.bids" [user]="this.buyer"></wm-bid-list-table>
+  <div class="bid-list-table-container mt-4" *ngIf="this.bids.length">
+    <wm-bid-list-table [bids]="this.bids" [user]="this.buyer" [showSeller]="true"></wm-bid-list-table>
+  </div>
+  <div *ngIf="!this.bids.length" class="height-px--100 flex mt-4">
+    <p class="text--red text--large">No bids here</p>
   </div>
 </div>
 

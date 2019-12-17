@@ -1,9 +1,36 @@
+<div class="pagination-container flex space-between height-px--60">
+  <p class="pagination-info text--blue text--normal">
+    Showing
+    <strong
+      >{{ (this.currentPage - 1) * this.perPageCount + 1 }} -
+      {{ (this.currentPage - 1) * this.perPageCount + this.paginatedBids.length }}</strong
+    >
+    bids of
+    <strong>{{ this.bids?.length }}</strong>
+  </p>
+  <pagination
+    [totalItems]="this.bids.length"
+    [maxSize]="6"
+    [itemsPerPage]="this.perPageCount"
+    [rotate]="false"
+    [boundaryLinks]="true"
+    (pageChanged)="this.pageChanged($event)"
+    previousText="&lsaquo;"
+    nextText="&rsaquo;"
+    firstText="&laquo;"
+    lastText="&raquo;"
+  ></pagination>
+</div>
+
 <div class="table-responsive">
   <table class="table">
     <thead>
       <tr>
-        <th scope="col" class="background--blue">
-          {{ this.user?.persona == 'buyer' ? 'Seller' : 'Buyer' }}
+        <th scope="col" class="background--blue" *ngIf="this.showBuyer">
+          Buyer
+        </th>
+        <th scope="col" class="background--blue" *ngIf="this.showSeller">
+          Seller
         </th>
         <th></th>
         <th>Total Cost</th>
@@ -11,15 +38,25 @@
       </tr>
     </thead>
     <tbody>
-      <ng-container *ngIf="this.bids.length">
-        <tr *ngFor="let bid of this.bids">
-          <td class="text--left background--blue ">
-            <ng-container *ngIf="this.user?.persona == 'seller'" class="text--left">
+      <ng-container *ngIf="this.paginatedBids.length">
+        <tr *ngFor="let bid of this.paginatedBids">
+          <td class="text--left background--blue" *ngIf="this.showBuyer">
+            <ng-container class="text--left">
               <p class="text--blue text--normal text--trim--200">{{ bid.buyer?.name }}</p>
               <p class="text--medium">{{ bid.buyer?.address }}</p>
               <p class="text--medium">{{ bid.buyer?.mobNo }}</p>
             </ng-container>
-            <ng-container *ngIf="this.user?.persona == 'buyer'" class="text--left">
+            <p class="text--medium text--blue">Pickup:</p>
+            <p class="text--medium">
+              By <span class="text--bold">{{ bid.contactName }}</span>
+            </p>
+            <p class="text--medium">
+              At
+              <span class="text--bold">{{ bid.pDateTime | date: 'medium' }}</span>
+            </p>
+          </td>
+          <td class="text--left background--blue" *ngIf="this.showSeller">
+            <ng-container class="text--left">
               <p class="text--blue text--normal text--trim--200">{{ bid.seller?.name }}</p>
               <p class="text--medium">{{ bid.seller?.address }}</p>
               <p class="text--medium">{{ bid.seller?.mobNo }}</p>
@@ -58,25 +95,25 @@
                 mat-flat-button
                 color="primary"
                 class="rounded-button mb-2"
-                *ngIf="this.appServ.isUserLoggedIn && this.user?.persona == 'seller'"
+                *ngIf="this.appServ.isUserLoggedIn && this.showBuyer"
                 (click)="this.updateStatusOfBid(bid, 'approved')"
               >
                 Approve
               </button>
               <button
                 mat-stroked-button
-                color="primary"
+                color="warn"
                 class="rounded-button mb-2"
-                *ngIf="this.appServ.isUserLoggedIn && this.user?.persona == 'seller'"
+                *ngIf="this.appServ.isUserLoggedIn && this.showBuyer"
                 (click)="this.updateStatusOfBid(bid, 'denied')"
               >
                 Deny
               </button>
               <button
-                mat-flat-button
+                mat-stroked-button
                 color="primary"
                 class="rounded-button mb-2"
-                *ngIf="this.appServ.isUserLoggedIn && this.user?.persona == 'buyer'"
+                *ngIf="this.appServ.isUserLoggedIn && this.showSeller"
                 [routerLink]="['/buyer', this.appServ.loggedInUserInfo.id, 'bid']"
                 [queryParams]="{ bidId: bid.id, sellerId: bid.sellerId }"
               >
@@ -84,9 +121,9 @@
               </button>
               <button
                 mat-stroked-button
-                color="primary"
+                color="warn"
                 class="rounded-button mb-2"
-                *ngIf="this.appServ.isUserLoggedIn && this.user?.persona == 'buyer'"
+                *ngIf="this.appServ.isUserLoggedIn && this.showSeller"
                 (click)="this.updateStatusOfBid(bid, 'cancelled')"
               >
                 Cancel
@@ -100,7 +137,7 @@
           </td>
         </tr>
       </ng-container>
-      <tr *ngIf="!this.bids.length">
+      <tr *ngIf="!this.paginatedBids.length">
         <td colspan="5">
           <div class="flex mt-4">
             <p class="text--large text--blue">
